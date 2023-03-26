@@ -1,0 +1,9 @@
+{
+  "hop.nvim": { "branch": "master", "commit": "90db1b2c61b820e230599a04fedcd2679e64bd07" },
+  "lazy.nvim": { "branch": "main", "commit": "fdb41229ca39cf2795cbf4e6d04a52b73e6225f5" },
+  "monokai-pro.nvim": { "branch": "master", "commit": "c49d65af794cd97c49331237eb7ae208b93f9363" },
+  "nvim-autopairs": { "branch": "master", "commit": "e755f366721bc9e189ddecd39554559045ac0a18" },
+  "nvim-surround": { "branch": "main", "commit": "2de4bf5a39d4df02aafb8fd038feac9337778acf" },
+  "plenary.nvim": { "branch": "master", "commit": "253d34830709d690f013daf2853a9d21ad7accab" },
+  "vim-visual-multi": { "branch": "master", "commit": "724bd53adfbaf32e129b001658b45d4c5c29ca1a" }
+}
