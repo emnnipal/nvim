@@ -109,6 +109,8 @@ end
 
 vim.keymap.set('n', '<leader>w', ':update<CR>')
 vim.keymap.set('n', '<leader>q', ':q<CR>')
+vim.keymap.set('n', '<A-k>', '<Plug>(VM-Add-Cursor-Up)')
+vim.keymap.set('n', '<A-j>', '<Plug>(VM-Add-Cursor-Down)')
 
 require('lazy').setup({
   'nvim-lua/plenary.nvim',
