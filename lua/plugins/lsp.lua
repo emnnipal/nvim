@@ -7,6 +7,7 @@ return {
       keys[#keys + 1] = { "K", false }
     end,
     opts = {
+      -- autoformat = false,
       setup = {
         -- disable auto fix for eslint
         eslint = function() end,

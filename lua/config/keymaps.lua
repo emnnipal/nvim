@@ -1,3 +1,4 @@
+local Util = require("lazyvim.util")
 -- Keymaps are automatically loaded on the VeryLazy event
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
@@ -23,6 +24,13 @@ vim.keymap.set("n", "<A-j>", "<Plug>(VM-Add-Cursor-Down)")
 -- override some which-key keymaps
 vim.keymap.set("n", "<leader>w", ":update<CR>", { desc = "Save", silent = true })
 vim.keymap.set("n", "<leader>W", "<cmd>noautocmd w<cr>", { desc = "Save without formatting", silent = true })
+
+local lazyterm = function()
+  Util.float_term(nil, { cwd = Util.get_root() })
+end
+
+vim.keymap.set("n", "<C-\\>", lazyterm, { desc = "Terminal (root dir)" })
+vim.keymap.set("t", "<C-\\>", "<cmd>close<cr>", { desc = "Close Terminal" })
 
 -- which-key keymap
 local which_key = require("which-key")
