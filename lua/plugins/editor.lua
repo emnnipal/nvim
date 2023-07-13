@@ -89,17 +89,17 @@ return {
       },
     },
   },
+  {
+    "akinsho/git-conflict.nvim",
+    event = "BufReadPre",
+    opts = {
+      default_mappings = false,
+    },
+  },
 
   -- TODO: attach to tailwind
   -- {
   --   "princejoogie/tailwind-highlight.nvim",
   --   lazy = true,
   -- },
-  -- {
-  --   'akinsho/git-conflict.nvim',
-  --   event = "BufReadPre",
-  --   opts = {
-  --     default_mappings = false
-  --   }
-  -- }
 }
