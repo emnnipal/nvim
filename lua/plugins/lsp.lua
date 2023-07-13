@@ -6,5 +6,11 @@ return {
       -- disable a keymap
       keys[#keys + 1] = { "K", false }
     end,
+    opts = {
+      setup = {
+        -- disable auto fix for eslint
+        eslint = function() end,
+      },
+    },
   },
 }
