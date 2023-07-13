@@ -1,4 +1,32 @@
 return {
+  -- override
+  {
+    "folke/flash.nvim",
+    keys = {
+      { "s", false },
+      { "S", false },
+      {
+        "m",
+        mode = { "n", "x", "o" },
+        function()
+          require("flash").jump()
+        end,
+        desc = "Flash",
+      },
+      {
+        "M",
+        mode = { "n", "o", "x" },
+        function()
+          require("flash").treesitter()
+        end,
+        desc = "Flash Treesitter",
+      },
+    },
+  },
+  {
+    "echasnovski/mini.surround",
+    enabled = false,
+  },
   {
     "folke/which-key.nvim",
     config = function(_, opts)
@@ -11,6 +39,8 @@ return {
       wk.register(opts.defaults)
     end,
   },
+
+  -- additional plugins
   {
     "Wansmer/treesj",
     event = "VeryLazy",
@@ -20,7 +50,6 @@ return {
       max_join_length = 1200,
     },
   },
-  -- TODO: fix surround for highlighted text shift S
   {
     "kylechui/nvim-surround",
     event = "VeryLazy",
