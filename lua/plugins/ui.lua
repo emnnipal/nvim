@@ -2,8 +2,8 @@ return {
   {
     "nvim-lualine/lualine.nvim",
     opts = function(_, opts)
-      local lualine_x = opts.sections.lualine_x
-      lualine_x[#lualine_x + 1] = {
+      local lualine = opts.sections
+      lualine.lualine_x[#lualine.lualine_x + 1] = {
         function()
           local buf_clients = vim.lsp.get_active_clients({ bufnr = 0 })
           if #buf_clients == 0 then
@@ -24,6 +24,8 @@ return {
           return language_servers
         end,
       }
+
+      lualine.lualine_z = nil
     end,
   },
   {
