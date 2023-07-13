@@ -10,12 +10,46 @@ vim.keymap.set({ "i", "c" }, "jk", "<Esc>")
 vim.keymap.set({ "i", "c" }, "kj", "<Esc>")
 
 -- apply highlighting shortcuts in all modes and visual mode
--- vim.keymap.del({ "", "v" }, "K", nil)
 vim.keymap.set({ "", "v" }, "J", "10j")
--- TODO: remap not working
-vim.keymap.set({ "", "v" }, "K", "10k", { remap = true })
+vim.keymap.set({ "", "v" }, "K", "10k")
 vim.keymap.set({ "", "v" }, "H", "^")
 vim.keymap.set({ "", "v" }, "L", "$")
 
--- TODO: description not updating in which-key
-vim.keymap.set("n", "<leader>w", ":update<CR>", { desc = "Save" })
+vim.keymap.set("n", "gh", vim.lsp.buf.hover, { desc = "Display hover info" })
+vim.keymap.set("n", "gl", vim.diagnostic.open_float, { desc = "Line diagnostics" })
+vim.keymap.set("n", "<A-k>", "<Plug>(VM-Add-Cursor-Up)")
+vim.keymap.set("n", "<A-j>", "<Plug>(VM-Add-Cursor-Down)")
+
+-- override some which-key keymaps
+vim.keymap.set("n", "<leader>w", ":update<CR>", { desc = "Save", silent = true })
+vim.keymap.set("n", "<leader>W", "<cmd>noautocmd w<cr>", { desc = "Save without formatting", silent = true })
+
+-- which-key keymap
+local which_key = require("which-key")
+which_key.register({
+  ["<leader>b"] = {
+    h = { "<cmd>BufferLineCloseLeft<cr>", "Close all to the left" },
+    l = { "<cmd>BufferLineCloseRight<cr>", "Close all to the right" },
+  },
+  ["<leader>m"] = { ":TSJToggle<CR>", "Toggle split/join" },
+  ["<leader>P"] = { "<leader>P", "<cmd>Telescope projects<CR>" },
+  ["<leader>j"] = { ":BufferLineCyclePrev<CR>", "Previous Buffer" },
+  ["<leader>k"] = { ":BufferLineCycleNext<CR>", "Next Buffer" },
+  ["<leader>c"] = {
+    R = { ":LspRestart<CR>", "Restart LSP" },
+  },
+  ["<leader>i"] = {
+    name = "Utilities",
+    c = {
+      name = " Resolve Git Conflicts",
+      a = { ":GitConflictListQf<CR>", "Get all conflict to quickfix" },
+      b = { ":GitConflictChooseBoth<CR>", "Choose both" },
+      j = { ":GitConflictPrevConflict<CR>", "Move to previous conflict" },
+      k = { ":GitConflictNextConflict<CR>", "Move to next conflict" },
+      n = { ":GitConflictChooseNone<CR>", "Choose none" },
+      o = { ":GitConflictChooseOurs<CR>", "Choose ours" },
+      t = { ":GitConflictChooseTheirs<CR>", "Choose theirs" },
+    },
+    e = { ":EslintFixAll<CR>", "Fix eslint errors" },
+  },
+})
