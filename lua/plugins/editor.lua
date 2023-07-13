@@ -1,21 +1,6 @@
 return {
   {
     "folke/which-key.nvim",
-    -- opts = function()
-    --   local which_key = require("which-key")
-    --   which_key.register({
-    --     -- ["<leader>m"] = { ":!pwd<CR>", "test" },
-    --     -- ["<leader>w"] = { ":update<CR>", "Save" },
-    --     -- ["<leader>W"] = { "<cmd>noautocmd w<cr>", "Save without formatting" },
-    --     ["<leader>b"] = {
-    --       h = { "<cmd>BufferLineCloseLeft<cr>", "Close all to the left" },
-    --       l = {
-    --         "<cmd>BufferLineCloseRight<cr>",
-    --         "Close all to the right",
-    --       },
-    --     },
-    --   })
-    -- end,
     config = function(_, opts)
       local wk = require("which-key")
       wk.setup(opts)
@@ -28,7 +13,6 @@ return {
   },
   {
     "Wansmer/treesj",
-    -- lazy = true,
     event = "VeryLazy",
     dependencies = { "nvim-treesitter" },
     opts = {
@@ -36,6 +20,7 @@ return {
       max_join_length = 1200,
     },
   },
+  -- TODO: fix surround for highlighted text shift S
   {
     "kylechui/nvim-surround",
     event = "VeryLazy",
@@ -56,6 +41,26 @@ return {
     "mg979/vim-visual-multi",
     event = "BufReadPre",
   },
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    opts = {
+      filesystem = {
+        filtered_items = {
+          visible = false,
+          hide_dotfiles = false,
+          hide_gitignored = false,
+          hide_by_name = {
+            ".git",
+            "node_modules",
+          },
+          always_show = {
+            ".env",
+          },
+        },
+      },
+    },
+  },
+
   -- TODO: attach to tailwind
   -- {
   --   "princejoogie/tailwind-highlight.nvim",
