@@ -48,9 +48,15 @@ return {
         require("telescope").load_extension("fzf")
       end,
     },
+    -- TODO: make telescope theme dropdown
     -- opts = {
     --   defaults = {
     --     theme = "dropdown",
+    --   },
+    --   pickers = {
+    --     find_files = {
+    --       theme = "dropdown",
+    --     },
     --   },
     -- },
   },
@@ -117,8 +123,8 @@ return {
         format = function(entry, item)
           local icons = require("lazyvim.config").icons.kinds
 
-          local max_width = 36
-          local max_detail_width = 24
+          local max_width = 26
+          local max_detail_width = 20
 
           local detail = string.sub(entry.completion_item.detail or "", 1, max_detail_width)
           item.menu = detail
