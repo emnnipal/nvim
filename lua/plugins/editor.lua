@@ -114,24 +114,40 @@ return {
       -- overrides
 
       opts.window = {
-        completion = cmp.config.window.bordered(),
+        completion = cmp.config.window.bordered({
+          side_padding = 0, -- to prevent icons from being cut off
+        }),
         documentation = cmp.config.window.bordered(),
       }
 
       opts.formatting = {
-        -- fields = { "kind", "abbr", "menu" }, -- order of fields
+        fields = { "kind", "abbr", "menu" }, -- order of fields
         format = function(entry, item)
           local icons = require("lazyvim.config").icons.kinds
 
           local max_width = 26
           local max_detail_width = 20
 
+          local source_name = ({
+            nvim_lsp = "(LSP)",
+            emoji = "(Emoji)",
+            path = "(Path)",
+            calc = "(Calc)",
+            cmp_tabnine = "(Tabnine)",
+            vsnip = "(Snippet)",
+            luasnip = "(Snippet)",
+            buffer = "(Buffer)",
+            tmux = "(TMUX)",
+            copilot = "(Copilot)",
+            treesitter = "(TreeSitter)",
+          })[entry.source.name]
+
           local detail = string.sub(entry.completion_item.detail or "", 1, max_detail_width)
-          item.menu = detail
+          item.menu = string.format("%s %s", source_name, detail)
 
           if icons[item.kind] then
-            -- item.kind = icons[item.kind]
-            item.kind = icons[item.kind] .. item.kind
+            item.kind = icons[item.kind]
+            -- item.kind = icons[item.kind] .. item.kind
           end
 
           if max_width ~= 0 and #item.abbr > max_width then
