@@ -60,4 +60,12 @@ which_key.register({
     },
     e = { ":EslintFixAll<CR>", "Fix eslint errors" },
   },
+  ["<leader>q"] = {
+    c = {
+      function()
+        require("mini.bufremove").delete(0, false)
+      end,
+      "Close Buffer",
+    },
+  },
 })
