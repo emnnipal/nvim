@@ -25,6 +25,7 @@ return {
         end,
       }
 
+      lualine.lualine_y = nil
       lualine.lualine_z = nil
     end,
   },
