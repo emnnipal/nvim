@@ -104,6 +104,15 @@ return {
         end, { "i", "s" }),
       })
 
+      opts.window = {
+        -- TODO: fix background color of completion dialog to solid instead of translucent
+        -- completion = {
+        --   border = "rounded",
+        --   winhighlight = "Normal:CmpNormal",
+        -- },
+        completion = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered(),
+      }
     end,
   },
 
