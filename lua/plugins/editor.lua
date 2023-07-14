@@ -40,7 +40,6 @@ return {
     end,
   },
   {
-    "telescope.nvim",
     "nvim-telescope/telescope.nvim",
     dependencies = {
       "nvim-telescope/telescope-fzf-native.nvim",
@@ -105,11 +104,6 @@ return {
       })
 
       opts.window = {
-        -- TODO: fix background color of completion dialog to solid instead of translucent
-        -- completion = {
-        --   border = "rounded",
-        --   winhighlight = "Normal:CmpNormal",
-        -- },
         completion = cmp.config.window.bordered(),
         documentation = cmp.config.window.bordered(),
       }
@@ -172,10 +166,4 @@ return {
       default_mappings = false,
     },
   },
-
-  -- TODO: attach to tailwind
-  -- {
-  --   "princejoogie/tailwind-highlight.nvim",
-  --   lazy = true,
-  -- },
 }
