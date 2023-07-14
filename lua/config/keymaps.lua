@@ -26,7 +26,7 @@ vim.keymap.set("n", "<leader>w", ":update<CR>", { desc = "Save", silent = true }
 vim.keymap.set("n", "<leader>W", "<cmd>noautocmd w<cr>", { desc = "Save without formatting", silent = true })
 
 local lazyterm = function()
-  Util.float_term(nil, { cwd = Util.get_root() })
+  Util.float_term(nil, { cwd = Util.get_root(), border = "rounded" })
 end
 
 vim.keymap.set("n", "<C-\\>", lazyterm, { desc = "Terminal (root dir)" })
@@ -38,7 +38,7 @@ vim.keymap.set("n", "<leader>gg", function()
       width = 1,
       height = 1,
     },
-    esc_esc = false,
+    esc_esc = false, -- disable <esc><esc> to go to normal mode when in lazygit
   })
 end, { desc = "Lazygit (cwd)" })
 
