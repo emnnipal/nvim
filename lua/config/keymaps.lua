@@ -38,6 +38,7 @@ vim.keymap.set("n", "<leader>gg", function()
       width = 1,
       height = 1,
     },
+    esc_esc = false,
   })
 end, { desc = "Lazygit (cwd)" })
 
