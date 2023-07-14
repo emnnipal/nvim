@@ -32,6 +32,15 @@ end
 vim.keymap.set("n", "<C-\\>", lazyterm, { desc = "Terminal (root dir)" })
 vim.keymap.set("t", "<C-\\>", "<cmd>close<cr>", { desc = "Close Terminal" })
 
+vim.keymap.set("n", "<leader>gg", function()
+  Util.float_term({ "lazygit" }, {
+    size = {
+      width = 1,
+      height = 1,
+    },
+  })
+end, { desc = "Lazygit (cwd)" })
+
 -- which-key keymap
 local which_key = require("which-key")
 which_key.register({
