@@ -95,7 +95,7 @@ return {
       local cmp = require("cmp")
 
       opts.mapping = vim.tbl_extend("force", opts.mapping, {
-        ["<CR>"] = cmp.mapping.confirm({ select = false }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+        -- ["<CR>"] = cmp.mapping.confirm({ select = false }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
         ["<Tab>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
             -- You could replace select_next_item() with confirm({ select = true }) to get VS Code autocompletion behavior
@@ -133,8 +133,8 @@ return {
       }
 
       -- disable preselecting first item in completion menu
-      opts.preselect = "None"
-      opts.completion.completeopt = "menu,menuone,noselect,noinsert"
+      -- opts.preselect = "None"
+      -- opts.completion.completeopt = "menu,menuone,noselect,noinsert"
 
       opts.formatting = {
         fields = { "kind", "abbr", "menu" }, -- order of fields
