@@ -6,8 +6,10 @@ return {
       -- disable a keymap
       keys[#keys + 1] = { "K", false }
 
+      -- TODO: disable show documentation/hover keymap with "K" in textDocument/hover
       require("lazyvim.util").on_attach(function(_)
         local border = "rounded"
+
         vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
           border = border,
         })
