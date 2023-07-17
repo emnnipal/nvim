@@ -176,6 +176,12 @@ return {
       }
     end,
   },
+  {
+    "rcarriga/nvim-notify",
+    opts = {
+      stages = "fade",
+    },
+  },
 
   -- additional plugins
   {
