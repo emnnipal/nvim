@@ -2,26 +2,27 @@ return {
   -- override
   {
     "folke/flash.nvim",
-    keys = {
-      { "s", false },
-      { "S", false },
-      {
-        "m",
-        mode = { "n", "x", "o" },
-        function()
-          require("flash").jump()
-        end,
-        desc = "Flash",
-      },
-      {
-        "M",
-        mode = { "n", "o", "x" },
-        function()
-          require("flash").treesitter()
-        end,
-        desc = "Flash Treesitter",
-      },
-    },
+    enabled = false,
+    -- keys = {
+    --   { "s", false },
+    --   { "S", false },
+    --   {
+    --     "m",
+    --     mode = { "n", "x", "o" },
+    --     function()
+    --       require("flash").jump()
+    --     end,
+    --     desc = "Flash",
+    --   },
+    --   {
+    --     "M",
+    --     mode = { "n", "o", "x" },
+    --     function()
+    --       require("flash").treesitter()
+    --     end,
+    --     desc = "Flash Treesitter",
+    --   },
+    -- },
   },
   {
     "echasnovski/mini.surround",
@@ -188,7 +189,7 @@ return {
   },
   {
     "kylechui/nvim-surround",
-    event = "VeryLazy",
+    event = "BufReadPre",
     opts = {},
   },
   {
@@ -231,5 +232,16 @@ return {
     opts = {
       default_mappings = false,
     },
+  },
+  {
+    "phaazon/hop.nvim",
+    event = "BufReadPre",
+    config = function()
+      local hop = require("hop")
+      hop.setup()
+      vim.keymap.set("", "m", function()
+        hop.hint_words()
+      end, { remap = true, desc = "Hop" })
+    end,
   },
 }
