@@ -60,7 +60,7 @@ return {
             return math.min(max_columns, 84)
           end,
           height = function(_, _, max_lines)
-            return math.min(max_lines, 16)
+            return math.min(max_lines, 15)
           end,
         },
         -- border = true,
