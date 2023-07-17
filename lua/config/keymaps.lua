@@ -50,7 +50,6 @@ which_key.register({
     l = { "<cmd>BufferLineCloseRight<cr>", "Close all to the right" },
   },
   ["<leader>m"] = { ":TSJToggle<CR>", "Toggle split/join" },
-  ["<leader>P"] = { "<leader>P", "<cmd>Telescope projects<CR>" },
   ["<leader>j"] = { ":BufferLineCyclePrev<CR>", "Previous Buffer" },
   ["<leader>k"] = { ":BufferLineCycleNext<CR>", "Next Buffer" },
   ["<leader>c"] = {
