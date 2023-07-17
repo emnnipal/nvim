@@ -3,5 +3,5 @@
 -- Add any additional options here
 
 -- make nvim-cmp completion and documentation not transparent
-vim.o.pumblend = 1
+vim.o.pumblend = 0
 -- vim.o.winblend = 1
