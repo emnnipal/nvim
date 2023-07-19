@@ -57,7 +57,7 @@ which_key.register({
   ["<leader>j"] = { ":BufferLineCyclePrev<CR>", "Previous Buffer" },
   ["<leader>k"] = { ":BufferLineCycleNext<CR>", "Next Buffer" },
   ["<leader>c"] = {
-    R = { ":LspRestart<CR>", "Restart LSP" },
+    L = { ":LspRestart<CR>", "Restart LSP" },
   },
   ["<leader>i"] = {
     name = "Utilities",
