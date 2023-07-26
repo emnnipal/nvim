@@ -25,6 +25,21 @@ return {
     -- },
   },
   {
+    "folke/noice.nvim",
+    opts = {
+      presets = {
+        lsp_doc_border = true,
+      },
+      views = {
+        hover = {
+          border = {
+            padding = { 0, 0 },
+          },
+        },
+      },
+    },
+  },
+  {
     "echasnovski/mini.surround",
     enabled = false,
   },
