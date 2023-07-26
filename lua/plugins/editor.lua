@@ -149,7 +149,7 @@ return {
 
       opts.window = {
         completion = cmp.config.window.bordered({
-          side_padding = 0, -- to prevent icons from being cut off
+          side_padding = 0,
         }),
         documentation = cmp.config.window.bordered(),
       }
@@ -184,7 +184,8 @@ return {
           item.menu = string.format("%s %s", source_name, detail)
 
           if icons[item.kind] then
-            item.kind = icons[item.kind]
+            item.kind = string.gsub(icons[item.kind], "%s+", "") -- remove whitespace from icon
+            -- item.kind = icons[item.kind]
             -- item.kind = icons[item.kind] .. item.kind
           end
 
