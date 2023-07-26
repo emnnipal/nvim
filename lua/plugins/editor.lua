@@ -1,5 +1,5 @@
 return {
-  -- override
+  -- disable
   {
     "folke/flash.nvim",
     enabled = false,
@@ -25,6 +25,16 @@ return {
     -- },
   },
   {
+    "echasnovski/mini.surround",
+    enabled = false,
+  },
+  {
+    "catppuccin/nvim",
+    enabled = false,
+  },
+
+  -- override
+  {
     "folke/noice.nvim",
     opts = {
       presets = {
@@ -38,10 +48,6 @@ return {
         },
       },
     },
-  },
-  {
-    "echasnovski/mini.surround",
-    enabled = false,
   },
   {
     "folke/which-key.nvim",

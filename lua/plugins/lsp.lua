@@ -21,7 +21,7 @@ return {
     opts = {
       lsp = {
         hover = {
-          silent = true,
+          silent = true, -- set to true to not show a message if hover is not available
         },
       },
     },
