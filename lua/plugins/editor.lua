@@ -251,7 +251,6 @@ return {
   },
   {
     "f-person/git-blame.nvim",
-    enabled = false, -- disable since I don't use it much
     event = "BufRead",
     config = function()
       vim.cmd("highlight default link gitblame SpecialComment")
