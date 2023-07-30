@@ -28,10 +28,6 @@ return {
     "echasnovski/mini.surround",
     enabled = false,
   },
-  {
-    "catppuccin/nvim",
-    enabled = false,
-  },
 
   -- override
   {
@@ -184,8 +180,8 @@ return {
           item.menu = string.format("%s %s", source_name, detail)
 
           if icons[item.kind] then
-            item.kind = string.gsub(icons[item.kind], "%s+", "") -- remove whitespace from icon
-            -- item.kind = icons[item.kind]
+            -- item.kind = string.gsub(icons[item.kind], "%s+", "") -- remove whitespace from icon
+            item.kind = icons[item.kind]
             -- item.kind = icons[item.kind] .. item.kind
           end
 

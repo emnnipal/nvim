@@ -23,4 +23,8 @@ return {
       colorscheme = "tokyonight-storm",
     },
   },
+  {
+    "catppuccin/nvim",
+    enabled = false,
+  },
 }
