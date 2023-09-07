@@ -72,6 +72,7 @@ which_key.register({
       t = { ":GitConflictChooseTheirs<CR>", "Choose theirs" },
     },
     e = { ":EslintFixAll<CR>", "Fix eslint errors" },
+    t = { ":vs#<CR>", "Reopen recently closed buffer" },
   },
   ["<leader>q"] = {
     c = {
