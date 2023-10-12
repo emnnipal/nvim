@@ -15,7 +15,7 @@ return {
             return not vim.tbl_contains(opts.filetypes_exclude or {}, ft)
           end, tw.default_config.filetypes)
 
-          require("lazyvim.util").on_attach(function(client, bufnr)
+          require("lazyvim.util").lsp.on_attach(function(client, bufnr)
             if client.name == "tailwindcss" then
               local tw_highlight = require("tailwind-highlight")
               tw_highlight.setup(client, bufnr, {
