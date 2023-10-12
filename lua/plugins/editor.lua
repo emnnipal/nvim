@@ -189,6 +189,29 @@ return {
           return item
         end,
       }
+
+      -- looks like the default but with added completion item detail
+      -- opts.formatting = {
+      --   fields = { "abbr", "kind", "menu" }, -- order of fields
+      --   format = function(entry, item)
+      --     local icons = require("lazyvim.config").icons.kinds
+      --
+      --     local max_width = 26
+      --     local max_detail_width = 20
+      --
+      --     item.menu = string.sub(entry.completion_item.detail or "", 1, max_detail_width)
+      --
+      --     if icons[item.kind] then
+      --       item.kind = icons[item.kind] .. item.kind
+      --     end
+      --
+      --     if max_width ~= 0 and #item.abbr > max_width then
+      --       item.abbr = string.sub(item.abbr, 1, max_width - 1) .. "⋯"
+      --     end
+      --
+      --     return item
+      --   end,
+      -- }
     end,
   },
   {
