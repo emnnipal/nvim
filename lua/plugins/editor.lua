@@ -163,22 +163,14 @@ return {
           local max_width = 26
           local max_detail_width = 20
 
-          local source_name = ({
-            nvim_lsp = "(LSP)",
-            emoji = "(Emoji)",
-            path = "(Path)",
-            calc = "(Calc)",
-            cmp_tabnine = "(Tabnine)",
-            vsnip = "(Snippet)",
-            luasnip = "(Snippet)",
-            buffer = "(Buffer)",
-            tmux = "(TMUX)",
-            copilot = "(Copilot)",
-            treesitter = "(TreeSitter)",
-          })[entry.source.name]
-
           local detail = string.sub(entry.completion_item.detail or "", 1, max_detail_width)
-          item.menu = string.format("%s %s", source_name, detail)
+
+          if #detail > 0 then
+            -- double space to separate kind and detail
+            item.menu = string.format("%s  %s", item.kind, detail)
+          else
+            item.menu = string.format("%s", item.kind)
+          end
 
           if icons[item.kind] then
             -- item.kind = string.gsub(icons[item.kind], "%s+", "") -- remove whitespace from icon
