@@ -2,15 +2,15 @@ local Util = require("lazyvim.util")
 -- Keymaps are automatically loaded on the VeryLazy event
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
---
+
 -- select all text with ctrl + a
 vim.keymap.set({ "", "n" }, "<D-a>", "<Esc>ggVG")
 
--- apply escape shortcuts in insert mode and command mode
+-- escape shortcuts
 vim.keymap.set({ "i", "c" }, "jk", "<Esc>")
 vim.keymap.set({ "i", "c" }, "kj", "<Esc>")
 
--- apply highlighting shortcuts in all modes and visual mode
+-- highlighting shortcuts
 vim.keymap.set({ "", "v" }, "J", "10j")
 vim.keymap.set({ "", "v" }, "K", "10k")
 vim.keymap.set({ "", "v" }, "H", "^")
@@ -21,17 +21,14 @@ vim.keymap.set("n", "gl", vim.diagnostic.open_float, { desc = "Line diagnostics"
 vim.keymap.set("n", "<A-k>", "<Plug>(VM-Add-Cursor-Up)")
 vim.keymap.set("n", "<A-j>", "<Plug>(VM-Add-Cursor-Down)")
 
--- override some which-key keymaps
-vim.keymap.set("n", "<leader>w", ":update<CR>", { desc = "Save", silent = true })
-vim.keymap.set("n", "<leader>W", "<cmd>noautocmd w<cr>", { desc = "Save without formatting", silent = true })
-
+-- terminal
 local lazyterm = function()
   Util.terminal.open(nil, { cwd = Util.root.get(), border = "rounded" })
 end
-
 vim.keymap.set("n", "<C-\\>", lazyterm, { desc = "Terminal (root dir)" })
 vim.keymap.set("t", "<C-\\>", "<cmd>close<cr>", { desc = "Close Terminal" })
 
+-- lazygit
 vim.keymap.set("n", "<leader>gg", function()
   Util.terminal.open({ "lazygit" }, {
     size = {
@@ -45,34 +42,36 @@ end, { desc = "Lazygit (cwd)" })
 -- which-key keymap
 local which_key = require("which-key")
 which_key.register({
+  ["<leader>w"] = { "<Cmd>update<CR>", "Save" },
+  ["<leader>W"] = { "<Cmd>noautocmd w<CR>", "Save without formatting" },
   ["<leader>b"] = {
-    h = { "<cmd>BufferLineCloseLeft<cr>", "Close all to the left" },
-    l = { "<cmd>BufferLineCloseRight<cr>", "Close all to the right" },
+    h = { "<Cmd>BufferLineCloseLeft<cr>", "Close all to the left" },
+    l = { "<Cmd>BufferLineCloseRight<cr>", "Close all to the right" },
   },
   ["<leader>/"] = {
-    "<cmd>Telescope current_buffer_fuzzy_find<cr>",
+    "<Cmd>Telescope current_buffer_fuzzy_find<CR>",
     "Fuzzy search in current buffer",
   },
-  ["<leader>m"] = { ":TSJToggle<CR>", "Toggle split/join" },
-  ["<leader>j"] = { ":BufferLineCyclePrev<CR>", "Previous Buffer" },
-  ["<leader>k"] = { ":BufferLineCycleNext<CR>", "Next Buffer" },
+  ["<leader>m"] = { "<Cmd>TSJToggle<CR>", "Toggle split/join" },
+  ["<leader>j"] = { "<Cmd>BufferLineCyclePrev<CR>", "Previous Buffer" },
+  ["<leader>k"] = { "<Cmd>BufferLineCycleNext<CR>", "Next Buffer" },
   ["<leader>c"] = {
-    L = { ":LspRestart<CR>", "Restart LSP" },
+    L = { "<Cmd>LspRestart<CR>", "Restart LSP" },
   },
   ["<leader>i"] = {
     name = "Utilities",
     c = {
       name = " Resolve Git Conflicts",
-      a = { ":GitConflictListQf<CR>", "Get all conflict to quickfix" },
-      b = { ":GitConflictChooseBoth<CR>", "Choose both" },
-      j = { ":GitConflictPrevConflict<CR>", "Move to previous conflict" },
-      k = { ":GitConflictNextConflict<CR>", "Move to next conflict" },
-      n = { ":GitConflictChooseNone<CR>", "Choose none" },
-      o = { ":GitConflictChooseOurs<CR>", "Choose ours" },
-      t = { ":GitConflictChooseTheirs<CR>", "Choose theirs" },
+      a = { "<Cmd>GitConflictListQf<CR>", "Get all conflict to quickfix" },
+      b = { "<Cmd>GitConflictChooseBoth<CR>", "Choose both" },
+      j = { "<Cmd>GitConflictPrevConflict<CR>", "Move to previous conflict" },
+      k = { "<Cmd>GitConflictNextConflict<CR>", "Move to next conflict" },
+      n = { "<Cmd>GitConflictChooseNone<CR>", "Choose none" },
+      o = { "<Cmd>GitConflictChooseOurs<CR>", "Choose ours" },
+      t = { "<Cmd>GitConflictChooseTheirs<CR>", "Choose theirs" },
     },
-    e = { ":EslintFixAll<CR>", "Fix eslint errors" },
-    t = { ":vs#<CR>", "Reopen recently closed buffer" },
+    e = { "<Cmd>EslintFixAll<CR>", "Fix eslint errors" },
+    t = { "<Cmd>vs#<CR>", "Reopen recently closed buffer" },
   },
   ["<leader>q"] = {
     c = {
