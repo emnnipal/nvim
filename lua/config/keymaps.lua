@@ -28,17 +28,6 @@ end
 vim.keymap.set("n", "<C-\\>", lazyterm, { desc = "Terminal (root dir)" })
 vim.keymap.set("t", "<C-\\>", "<cmd>close<cr>", { desc = "Close Terminal" })
 
--- lazygit
-vim.keymap.set("n", "<leader>gg", function()
-  Util.terminal.open({ "lazygit" }, {
-    size = {
-      width = 1,
-      height = 1,
-    },
-    esc_esc = false, -- disable <esc><esc> to go to normal mode when in lazygit
-  })
-end, { desc = "Lazygit (cwd)" })
-
 -- which-key keymap
 local which_key = require("which-key")
 which_key.register({
@@ -57,6 +46,20 @@ which_key.register({
   ["<leader>k"] = { "<Cmd>BufferLineCycleNext<CR>", "Next Buffer" },
   ["<leader>c"] = {
     L = { "<Cmd>LspRestart<CR>", "Restart LSP" },
+  },
+  ["<leader>g"] = {
+    g = {
+      function()
+        Util.terminal.open({ "lazygit" }, {
+          size = {
+            width = 1,
+            height = 1,
+          },
+          esc_esc = false, -- disable <esc><esc> to go to normal mode when in lazygit
+        })
+      end,
+      "Lazygit (cwd)",
+    },
   },
   ["<leader>i"] = {
     name = "Utilities",
