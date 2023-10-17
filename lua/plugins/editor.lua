@@ -1,28 +1,8 @@
 return {
-  -- disable
+  -- disable plugins
   {
     "folke/flash.nvim",
     enabled = false,
-    -- keys = {
-    --   { "s", false },
-    --   { "S", false },
-    --   {
-    --     "m",
-    --     mode = { "n", "x", "o" },
-    --     function()
-    --       require("flash").jump()
-    --     end,
-    --     desc = "Flash",
-    --   },
-    --   {
-    --     "M",
-    --     mode = { "n", "o", "x" },
-    --     function()
-    --       require("flash").treesitter()
-    --     end,
-    --     desc = "Flash Treesitter",
-    --   },
-    -- },
   },
   {
     "echasnovski/mini.surround",
@@ -81,12 +61,6 @@ return {
             return math.min(max_lines, 15)
           end,
         },
-        -- border = true,
-        -- borderchars = {
-        --   prompt = { "─", "│", " ", "│", "╭", "╮", "│", "│" },
-        --   results = { "─", "│", "─", "│", "├", "┤", "╯", "╰" },
-        --   preview = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
-        -- },
       },
     },
   },
