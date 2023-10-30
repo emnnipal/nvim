@@ -41,6 +41,7 @@ return {
 
       -- disable some defaults
       opts.defaults["<leader>w"] = nil
+      opts.defaults["<leader>/"] = nil
 
       wk.register(opts.defaults)
     end,
