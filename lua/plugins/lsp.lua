@@ -31,7 +31,7 @@ return {
     opts = function(_, opts)
       opts.ensure_installed = opts.ensure_installed or {}
       -- Add your desired languages here to ensure they are installed
-      vim.list_extend(opts.ensure_installed, { "svelte-language-server" })
+      vim.list_extend(opts.ensure_installed, { "svelte-language-server", "prisma-language-server" })
     end,
   },
 }
