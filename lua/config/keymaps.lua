@@ -37,9 +37,11 @@ which_key.register({
     h = { "<Cmd>BufferLineCloseLeft<cr>", "Close all to the left" },
     l = { "<Cmd>BufferLineCloseRight<cr>", "Close all to the right" },
   },
-  ["<leader>/"] = {
-    "<Cmd>Telescope current_buffer_fuzzy_find<CR>",
-    "Fuzzy search in current buffer",
+  ["<leader>s"] = {
+    ["/"] = {
+      "<Cmd>Telescope current_buffer_fuzzy_find<CR>",
+      "Fuzzy search in current buffer",
+    },
   },
   ["<leader>m"] = { "<Cmd>TSJToggle<CR>", "Toggle split/join" },
   ["<leader>j"] = { "<Cmd>BufferLineCyclePrev<CR>", "Previous Buffer" },
