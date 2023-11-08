@@ -3,7 +3,7 @@ local Util = require("lazyvim.util")
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 
--- select all text with ctrl + a
+-- select all text with cmd + a
 vim.keymap.set({ "", "n" }, "<D-a>", "<Esc>ggVG")
 
 -- escape shortcuts
