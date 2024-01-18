@@ -130,6 +130,7 @@ return {
       -- opts.completion.completeopt = "menu,menuone,noselect,noinsert"
 
       opts.formatting = {
+        expandable_indicator = true,
         fields = { "kind", "abbr", "menu" }, -- order of fields
         format = function(entry, item)
           local icons = require("lazyvim.config").icons.kinds
@@ -162,6 +163,7 @@ return {
 
       -- looks like the default but with added completion item detail
       -- opts.formatting = {
+      --   expandable_indicator = true,
       --   fields = { "abbr", "kind", "menu" }, -- order of fields
       --   format = function(entry, item)
       --     local icons = require("lazyvim.config").icons.kinds
