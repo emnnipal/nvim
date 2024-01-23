@@ -6,4 +6,4 @@
 vim.o.pumblend = 0
 -- vim.o.winblend = 1
 
-vim.opt.conceallevel = 0
+-- vim.opt.conceallevel = 0
