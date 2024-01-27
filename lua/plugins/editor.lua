@@ -119,9 +119,9 @@ return {
       -- overrides
 
       opts.window = {
-        completion = cmp.config.window.bordered({
-          side_padding = 0,
-        }),
+        -- completion = cmp.config.window.bordered({
+        --   side_padding = 0,
+        -- }),
         documentation = cmp.config.window.bordered(),
       }
 
