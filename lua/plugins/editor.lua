@@ -84,23 +84,6 @@ return {
         return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
       end
 
-      -- for disabling the auto-completion menu from popping up when inside a comment section
-      -- local context = require("cmp.config.context")
-      -- opts.enabled = function()
-      --   return not context.in_treesitter_capture("comment")
-      -- end
-
-      -- filter text completion items
-      -- opts.sources = vim.tbl_filter(function(source)
-      --   return not vim.tbl_contains({ "buffer", "nvim_lsp" }, source.name)
-      -- end, opts.sources)
-      -- table.insert(opts.sources, 1, {
-      --   name = "nvim_lsp",
-      --   entry_filter = function(entry, _)
-      --     return require("cmp.types").lsp.CompletionItemKind[entry:get_kind()] ~= "Text"
-      --   end,
-      -- })
-
       local luasnip = require("luasnip")
       local cmp = require("cmp")
 
@@ -141,6 +124,23 @@ return {
         -- }),
         documentation = cmp.config.window.bordered(),
       }
+
+      -- for disabling the auto-completion menu from popping up when inside a comment section
+      -- local context = require("cmp.config.context")
+      -- opts.enabled = function()
+      --   return not context.in_treesitter_capture("comment")
+      -- end
+
+      -- filter text completion items
+      -- opts.sources = vim.tbl_filter(function(source)
+      --   return not vim.tbl_contains({ "buffer", "nvim_lsp" }, source.name)
+      -- end, opts.sources)
+      -- table.insert(opts.sources, 1, {
+      --   name = "nvim_lsp",
+      --   entry_filter = function(entry, _)
+      --     return require("cmp.types").lsp.CompletionItemKind[entry:get_kind()] ~= "Text"
+      --   end,
+      -- })
 
       -- disable preselecting first item in completion menu
       -- opts.preselect = "None"
