@@ -185,7 +185,7 @@ return {
         format = function(entry, item)
           -- local icons = require("lazyvim.config").icons.kinds
 
-          local max_width = 22
+          local max_width = 24
           local max_detail_width = 20
 
           item.menu = string.sub(entry.completion_item.detail or "", 1, max_detail_width)
