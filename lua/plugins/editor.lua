@@ -116,7 +116,6 @@ return {
       })
       -- end of supertab config
 
-      opts.snippet = nil
       opts.sources = cmp.config.sources({
         { name = "nvim_lsp" },
         -- { name = "luasnip" }, -- For luasnip users.
