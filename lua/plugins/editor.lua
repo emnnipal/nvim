@@ -16,10 +16,6 @@ return {
     "nvim-treesitter/nvim-treesitter-context",
     enabled = false,
   },
-  {
-    "hrsh7th/cmp-buffer",
-    enabled = false,
-  },
 
   -- override
   {
@@ -124,7 +120,7 @@ return {
         { name = "nvim_lsp" },
         -- { name = "luasnip" }, -- For luasnip users.
       }, {
-        -- { name = "buffer" }, -- buffer words
+        { name = "buffer" }, -- buffer words
       })
 
       opts.window = {
