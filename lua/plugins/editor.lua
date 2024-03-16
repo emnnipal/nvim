@@ -116,7 +116,13 @@ return {
       })
       -- end of supertab config
 
-      -- overrides
+      opts.snippet = nil
+      opts.sources = cmp.config.sources({
+        { name = "nvim_lsp" },
+        -- { name = "luasnip" }, -- For luasnip users.
+      }, {
+        { name = "buffer" },
+      })
 
       opts.window = {
         -- completion = cmp.config.window.bordered({
