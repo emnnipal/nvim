@@ -127,6 +127,9 @@ return {
         -- completion = cmp.config.window.bordered({
         --   side_padding = 0,
         -- }),
+        completion = {
+          side_padding = 1,
+        },
         documentation = cmp.config.window.bordered(),
       }
 
