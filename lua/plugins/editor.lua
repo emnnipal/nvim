@@ -123,6 +123,15 @@ return {
         { name = "buffer" }, -- buffer words
       })
 
+      opts.matching = {
+        disallow_fuzzy_matching = true,
+        disallow_fullfuzzy_matching = true,
+        disallow_partial_fuzzy_matching = true,
+        disallow_partial_matching = false,
+        disallow_prefix_unmatching = false,
+        disallow_symbol_nonprefix_matching = true,
+      }
+
       opts.window = {
         -- completion = cmp.config.window.bordered({
         --   side_padding = 0,
