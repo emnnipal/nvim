@@ -218,12 +218,6 @@ return {
     end,
   },
   {
-    "rcarriga/nvim-notify",
-    opts = {
-      stages = "fade",
-    },
-  },
-  {
     "stevearc/dressing.nvim",
     opts = {
       input = {
