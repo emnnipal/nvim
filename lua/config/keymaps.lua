@@ -1,4 +1,3 @@
-local Util = require("lazyvim.util")
 -- Keymaps are automatically loaded on the VeryLazy event
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
@@ -23,7 +22,7 @@ vim.keymap.set("n", "<A-j>", "<Plug>(VM-Add-Cursor-Down)")
 
 -- terminal
 local lazyterm = function()
-  Util.terminal.open(nil, { cwd = Util.root.get(), border = "rounded" })
+  LazyVim.terminal(nil, { cwd = LazyVim.root(), border = "rounded" })
 end
 vim.keymap.set("n", "<C-\\>", lazyterm, { desc = "Terminal (root dir)" })
 vim.keymap.set("t", "<C-\\>", "<cmd>close<cr>", { desc = "Close Terminal" })
@@ -52,12 +51,9 @@ which_key.register({
   ["<leader>g"] = {
     g = {
       function()
-        Util.terminal.open({ "lazygit" }, {
-          size = {
-            width = 1,
-            height = 1,
-          },
-          esc_esc = false, -- disable <esc><esc> to go to normal mode when in lazygit
+        LazyVim.lazygit({
+          cwd = LazyVim.root.git(),
+          size = { width = 1, height = 1 },
         })
       end,
       "Lazygit (cwd)",
