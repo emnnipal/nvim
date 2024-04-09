@@ -41,7 +41,7 @@ return {
       -- Add your desired languages here to ensure they are installed
       vim.list_extend(
         opts.ensure_installed,
-        { "svelte-language-server", "prisma-language-server", "emmet-language-server" }
+        { "svelte-language-server", "prisma-language-server", "emmet-language-server", "css-lsp" }
       )
     end,
   },
