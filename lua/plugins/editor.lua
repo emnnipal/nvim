@@ -121,7 +121,7 @@ return {
         -- { name = "path" },
         -- { name = "luasnip" }, -- For luasnip users.
       }, {
-        -- { name = "buffer" }, -- buffer words
+        { name = "buffer" }, -- buffer words
       })
 
       opts.matching = {
