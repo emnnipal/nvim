@@ -121,7 +121,7 @@ return {
         -- { name = "path" },
         -- { name = "luasnip" }, -- For luasnip users.
       }, {
-        { name = "buffer" }, -- buffer words
+        -- { name = "buffer" }, -- buffer words
       })
 
       opts.matching = {
@@ -198,18 +198,18 @@ return {
         expandable_indicator = true,
         fields = { "abbr", "kind", "menu" }, -- order of fields
         format = function(entry, item)
-          local max_width = 24
+          local max_width = 28
           local max_detail_width = 20
 
           item.menu = string.sub(entry.completion_item.detail or "", 1, max_detail_width)
 
-          -- local icons = LazyVim.config.icons.kinds
-          -- if icons[item.kind] then
-          --   item.kind = icons[item.kind] .. item.kind
-          -- end
+          local icons = LazyVim.config.icons.kinds
+          if icons[item.kind] then
+            item.kind = icons[item.kind] .. item.kind
+          end
 
           if max_width ~= 0 and #item.abbr > max_width then
-            item.abbr = string.sub(item.abbr, 1, max_width - 1) .. "⋯"
+            item.abbr = string.sub(item.abbr, 1, max_width) .. "⋯"
           end
 
           return item
