@@ -203,10 +203,10 @@ return {
 
           item.menu = string.sub(entry.completion_item.detail or "", 1, max_detail_width)
 
-          local icons = LazyVim.config.icons.kinds
-          if icons[item.kind] then
-            item.kind = icons[item.kind] .. item.kind
-          end
+          -- local icons = LazyVim.config.icons.kinds
+          -- if icons[item.kind] then
+          --   item.kind = icons[item.kind] .. item.kind
+          -- end
 
           if max_width ~= 0 and #item.abbr > max_width then
             item.abbr = string.sub(item.abbr, 1, max_width) .. "⋯"
