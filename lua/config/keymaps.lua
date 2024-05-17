@@ -76,7 +76,10 @@ which_key.register({
   },
   ["<leader>q"] = {
     c = {
-      LazyVim.ui.bufremove,
+      function() -- TODO: delete when this is natively supported
+        require("mini.bufremove").delete(0, false)
+      end,
+      -- LazyVim.ui.bufremove, -- TODO: use when other mini.bufremove features are supported by default in lazyvim
       "Close Buffer",
     },
   },
