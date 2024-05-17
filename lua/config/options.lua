@@ -7,3 +7,7 @@ vim.o.pumblend = 0
 -- vim.o.winblend = 1
 
 -- vim.opt.conceallevel = 0
+
+-- Disable termsync to prevent buffering of screen updates during redraw cycles
+-- This is to address the lagging issue experienced in LazyGit within LazyVim
+vim.o.termsync = false
