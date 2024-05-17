@@ -1,5 +1,5 @@
 {
-  "LazyVim": { "branch": "main", "commit": "6aef1989bd1c08a828eecb7e9044bf8cc1d93700" },
+  "LazyVim": { "branch": "main", "commit": "c8b7912eb9efe3fd130e41c2c833c7662e53be1c" },
   "LuaSnip": { "branch": "master", "commit": "78296bfabf756dbb6c7134aa219e75564dddf40f" },
   "SchemaStore.nvim": { "branch": "main", "commit": "953dc9a37f646a7f0420c41394f716f0dddf5687" },
   "bufferline.nvim": { "branch": "main", "commit": "73540cb95f8d95aa1af3ed57713c6720c78af915" },
@@ -43,7 +43,7 @@
   "plenary.nvim": { "branch": "master", "commit": "08e301982b9a057110ede7a735dd1b5285eb341f" },
   "project.nvim": { "branch": "main", "commit": "8c6bad7d22eef1b71144b401c9f74ed01526a4fb" },
   "telescope-fzf-native.nvim": { "branch": "main", "commit": "9ef21b2e6bb6ebeaf349a0781745549bbb870d27" },
-  "telescope.nvim": { "branch": "master", "commit": "96610122a40f0bb4ce2e452c6d2429bf093d6700" },
+  "telescope.nvim": { "branch": "master", "commit": "bbdbb7593f832c02922075ee57d0681df30d5ee0" },
   "todo-comments.nvim": { "branch": "main", "commit": "a7e39ae9e74f2c8c6dc4eea6d40c3971ae84752d" },
   "tokyonight.nvim": { "branch": "main", "commit": "634015fff1457ed66cf5364213a2bbbc51a82d6c" },
   "treesj": { "branch": "main", "commit": "e1e82ab4237619d342c7102c9f13d4b9833bfd39" },
