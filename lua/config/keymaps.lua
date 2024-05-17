@@ -76,9 +76,7 @@ which_key.register({
   },
   ["<leader>q"] = {
     c = {
-      function()
-        require("mini.bufremove").delete(0, false)
-      end,
+      LazyVim.ui.bufremove,
       "Close Buffer",
     },
   },
