@@ -136,27 +136,6 @@ return {
         documentation = cmp.config.window.bordered(),
       }
 
-      -- for disabling the auto-completion menu from popping up when inside a comment section
-      -- local context = require("cmp.config.context")
-      -- opts.enabled = function()
-      --   return not context.in_treesitter_capture("comment")
-      -- end
-
-      -- filter text completion items
-      -- opts.sources = vim.tbl_filter(function(source)
-      --   return not vim.tbl_contains({ "buffer", "nvim_lsp" }, source.name)
-      -- end, opts.sources)
-      -- table.insert(opts.sources, 1, {
-      --   name = "nvim_lsp",
-      --   entry_filter = function(entry, _)
-      --     return require("cmp.types").lsp.CompletionItemKind[entry:get_kind()] ~= "Text"
-      --   end,
-      -- })
-
-      -- disable preselecting first item in completion menu
-      -- opts.preselect = "None"
-      -- opts.completion.completeopt = "menu,menuone,noselect,noinsert"
-
       -- opts.formatting = {
       --   expandable_indicator = true,
       --   fields = { "kind", "abbr", "menu" }, -- order of fields
