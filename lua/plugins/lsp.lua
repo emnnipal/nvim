@@ -7,6 +7,7 @@ return {
       keys[#keys + 1] = { "K", false }
     end,
     opts = {
+      inlay_hints = { enabled = false },
       -- autoformat = false, -- disable autoformat for lsp
       setup = {
         -- disable auto fix for eslint
