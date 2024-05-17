@@ -7,6 +7,14 @@ return {
 
   -- override
   {
+    "lukas-reineke/indent-blankline.nvim",
+    opts = {
+      scope = {
+        enabled = false,
+      },
+    },
+  },
+  {
     "folke/noice.nvim",
     opts = {
       presets = {
