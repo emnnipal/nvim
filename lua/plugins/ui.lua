@@ -57,8 +57,4 @@ return {
       }
     end,
   },
-  {
-    "echasnovski/mini.indentscope",
-    enabled = false,
-  },
 }
