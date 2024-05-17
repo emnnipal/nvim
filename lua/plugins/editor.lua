@@ -273,7 +273,7 @@ return {
   },
   -- buffer remove
   {
-    "echasnovski/mini.bufremove", -- TODO: remove when all features of mini.bufremove are natively supported
+    "echasnovski/mini.bufremove", -- TODO: remove when all features of mini.bufremove are natively supported especially closing other buffers
     keys = {
       {
         "<leader>bd",
