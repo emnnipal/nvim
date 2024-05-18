@@ -21,11 +21,11 @@ vim.keymap.set("n", "<A-k>", "<Plug>(VM-Add-Cursor-Up)")
 vim.keymap.set("n", "<A-j>", "<Plug>(VM-Add-Cursor-Down)")
 
 -- terminal
-local lazyterm = function()
-  LazyVim.terminal(nil, { cwd = LazyVim.root(), border = "rounded" })
-end
-vim.keymap.set("n", "<C-\\>", lazyterm, { desc = "Terminal (root dir)" })
-vim.keymap.set("t", "<C-\\>", "<cmd>close<cr>", { desc = "Close Terminal" })
+-- local lazyterm = function()
+--   LazyVim.terminal(nil, { cwd = LazyVim.root(), border = "rounded" })
+-- end
+-- vim.keymap.set("n", "<C-\\>", lazyterm, { desc = "Terminal (root dir)" })
+-- vim.keymap.set("t", "<C-\\>", "<cmd>close<cr>", { desc = "Close Terminal" })
 
 -- which-key keymap
 local which_key = require("which-key")
