@@ -51,7 +51,14 @@ which_key.register({
   ["<leader>g"] = {
     g = {
       function()
-        LazyVim.lazygit({
+        -- LazyVim.terminal({ "lazygit" }, {
+        --   size = {
+        --     width = 1,
+        --     height = 1,
+        --   },
+        --   esc_esc = false, -- disable <esc><esc> to go to normal mode when in lazygit
+        -- })
+        LazyVim.lazygit({ -- TODO: this is lagging, uncomment when fixed
           cwd = LazyVim.root.git(),
           size = { width = 1, height = 1 },
         })
