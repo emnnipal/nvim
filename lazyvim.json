@@ -3,8 +3,7 @@
     "lazyvim.plugins.extras.lang.markdown",
     "lazyvim.plugins.extras.lang.toml",
     "lazyvim.plugins.extras.lang.vue",
-    "lazyvim.plugins.extras.lang.yaml",
-    "lazyvim.plugins.extras.lsp.none-ls"
+    "lazyvim.plugins.extras.lang.yaml"
   ],
   "news": {
     "NEWS.md": "4964"
