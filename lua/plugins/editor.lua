@@ -274,8 +274,4 @@ return {
       end, { remap = true, desc = "Hop" })
     end,
   },
-  -- buffer remove
-  {
-    "echasnovski/mini.bufremove", -- TODO: remove when all features of mini.bufremove are natively supported especially closing other buffers
-  },
 }
