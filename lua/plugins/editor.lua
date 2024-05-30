@@ -176,7 +176,9 @@ return {
           -- local detail = entry.completion_item.detail -- this is nil in vtsls
           local detail = entry.completion_item.labelDetails.description
 
-          item.menu = string.sub(detail or "", 1, max_detail_width)
+          if detail ~= nil then
+            item.menu = string.sub(detail or "", 1, max_detail_width)
+          end
 
           -- local icons = LazyVim.config.icons.kinds
           -- if icons[item.kind] then
