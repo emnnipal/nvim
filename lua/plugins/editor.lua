@@ -173,7 +173,10 @@ return {
           local max_width = 28
           local max_detail_width = 20
 
-          item.menu = string.sub(entry.completion_item.detail or "", 1, max_detail_width)
+          -- local detail = entry.completion_item.detail -- this is nil in vtsls
+          local detail = entry.completion_item.labelDetails.description
+
+          item.menu = string.sub(detail or "", 1, max_detail_width)
 
           -- local icons = LazyVim.config.icons.kinds
           -- if icons[item.kind] then
