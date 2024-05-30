@@ -173,8 +173,11 @@ return {
           local max_width = 28
           local max_detail_width = 20
 
-          -- local detail = entry.completion_item.detail -- this is nil in vtsls
-          local detail = entry.completion_item.labelDetails.description
+          local completion = entry.completion_item
+          local detail = completion.detail -- detail is nil in vtsls (wrapper of tsserver)
+          if detail == nil then
+            detail = completion.labelDetails and completion.labelDetails.description or nil
+          end
 
           if detail ~= nil then
             item.menu = string.sub(detail or "", 1, max_detail_width)
