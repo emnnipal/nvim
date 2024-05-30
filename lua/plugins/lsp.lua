@@ -21,6 +21,17 @@ return {
             workingDirectory = { mode = "auto" },
           },
         },
+        vtsls = {
+          keys = {
+            {
+              "<leader>cR",
+              function()
+                require("vtsls").commands.remove_unused_imports(0)
+              end,
+              desc = "Remove unused imports",
+            },
+          },
+        },
       },
     },
   },
