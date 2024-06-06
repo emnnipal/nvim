@@ -47,8 +47,8 @@
   "todo-comments.nvim": { "branch": "main", "commit": "70a93ce66083699571adc361166504b03cc39c2b" },
   "tokyonight.nvim": { "branch": "main", "commit": "d3f3c3b1b1cae6dca4da76aadb8844d48f223517" },
   "treesj": { "branch": "main", "commit": "f98deb33805485b56a8d44d1a27d16874af00d7f" },
-  "trouble.nvim": { "branch": "main", "commit": "6ce015ea999879364e35f20da3e8687583d3b719" },
+  "trouble.nvim": { "branch": "main", "commit": "6ffcc7c50e4a27769df6af9bdd4e0c6acb36872b" },
   "ts-comments.nvim": { "branch": "main", "commit": "e339090c076871069c00e488b11def49aaf4e413" },
   "vim-visual-multi": { "branch": "master", "commit": "b84a6d42c1c10678928b0bf8327f378c8bc8af5a" },
-  "which-key.nvim": { "branch": "main", "commit": "c1958e2529433ef096e924c72315733790ca7f88" }
+  "which-key.nvim": { "branch": "main", "commit": "d87c01c9bbcc7c1c2d248dca1b11285259d66be8" }
 }
