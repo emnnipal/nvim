@@ -29,55 +29,43 @@ vim.keymap.set("t", "<C-\\>", "<cmd>close<cr>", { desc = "Close Terminal" })
 
 -- which-key keymap
 local which_key = require("which-key")
-which_key.register({
-  ["<leader>w"] = { "<Cmd>update<CR>", "Save" },
-  ["<leader>W"] = { "<Cmd>noautocmd w<CR>", "Save without formatting" },
-  ["<leader>b"] = {
-    h = { "<Cmd>BufferLineCloseLeft<cr>", "Close all to the left" },
-    l = { "<Cmd>BufferLineCloseRight<cr>", "Close all to the right" },
+which_key.add({
+  { "<leader>w", "<Cmd>update<CR>", desc = "Save" }, -- TODO: this shows as save in which-key panel but works as windows group instead.
+  { "<leader>W", "<Cmd>noautocmd w<CR>", desc = "Save without formatting" },
+
+  { "<leader>bh", "<Cmd>BufferLineCloseLeft<cr>", desc = "Close all to the left" },
+  { "<leader>bl", "<Cmd>BufferLineCloseRight<cr>", desc = "Close all to the right" },
+
+  { "<leader>s/", "<Cmd>Telescope current_buffer_fuzzy_find<CR>", desc = "Fuzzy search in current buffer" },
+  { "<leader>m", "<Cmd>TSJToggle<CR>", desc = "Toggle split/join" },
+  { "<leader>j", "<Cmd>BufferLineCyclePrev<CR>", desc = "Previous Buffer" },
+  { "<leader>k", "<Cmd>BufferLineCycleNext<CR>", desc = "Next Buffer" },
+
+  { "<leader>cL", "<Cmd>LspRestart<CR>", desc = "Restart LSP" },
+
+  {
+    "<leader>gg",
+    function()
+      LazyVim.lazygit({
+        cwd = LazyVim.root.git(),
+        size = { width = 1, height = 1 },
+      })
+    end,
+    desc = "Lazygit (cwd)",
   },
-  ["<leader>s"] = {
-    ["/"] = {
-      "<Cmd>Telescope current_buffer_fuzzy_find<CR>",
-      "Fuzzy search in current buffer",
-    },
-  },
-  ["<leader>m"] = { "<Cmd>TSJToggle<CR>", "Toggle split/join" },
-  ["<leader>j"] = { "<Cmd>BufferLineCyclePrev<CR>", "Previous Buffer" },
-  ["<leader>k"] = { "<Cmd>BufferLineCycleNext<CR>", "Next Buffer" },
-  ["<leader>c"] = {
-    L = { "<Cmd>LspRestart<CR>", "Restart LSP" },
-  },
-  ["<leader>g"] = {
-    g = {
-      function()
-        LazyVim.lazygit({
-          cwd = LazyVim.root.git(),
-          size = { width = 1, height = 1 },
-        })
-      end,
-      "Lazygit (cwd)",
-    },
-  },
-  ["<leader>i"] = {
-    name = "Utilities",
-    c = {
-      name = " Resolve Git Conflicts",
-      a = { "<Cmd>GitConflictListQf<CR>", "Get all conflict to quickfix" },
-      b = { "<Cmd>GitConflictChooseBoth<CR>", "Choose both" },
-      j = { "<Cmd>GitConflictPrevConflict<CR>", "Move to previous conflict" },
-      k = { "<Cmd>GitConflictNextConflict<CR>", "Move to next conflict" },
-      n = { "<Cmd>GitConflictChooseNone<CR>", "Choose none" },
-      o = { "<Cmd>GitConflictChooseOurs<CR>", "Choose ours" },
-      t = { "<Cmd>GitConflictChooseTheirs<CR>", "Choose theirs" },
-    },
-    e = { "<Cmd>EslintFixAll<CR>", "Fix eslint errors" },
-    t = { "<Cmd>vs#<CR>", "Reopen recently closed buffer" },
-  },
-  ["<leader>q"] = {
-    c = {
-      LazyVim.ui.bufremove,
-      "Close Buffer",
-    },
-  },
+
+  { "<leader>i", group = "Utilities" },
+  { "<leader>ie", "<Cmd>EslintFixAll<CR>", desc = "Fix eslint errors" },
+  { "<leader>it", "<Cmd>vs#<CR>", desc = "Reopen recently closed buffer" },
+
+  { "<leader>ic", group = "Resolve Git Conflicts" },
+  { "<leader>ica", "<Cmd>GitConflictListQf<CR>", desc = "Get all conflict to quickfix" },
+  { "<leader>icb", "<Cmd>GitConflictChooseBoth<CR>", desc = "Choose both" },
+  { "<leader>icj", "<Cmd>GitConflictPrevConflict<CR>", desc = "Move to previous conflict" },
+  { "<leader>ick", "<Cmd>GitConflictNextConflict<CR>", desc = "Move to next conflict" },
+  { "<leader>icn", "<Cmd>GitConflictChooseNone<CR>", desc = "Choose none" },
+  { "<leader>ico", "<Cmd>GitConflictChooseOurs<CR>", desc = "Choose ours" },
+  { "<leader>ict", "<Cmd>GitConflictChooseTheirs<CR>", desc = "Choose theirs" },
+
+  { "<leader>qc", LazyVim.ui.bufremove, desc = "Close Buffer" },
 })

@@ -34,18 +34,6 @@ return {
     },
   },
   {
-    "folke/which-key.nvim",
-    config = function(_, opts)
-      local wk = require("which-key")
-      wk.setup(opts)
-
-      -- disable some defaults
-      opts.defaults["<leader>w"] = nil
-
-      wk.register(opts.defaults)
-    end,
-  },
-  {
     "nvim-telescope/telescope.nvim",
     opts = {
       defaults = {
