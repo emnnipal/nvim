@@ -30,9 +30,6 @@ vim.keymap.set("t", "<C-\\>", "<cmd>close<cr>", { desc = "Close Terminal" })
 -- which-key keymap
 local which_key = require("which-key")
 which_key.add({
-  { "<leader>w", "<Cmd>update<CR>", desc = "Save" }, -- TODO: this shows as save in which-key panel but works as windows group instead.
-  { "<leader>W", "<Cmd>noautocmd w<CR>", desc = "Save without formatting" },
-
   { "<leader>bh", "<Cmd>BufferLineCloseLeft<cr>", desc = "Close all to the left" },
   { "<leader>bl", "<Cmd>BufferLineCloseRight<cr>", desc = "Close all to the right" },
 

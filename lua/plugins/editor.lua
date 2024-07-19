@@ -34,6 +34,15 @@ return {
     },
   },
   {
+    "folke/which-key.nvim",
+    opts = {
+      spec = {
+        { "<leader>w", "<Cmd>update<CR>", desc = "Write" },
+        { "<leader>W", "<Cmd>noautocmd w<CR>", desc = "Save without formatting" },
+      },
+    },
+  },
+  {
     "nvim-telescope/telescope.nvim",
     opts = {
       defaults = {
