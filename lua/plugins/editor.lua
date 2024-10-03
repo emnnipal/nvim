@@ -8,6 +8,10 @@ return {
     "echasnovski/mini.ai",
     enabled = false,
   },
+  {
+    "ahmedkhalf/project.nvim",
+    enabled = false,
+  },
 
   -- override
   {
