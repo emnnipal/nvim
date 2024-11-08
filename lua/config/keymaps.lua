@@ -22,7 +22,7 @@ vim.keymap.set("n", "<A-j>", "<Plug>(VM-Add-Cursor-Down)")
 
 -- terminal
 local lazyterm = function()
-  LazyVim.terminal(nil, { cwd = LazyVim.root(), border = "rounded" })
+  Snacks.terminal(nil, { cwd = LazyVim.root(), border = "rounded" })
 end
 vim.keymap.set("n", "<C-\\>", lazyterm, { desc = "Terminal (root dir)" })
 vim.keymap.set("t", "<C-\\>", "<cmd>close<cr>", { desc = "Close Terminal" })
@@ -43,9 +43,13 @@ which_key.add({
   {
     "<leader>gg",
     function()
-      LazyVim.lazygit({
+      Snacks.lazygit({
         cwd = LazyVim.root.git(),
-        size = { width = 1, height = 1 },
+        win = {
+          width = 0,
+          height = 0,
+          style = "lazygit",
+        },
       })
     end,
     desc = "Lazygit (cwd)",
@@ -64,5 +68,11 @@ which_key.add({
   { "<leader>ico", "<Cmd>GitConflictChooseOurs<CR>", desc = "Choose ours" },
   { "<leader>ict", "<Cmd>GitConflictChooseTheirs<CR>", desc = "Choose theirs" },
 
-  { "<leader>qc", LazyVim.ui.bufremove, desc = "Close Buffer" },
+  {
+    "<leader>qc",
+    function()
+      Snacks.bufdelete()
+    end,
+    desc = "Close Buffer",
+  },
 })
