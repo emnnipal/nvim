@@ -194,6 +194,32 @@ return {
     end,
   },
   {
+    "saghen/blink.cmp",
+    opts = {
+      sources = {
+        completion = {
+          -- remember to enable your providers here
+          enabled_providers = {
+            "lsp",
+            "path",
+            -- "snippets",
+            -- "buffer"
+          },
+        },
+      },
+      windows = {
+        autocomplete = {
+          selection = "manual",
+        },
+      },
+      keymap = {
+        preset = "enter",
+        ["<Tab>"] = { "select_next", "fallback" },
+        ["<S-Tab>"] = { "select_prev", "fallback" },
+      },
+    },
+  },
+  {
     "stevearc/dressing.nvim",
     opts = {
       input = {
