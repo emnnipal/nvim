@@ -217,7 +217,7 @@ return {
       },
       windows = {
         autocomplete = {
-          selection = "auto_insert",
+          selection = "manual",
         },
       },
       keymap = {
