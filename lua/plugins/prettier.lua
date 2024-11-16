@@ -11,7 +11,6 @@ end
 local M = {}
 
 local supported = {
-  "astro",
   "css",
   "graphql",
   "handlebars",
@@ -24,7 +23,6 @@ local supported = {
   "markdown",
   "markdown.mdx",
   "scss",
-  "svelte",
   "typescript",
   "typescriptreact",
   "vue",
@@ -74,7 +72,8 @@ return {
     opts = function(_, opts)
       opts.formatters_by_ft = opts.formatters_by_ft or {}
       for _, ft in ipairs(supported) do
-        opts.formatters_by_ft[ft] = { "prettierd" }
+        opts.formatters_by_ft[ft] = opts.formatters_by_ft[ft] or {}
+        table.insert(opts.formatters_by_ft[ft], "prettierd")
       end
 
       opts.formatters = opts.formatters or {}
