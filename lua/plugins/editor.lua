@@ -23,6 +23,12 @@ return {
     },
   },
   {
+    "folke/snacks.nvim",
+    opts = {
+      notifier = { enabled = false }, -- TODO: "no information available" notif is distracting to disable this for now until noice integration is fixed
+    },
+  },
+  {
     "folke/noice.nvim",
     opts = {
       presets = {
