@@ -218,7 +218,7 @@ return {
       },
       windows = {
         autocomplete = {
-          selection = "manual",
+          selection = "preselect",
           -- draw = { -- TODO: not yet available in current version
           --   columns = { { "label", "label_description", gap = 1 }, { "kind_icon", "kind" } },
           -- },
