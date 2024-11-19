@@ -199,7 +199,7 @@ return {
       sources = {
         completion = {
           -- remember to enable your providers here
-          enabled_providers = { -- TODO: this does not disable providers
+          enabled_providers = {
             "lsp",
             "path",
             -- "snippets",
