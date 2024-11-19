@@ -195,6 +195,7 @@ return {
   },
   {
     "saghen/blink.cmp",
+    -- enabled = false,
     opts = {
       sources = {
         completion = {
@@ -217,7 +218,7 @@ return {
       },
       windows = {
         autocomplete = {
-          selection = "manual",
+          selection = "preselect",
         },
       },
       keymap = {
