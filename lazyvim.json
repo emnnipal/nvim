@@ -1,6 +1,5 @@
 {
   "extras": [
-    "lazyvim.plugins.extras.coding.blink",
     "lazyvim.plugins.extras.lang.markdown",
     "lazyvim.plugins.extras.lang.toml",
     "lazyvim.plugins.extras.lang.vue",
@@ -11,3 +10,4 @@
   },
   "version": 7
 }
+
