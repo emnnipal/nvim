@@ -195,7 +195,7 @@ return {
   },
   {
     "saghen/blink.cmp",
-    -- enabled = false, -- TODO: blink cmp isn't stable yet. Readd in LazyExtras once stable.
+    enabled = false, -- TODO: blink cmp isn't stable yet. Readd in LazyExtras once stable.
     opts = {
       sources = {
         completion = {
