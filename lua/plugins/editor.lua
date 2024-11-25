@@ -223,6 +223,9 @@ return {
             columns = { { "label", "kind", gap = 1 }, { "label_description" } },
           },
         },
+        documentation = {
+          border = "rounded",
+        },
       },
       keymap = {
         preset = "enter",
