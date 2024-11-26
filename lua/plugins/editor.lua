@@ -56,10 +56,10 @@ return {
         layout_config = {
           preview_cutoff = 1, -- Preview should always show (unless previewer = false)
           width = function(_, max_columns, _)
-            return math.min(max_columns, 98)
+            return math.min(max_columns, 100)
           end,
           height = function(_, _, max_lines)
-            return math.min(max_lines, 15)
+            return math.min(max_lines, 18)
           end,
         },
       },
@@ -67,7 +67,7 @@ return {
   },
   {
     "ibhagwan/fzf-lua",
-    enabled = false,
+    enabled = false, -- disable as rename with fzf lua isn't as good as with telescope
     opts = {
       winopts = {
         height = 0.6,
