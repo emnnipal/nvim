@@ -67,7 +67,7 @@ return {
   },
   {
     "ibhagwan/fzf-lua",
-    enabled = false,
+    -- enabled = false,
     opts = {
       winopts = {
         preview = {
