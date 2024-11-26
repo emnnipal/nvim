@@ -66,6 +66,19 @@ return {
     },
   },
   {
+    "ibhagwan/fzf-lua",
+    enabled = false,
+    opts = {
+      winopts = {
+        preview = {
+          layout = "vertical",
+          horizontal = "right:10%",
+        },
+      },
+    },
+  },
+
+  {
     "hrsh7th/nvim-cmp",
     dependencies = {
       "hrsh7th/cmp-emoji",
