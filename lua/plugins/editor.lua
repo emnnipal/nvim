@@ -74,6 +74,7 @@ return {
         width = 0.5,
         preview = {
           layout = "vertical",
+          delay = 50,
           -- vertical = "down:30%",
         },
       },
