@@ -70,9 +70,11 @@ return {
     -- enabled = false,
     opts = {
       winopts = {
+        height = 0.6,
+        width = 0.5,
         preview = {
           layout = "vertical",
-          horizontal = "right:10%",
+          -- vertical = "down:30%",
         },
       },
     },
