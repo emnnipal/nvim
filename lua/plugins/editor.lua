@@ -188,7 +188,7 @@ return {
         fields = { "abbr", "kind", "menu" }, -- order of fields
         format = function(entry, item)
           local max_width = 28
-          local max_detail_width = 20
+          local max_detail_width = 30
 
           local menu = item.menu
           if menu ~= nil then
