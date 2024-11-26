@@ -18,7 +18,7 @@ require("lazy").setup({
     -- { import = "lazyvim.plugins.extras.formatting.prettier" }, -- TODO: uncomment once prettierd is the one used as formatter instead of prettier
     { import = "lazyvim.plugins.extras.util.project" },
     { import = "lazyvim.plugins.extras.coding.blink" },
-    { import = "lazyvim.plugins.extras.editor.fzf" },
+    -- { import = "lazyvim.plugins.extras.editor.fzf" },
 
     -- import/override with your plugins
     { import = "plugins" },
