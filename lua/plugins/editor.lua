@@ -82,25 +82,10 @@ return {
       },
     },
   },
-  { -- NOTE: Use with fzf lazy extra only if you're not using telescope.
-    -- Comment out this entire configuration if you plan to use telescope lazy extra.
+  { -- Enable for fzf-lua as this is only enabled for telescope extra
     "stevearc/dressing.nvim",
-    lazy = true,
     enabled = true,
-    init = function()
-      ---@diagnostic disable-next-line: duplicate-set-field
-      vim.ui.select = function(...)
-        require("lazy").load({ plugins = { "dressing.nvim" } })
-        return vim.ui.select(...)
-      end
-      ---@diagnostic disable-next-line: duplicate-set-field
-      vim.ui.input = function(...)
-        require("lazy").load({ plugins = { "dressing.nvim" } })
-        return vim.ui.input(...)
-      end
-    end,
   },
-
   {
     "hrsh7th/nvim-cmp",
     dependencies = {
