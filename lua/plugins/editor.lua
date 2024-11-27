@@ -70,7 +70,7 @@ return {
     -- enabled = false,
     opts = {
       winopts = {
-        height = 0.7,
+        height = 0.75,
         width = 0.45,
         row = 0.1,
         backdrop = 100,
