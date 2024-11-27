@@ -67,7 +67,7 @@ return {
   },
   {
     "ibhagwan/fzf-lua",
-    enabled = false, -- disable as rename with fzf lua isn't as good as with telescope
+    -- enabled = false,
     opts = {
       winopts = {
         height = 0.6,
@@ -75,10 +75,27 @@ return {
         preview = {
           layout = "vertical",
           delay = 50,
-          -- vertical = "down:30%",
         },
       },
     },
+  },
+  { -- NOTE: Use with fzf lazy extra only if you're not using telescope.
+    -- Comment out this entire configuration if you plan to use telescope lazy extra.
+    "stevearc/dressing.nvim",
+    lazy = true,
+    enabled = true,
+    init = function()
+      ---@diagnostic disable-next-line: duplicate-set-field
+      vim.ui.select = function(...)
+        require("lazy").load({ plugins = { "dressing.nvim" } })
+        return vim.ui.select(...)
+      end
+      ---@diagnostic disable-next-line: duplicate-set-field
+      vim.ui.input = function(...)
+        require("lazy").load({ plugins = { "dressing.nvim" } })
+        return vim.ui.input(...)
+      end
+    end,
   },
 
   {
@@ -211,7 +228,7 @@ return {
   },
   {
     "saghen/blink.cmp",
-    -- enabled = false, -- TODO: blink cmp isn't stable yet. Readd in LazyExtras once stable.
+    -- enabled = false,
     opts = {
       sources = {
         completion = {
