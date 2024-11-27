@@ -40,6 +40,7 @@ return {
   {
     "folke/which-key.nvim",
     opts = {
+      preset = "helix",
       spec = {
         { "<leader>w", "<Cmd>update<CR>", desc = "Write" },
         { "<leader>W", "<Cmd>noautocmd w<CR>", desc = "Save without formatting" },
