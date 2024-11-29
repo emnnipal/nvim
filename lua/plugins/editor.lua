@@ -197,7 +197,7 @@ return {
           local max_detail_width = 40
 
           local menu = item.menu
-          if menu ~= nil then
+          if menu ~= nil and #menu > max_detail_width then
             item.menu = string.sub(menu or "", 1, max_detail_width)
           end
 
@@ -206,7 +206,7 @@ return {
           --   item.kind = icons[item.kind] .. item.kind
           -- end
 
-          if max_width ~= 0 and #item.abbr > max_width then
+          if #item.abbr > max_width then
             item.abbr = string.sub(item.abbr, 1, max_width) .. "⋯"
           end
 
