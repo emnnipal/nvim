@@ -57,7 +57,7 @@ return {
         layout_config = {
           preview_cutoff = 1, -- Preview should always show (unless previewer = false)
           width = function(_, max_columns, _)
-            return math.min(max_columns, 100)
+            return math.min(max_columns, 110)
           end,
           height = function(_, _, max_lines)
             return math.min(max_lines, 18)
