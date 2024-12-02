@@ -1,7 +1,7 @@
 {
   "LazyVim": { "branch": "main", "commit": "7bdc205e7da3c24d0d3b838ed9d7fdcd62a0ac1d" },
   "SchemaStore.nvim": { "branch": "main", "commit": "f922d46e17019e7fcadc1f0c1cfba31e8300819a" },
-  "blink.cmp": { "branch": "main", "commit": "12d9ecd98055423fa76dfcf05b856967129b8847" },
+  "blink.cmp": { "branch": "main", "commit": "58ec494b92a624e7307ff9af9b2277f786e15a22" },
   "bufferline.nvim": { "branch": "main", "commit": "261a72b90d6db4ed8014f7bda976bcdc9dd7ce76" },
   "catppuccin": { "branch": "main", "commit": "0b5df9c9e641b1212b21a0762ccad4434fd41322" },
   "cmp-buffer": { "branch": "main", "commit": "3022dbc9166796b644a841a02de8dd1cc1d311fa" },
