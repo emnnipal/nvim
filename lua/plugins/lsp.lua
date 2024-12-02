@@ -32,6 +32,16 @@ return {
           silent = true, -- set to true to not show a message if hover is not available
         },
       },
+      presets = {
+        lsp_doc_border = true,
+      },
+      views = {
+        hover = {
+          border = {
+            padding = { 0, 0 },
+          },
+        },
+      },
     },
   },
   {
