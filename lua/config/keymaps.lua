@@ -35,7 +35,6 @@ which_key.add({
   { "<leader>bh", "<Cmd>BufferLineCloseLeft<cr>", desc = "Close all to the left" },
   { "<leader>bl", "<Cmd>BufferLineCloseRight<cr>", desc = "Close all to the right" },
 
-  { "<leader>s/", "<Cmd>Telescope current_buffer_fuzzy_find<CR>", desc = "Fuzzy search in current buffer" },
   { "<leader>m", "<Cmd>TSJToggle<CR>", desc = "Toggle split/join" },
   { "<leader>j", "<Cmd>BufferLineCyclePrev<CR>", desc = "Previous Buffer" },
   { "<leader>k", "<Cmd>BufferLineCycleNext<CR>", desc = "Next Buffer" },

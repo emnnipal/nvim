@@ -50,6 +50,9 @@ return {
         },
       },
     },
+    keys = {
+      { "<leader>s/", "<Cmd>Telescope current_buffer_fuzzy_find<CR>", desc = "Search in current buffer" },
+    },
   },
   {
     "ibhagwan/fzf-lua",
@@ -65,6 +68,9 @@ return {
           vertical = "up:55%",
         },
       },
+    },
+    keys = {
+      { "<leader>s/", "<cmd>FzfLua grep_curbuf<cr>", desc = "Search in current buffer" },
     },
   },
   { -- Enable for fzf-lua as this is only enabled for telescope extra
