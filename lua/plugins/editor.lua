@@ -193,6 +193,11 @@ return {
         menu = {
           draw = {
             columns = { { "label", "kind", gap = 1 }, { "label_description" } },
+            components = {
+              label = {
+                width = { max = 50 },
+              },
+            },
           },
         },
         documentation = {
