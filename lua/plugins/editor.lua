@@ -53,7 +53,6 @@ return {
   },
   {
     "ibhagwan/fzf-lua",
-    -- enabled = false,
     opts = {
       winopts = {
         height = 0.75,
@@ -171,7 +170,6 @@ return {
     opts = {
       sources = {
         completion = {
-          -- remember to enable your providers here
           enabled_providers = {
             "lsp",
             "path",
