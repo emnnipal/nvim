@@ -9,19 +9,19 @@ return {
     opts = {
       inlay_hints = { enabled = false },
       -- autoformat = false, -- disable autoformat for lsp
-      setup = {
-        -- disable auto fix for eslint
-        eslint = function() end,
-      },
-      servers = {
-        eslint = {
-          settings = {
-            -- This change in https://github.com/LazyVim/LazyVim/pull/2071 broke ESLint when
-            -- working with mono repositories. To address this issue, I am fixing the change by adding this configuration.
-            workingDirectory = { mode = "auto" },
-          },
-        },
-      },
+      -- setup = {
+      --   -- disable auto fix for eslint
+      --   eslint = function() end,
+      -- },
+      -- servers = {
+      --   eslint = {
+      --     settings = {
+      --       -- This change in https://github.com/LazyVim/LazyVim/pull/2071 broke ESLint when
+      --       -- working with mono repositories. To address this issue, I am fixing the change by adding this configuration.
+      --       workingDirectory = { mode = "auto" },
+      --     },
+      --   },
+      -- },
     },
   },
   {
