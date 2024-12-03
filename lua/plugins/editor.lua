@@ -200,6 +200,7 @@ return {
             border = "rounded",
           },
         },
+        accept = { auto_brackets = { enabled = true } }, -- TODO: remove once fixed in blink extra
       },
       keymap = {
         preset = "enter",
