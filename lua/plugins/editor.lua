@@ -188,15 +188,19 @@ return {
           },
         },
       },
-      windows = {
-        autocomplete = {
+      completion = {
+        list = {
           selection = "preselect",
+        },
+        menu = {
           draw = {
             columns = { { "label", "kind", gap = 1 }, { "label_description" } },
           },
         },
         documentation = {
-          border = "rounded",
+          window = {
+            border = "rounded",
+          },
         },
       },
       keymap = {
