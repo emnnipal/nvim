@@ -176,7 +176,7 @@ return {
   },
   {
     "saghen/blink.cmp",
-    -- enabled = false,
+    enabled = false,
     opts = {
       sources = {
         completion = {
