@@ -12,7 +12,7 @@ Refer to the [documentation](https://lazyvim.github.io/installation) to get star
   mv ~/.local/share/nvim ~/.local/share/nvim.bak
   ```
 
-- Clone the starter
+- Clone my Neovim setup
 
   ```sh
   git clone git@github.com:emnnipal/nvim.git ~/.config/nvim
