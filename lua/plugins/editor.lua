@@ -57,9 +57,13 @@ return {
   {
     "ibhagwan/fzf-lua",
     opts = {
+      winopts_fn = function()
+        return {
+          width = vim.o.columns > 200 and 0.45 or 0.65,
+        }
+      end,
       winopts = {
         height = 0.75,
-        width = 0.45,
         row = 0.1,
         backdrop = 100,
         preview = {
