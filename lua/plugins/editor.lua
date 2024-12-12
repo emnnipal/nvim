@@ -179,14 +179,12 @@ return {
     -- enabled = false,
     opts = {
       sources = {
-        completion = {
-          enabled_providers = {
-            "lsp",
-            "path",
-            -- "snippets",
-            -- "buffer"
-          },
-        },
+        -- default = {
+        --   "lsp",
+        --   "path",
+        --   -- "snippets",
+        --   -- "buffer"
+        -- },
         providers = {
           snippets = {
             enabled = false,
