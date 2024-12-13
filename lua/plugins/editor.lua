@@ -1,5 +1,4 @@
 return {
-  -- disable plugins
   {
     "folke/flash.nvim",
     enabled = false,
@@ -13,11 +12,13 @@ return {
     enabled = false,
   },
 
-  -- override
   {
-    "lukas-reineke/indent-blankline.nvim",
+    "snacks.nvim",
     opts = {
-      scope = {
+      indent = {
+        scope = { enabled = false },
+      },
+      input = { -- TODO: make snacks input the same as dressing nvim window position
         enabled = false,
       },
     },
@@ -34,6 +35,7 @@ return {
   },
   {
     "nvim-telescope/telescope.nvim",
+    enabled = false,
     opts = {
       defaults = {
         results_title = false,
@@ -77,15 +79,29 @@ return {
       { "<leader>s/", "<cmd>FzfLua grep_curbuf<cr>", desc = "Search in current buffer" },
     },
   },
-  { -- Enable for fzf-lua as this is only enabled for telescope extra
+  {
     "stevearc/dressing.nvim",
+    -- Enable for fzf-lua as this is only enabled for telescope extra
     enabled = true,
+
+    -- configuration is from telescope extra
+    lazy = true,
+    init = function()
+      ---@diagnostic disable-next-line: duplicate-set-field
+      vim.ui.select = function(...)
+        require("lazy").load({ plugins = { "dressing.nvim" } })
+        return vim.ui.select(...)
+      end
+      ---@diagnostic disable-next-line: duplicate-set-field
+      vim.ui.input = function(...)
+        require("lazy").load({ plugins = { "dressing.nvim" } })
+        return vim.ui.input(...)
+      end
+    end,
   },
   {
     "hrsh7th/nvim-cmp",
-    dependencies = {
-      "hrsh7th/cmp-emoji",
-    },
+    enabled = false,
     ---@param opts cmp.ConfigSchema
     opts = function(_, opts)
       -- super tab config
@@ -176,6 +192,7 @@ return {
   },
   {
     "saghen/blink.cmp",
+    -- enabled = false,
     opts = {
       sources = {
         providers = {
