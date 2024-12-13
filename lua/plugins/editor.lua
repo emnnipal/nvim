@@ -176,15 +176,8 @@ return {
   },
   {
     "saghen/blink.cmp",
-    -- enabled = false,
     opts = {
       sources = {
-        -- default = {
-        --   "lsp",
-        --   "path",
-        --   -- "snippets",
-        --   -- "buffer"
-        -- },
         providers = {
           snippets = {
             enabled = false,
@@ -214,7 +207,7 @@ return {
             border = "rounded",
           },
         },
-        accept = { auto_brackets = { enabled = true } }, -- TODO: remove once fixed in blink extra
+        accept = { auto_brackets = { enabled = true } },
       },
       keymap = {
         preset = "enter",
