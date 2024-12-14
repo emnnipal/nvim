@@ -1,7 +1,7 @@
 return {
   {
     "nvim-telescope/telescope.nvim",
-    enabled = LazyVim.has_extra("editor.telescope"),
+    enabled = false, -- NOTE: disable when using editor.fzf extra
     opts = {
       defaults = {
         results_title = false,
@@ -24,7 +24,7 @@ return {
   },
   {
     "ibhagwan/fzf-lua",
-    enabled = LazyVim.has_extra("editor.fzf"),
+    -- enabled = false, -- NOTE: disable when using editor.telescope extra
     opts = {
       winopts_fn = function()
         return {
