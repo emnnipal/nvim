@@ -53,13 +53,6 @@ return {
 
     -- configuration is from telescope extra
     lazy = true,
-    opts = {
-      input = {
-        win_options = {
-          winblend = 0, -- check if this is working
-        },
-      },
-    },
     init = function()
       ---@diagnostic disable-next-line: duplicate-set-field
       vim.ui.select = function(...)
