@@ -69,18 +69,6 @@ return {
     opts = {},
   },
   {
-    "f-person/git-blame.nvim",
-    enabled = false, -- disable since I don't use it much
-    event = "BufRead",
-    config = function()
-      vim.cmd("highlight default link gitblame SpecialComment")
-      vim.g.gitblame_enabled = 0
-      vim.g.gitblame_message_when_not_committed = ""
-      vim.g.gitblame_message_template = "  <author>, <date> • <sha> • <summary>"
-      vim.g.gitblame_date_format = "%r"
-    end,
-  },
-  {
     "mg979/vim-visual-multi",
     event = "BufReadPre",
   },
