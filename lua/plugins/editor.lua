@@ -31,6 +31,9 @@ return {
         { "<leader>w", "<Cmd>update<CR>", desc = "Write" },
         { "<leader>W", "<Cmd>noautocmd w<CR>", desc = "Save without formatting" },
       },
+      icons = {
+        mappings = false, -- disable all icons in which-key
+      },
     },
   },
   {
