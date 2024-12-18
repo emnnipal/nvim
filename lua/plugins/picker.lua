@@ -37,7 +37,6 @@ return {
         backdrop = 100,
         preview = {
           layout = "vertical",
-          delay = 50,
           vertical = "up:55%",
         },
       },
