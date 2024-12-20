@@ -96,10 +96,6 @@ return {
     opts = {
       sources = {
         providers = {
-          -- TODO: we might need to override transform_items in order for emmet lsp to work due to https://github.com/Saghen/blink.cmp/commit/814392a7164336fe5fbd6d4b97a69dce9eb6e4ef
-          -- lsp = {
-          --   transform_items = nil
-          -- },
           snippets = {
             enabled = false,
           },
