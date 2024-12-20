@@ -1,7 +1,7 @@
 return {
   {
     "hrsh7th/nvim-cmp",
-    enabled = false, -- NOTE: disable when using coding.blink extra
+    enabled = LazyVim.has_extra("coding.nvim-cmp"),
     ---@param opts cmp.ConfigSchema
     opts = function(_, opts)
       -- super tab config
@@ -92,7 +92,7 @@ return {
   },
   {
     "saghen/blink.cmp",
-    -- enabled = false, -- NOTE: disable when using coding.nvim-cmp extra
+    enabled = LazyVim.has_extra("coding.blink"),
     opts = {
       sources = {
         providers = {
