@@ -8,11 +8,6 @@ return {
     enabled = false,
   },
   {
-    "ahmedkhalf/project.nvim",
-    enabled = false,
-  },
-
-  {
     "snacks.nvim",
     opts = {
       indent = {
