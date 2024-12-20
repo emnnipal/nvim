@@ -114,7 +114,7 @@ return {
         },
         menu = {
           draw = {
-            treesitter = false,
+            treesitter = {},
             columns = { { "label", "kind", gap = 1 }, { "label_description" } },
             components = {
               label = {
