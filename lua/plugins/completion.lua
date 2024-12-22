@@ -50,6 +50,7 @@ return {
         -- { name = "buffer" }, -- buffer words
       })
 
+      -- enhance matching by reducing unnecessary completion results
       opts.matching = {
         disallow_fuzzy_matching = true,
         disallow_fullfuzzy_matching = true,
