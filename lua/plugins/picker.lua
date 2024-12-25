@@ -4,13 +4,6 @@ return {
     enabled = LazyVim.has_extra("editor.telescope"),
     opts = {
       defaults = {
-        file_ignore_patterns = {
-          "node_modules",
-          "%.log",
-          "pnpm%-lock.yaml",
-          "yarn.lock",
-          "package%-lock.json",
-        },
         results_title = false,
         sorting_strategy = "ascending",
         layout_strategy = "center",
