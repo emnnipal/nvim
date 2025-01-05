@@ -20,6 +20,7 @@ return {
           LazyVim.lualine.root_dir(),
           {
             "diagnostics",
+
             symbols = {
               error = icons.diagnostics.Error,
               warn = icons.diagnostics.Warn,
@@ -30,6 +31,17 @@ return {
           { LazyVim.lualine.pretty_path() },
         },
         lualine_x = {
+          { -- Displays the status if you are recording macros.
+            function()
+              return require("noice").api.status.mode.get()
+            end,
+            cond = function()
+              return package.loaded["noice"] and require("noice").api.status.mode.has()
+            end,
+            color = function()
+              return { fg = Snacks.util.color("Constant") }
+            end,
+          },
           {
             function()
               local buf_clients = vim.lsp.get_clients({ bufnr = 0 })
