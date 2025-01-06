@@ -54,6 +54,7 @@ return {
         "emmet-language-server",
         "css-lsp",
         "json-lsp",
+        "bash-language-server",
       })
     end,
   },
