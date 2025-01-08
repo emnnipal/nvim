@@ -107,7 +107,7 @@ return {
       },
       completion = {
         list = {
-          selection = "preselect",
+          selection = { preselect = true, auto_insert = true },
         },
         menu = {
           draw = {
