@@ -44,7 +44,7 @@ return {
 
       opts.sources = cmp.config.sources({
         { name = "nvim_lsp" },
-        -- { name = "path" },
+        { name = "path" },
         -- { name = "luasnip" }, -- For luasnip users.
       }, {
         -- { name = "buffer" }, -- buffer words
