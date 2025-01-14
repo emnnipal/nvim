@@ -91,10 +91,9 @@ return {
       }
 
       -- source: https://www.reddit.com/r/neovim/comments/1f1rxtx/share_a_tip_to_improve_your_experience_in_nvimcmp/
-      -- opts.performance = {
-      --   debounce = 60, -- default is 60ms
-      --   throttle = 30, -- default is 30ms
-      -- }
+      -- opts.performance = opts.performance or {}
+      -- opts.performance.debounce = 30 -- defualt is 60ms
+      -- opts.performance.throttle = 30 -- defualt is 30ms
     end,
   },
   {
