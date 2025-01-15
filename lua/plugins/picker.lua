@@ -20,6 +20,34 @@ return {
     },
     keys = {
       { "<leader>s/", "<Cmd>Telescope current_buffer_fuzzy_find<CR>", desc = "Search in current buffer" },
+      {
+        "<leader>gf",
+        function()
+          Snacks.lazygit.log_file()
+        end,
+        desc = "Lazygit Current File History",
+      },
+      {
+        "<leader>gl",
+        function()
+          Snacks.lazygit.log({ cwd = LazyVim.root.git() })
+        end,
+        desc = "Lazygit Log",
+      },
+      {
+        "<leader>gL",
+        function()
+          Snacks.lazygit.log()
+        end,
+        desc = "Lazygit Log (cwd)",
+      },
+      {
+        "<leader>gb",
+        function()
+          Snacks.git.blame_line()
+        end,
+        desc = "Git Blame Line",
+      },
     },
   },
   {
