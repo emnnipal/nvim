@@ -88,6 +88,15 @@ return {
         },
       },
     },
+    keys = {
+      { -- TODO: Remove keymap once snacks picker git blame line is fixed.
+        "<leader>gb",
+        function()
+          Snacks.git.blame_line()
+        end,
+        desc = "Git Blame Line",
+      },
+    },
   },
 
   {
