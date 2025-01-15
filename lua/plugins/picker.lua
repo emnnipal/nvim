@@ -78,7 +78,7 @@ return {
             backdrop = false,
             width = 0.5,
             min_width = 100,
-            height = 0.75,
+            height = 0.70,
             min_height = 30,
             box = "vertical",
             border = "rounded",
