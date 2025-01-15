@@ -69,6 +69,7 @@ return {
     opts = {
       picker = {
         layout = {
+          preview = false,
           layout = {
             backdrop = false,
             width = 0.5,
@@ -79,7 +80,7 @@ return {
             border = "rounded",
             title = "{source} {live}",
             title_pos = "center",
-            row = 1,
+            -- row = 1,
             { win = "preview", height = 0.5, border = "bottom" },
             { win = "input", height = 1, border = "bottom" },
             { win = "list" },
