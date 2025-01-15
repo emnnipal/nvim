@@ -48,7 +48,7 @@ return {
   },
   {
     "stevearc/dressing.nvim",
-    -- Enable for fzf-lua as this is only enabled for telescope extra
+    -- Enable regardless of chosen picker. Originally, this is only enabled for telescope extra.
     enabled = true,
 
     -- configuration is from telescope extra
@@ -65,5 +65,32 @@ return {
         return vim.ui.input(...)
       end
     end,
+  },
+
+  {
+    "folke/snacks.nvim",
+    ---@module 'snacks'
+    ---@type snacks.Config
+    opts = {
+      picker = {
+        layout = {
+          layout = {
+            backdrop = false,
+            width = 0.5,
+            min_width = 100,
+            height = 0.75,
+            min_height = 30,
+            box = "vertical",
+            border = "rounded",
+            title = "{source} {live}",
+            title_pos = "center",
+            row = 1,
+            { win = "preview", height = 0.5, border = "bottom" },
+            { win = "input", height = 1, border = "bottom" },
+            { win = "list" },
+          },
+        },
+      },
+    },
   },
 }
