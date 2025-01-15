@@ -13,7 +13,7 @@ return {
             return math.min(max_columns, 110)
           end,
           height = function(_, _, max_lines)
-            return math.min(max_lines, 18)
+            return math.min(max_lines, 20)
           end,
         },
       },
