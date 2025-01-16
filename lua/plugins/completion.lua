@@ -99,6 +99,7 @@ return {
   {
     "saghen/blink.cmp",
     enabled = LazyVim.has_extra("coding.blink"),
+    version = "0.9.0",
     opts = {
       sources = {
         providers = {
@@ -112,7 +113,7 @@ return {
       },
       completion = {
         list = {
-          selection = { preselect = true, auto_insert = true },
+          -- selection = { preselect = true, auto_insert = true }, -- TODO: uncomment once you update to latest
         },
         menu = {
           draw = {
@@ -131,6 +132,9 @@ return {
           },
         },
         accept = { auto_brackets = { enabled = true } },
+        ghost_text = {
+          enabled = false,
+        },
       },
       keymap = {
         preset = "enter",
