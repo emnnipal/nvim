@@ -7,7 +7,7 @@
   "cmp-buffer": { "branch": "main", "commit": "3022dbc9166796b644a841a02de8dd1cc1d311fa" },
   "cmp-nvim-lsp": { "branch": "main", "commit": "99290b3ec1322070bcfb9e846450a46f6efa50f0" },
   "cmp-path": { "branch": "main", "commit": "91ff86cd9c29299a64f968ebb45846c485725f23" },
-  "conform.nvim": { "branch": "master", "commit": "70019124aa4f2e6838be9fbd2007f6d13b27a96d" },
+  "conform.nvim": { "branch": "master", "commit": "6dc21d4ce050c2e592d9635b7983d67baf216e3d" },
   "dressing.nvim": { "branch": "master", "commit": "3a45525bb182730fe462325c99395529308f431e" },
   "flash.nvim": { "branch": "main", "commit": "25ba3f4d1e0b080213b39518ebcfbb693a23c957" },
   "friendly-snippets": { "branch": "main", "commit": "efff286dd74c22f731cdec26a70b46e5b203c619" },
