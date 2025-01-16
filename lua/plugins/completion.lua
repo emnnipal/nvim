@@ -91,9 +91,21 @@ return {
       }
 
       -- source: https://www.reddit.com/r/neovim/comments/1f1rxtx/share_a_tip_to_improve_your_experience_in_nvimcmp/
+      -- defaults:
+      -- performance = {
+      --   debounce = 60,
+      --   throttle = 30,
+      --   fetching_timeout = 500,
+      --   filtering_context_budget = 3,
+      --   confirm_resolve_timeout = 80,
+      --   async_budget = 1,
+      --   max_view_entries = 200,
+      -- }
       opts.performance = opts.performance or {}
-      opts.performance.debounce = 10 -- defualt is 60ms
-      opts.performance.throttle = 10 -- defualt is 30ms
+      opts.performance.debounce = 10
+      opts.performance.throttle = 10
+      opts.performance.max_view_entries = 50
+      opts.performance.fetching_timeout = 100 -- TODO: experimental
     end,
   },
   {
