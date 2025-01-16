@@ -96,6 +96,8 @@ return {
         end,
         desc = "Git Blame Line",
       },
+      { "<leader>fs", LazyVim.pick("smart"), desc = "Smart Find Files (Root Dir)" },
+      { "<leader>fS", LazyVim.pick("smart", { root = false }), desc = "Smart Find Files (cwd)" },
       { "<leader>fr", LazyVim.pick("oldfiles", { filter = { cwd = vim.fn.getcwd() } }), desc = "Recent" },
     },
   },
