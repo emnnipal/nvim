@@ -96,6 +96,7 @@ return {
         end,
         desc = "Git Blame Line",
       },
+      { "<leader>fr", LazyVim.pick("oldfiles", { filter = { cwd = vim.fn.getcwd() } }), desc = "Recent" },
     },
   },
 
