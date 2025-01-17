@@ -125,7 +125,7 @@ return {
       },
       completion = {
         list = {
-          selection = { preselect = true, auto_insert = true }, -- TODO: uncomment once you update to latest
+          selection = { preselect = true, auto_insert = true }, -- TODO: comment this line if you're using version 0.9.0
         },
         menu = {
           draw = {
