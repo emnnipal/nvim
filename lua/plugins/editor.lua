@@ -1,7 +1,13 @@
 return {
   {
     "folke/flash.nvim",
-    enabled = false,
+    opts = {
+      modes = {
+        char = {
+          enabled = false,
+        },
+      },
+    },
   },
   {
     "echasnovski/mini.ai",
@@ -144,15 +150,15 @@ return {
       default_mappings = false,
     },
   },
-  {
-    "phaazon/hop.nvim",
-    event = "BufReadPre",
-    config = function()
-      local hop = require("hop")
-      hop.setup()
-      vim.keymap.set("", "m", function()
-        hop.hint_words()
-      end, { remap = true, desc = "Hop" })
-    end,
-  },
+  -- {
+  --   "phaazon/hop.nvim",
+  --   event = "BufReadPre",
+  --   config = function()
+  --     local hop = require("hop")
+  --     hop.setup()
+  --     vim.keymap.set("", "m", function()
+  --       hop.hint_words()
+  --     end, { remap = true, desc = "Hop" })
+  --   end,
+  -- },
 }
