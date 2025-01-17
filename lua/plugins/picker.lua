@@ -96,11 +96,11 @@ return {
         end,
         desc = "Git Blame Line",
       },
-      {
-        "<leader>fs",
-        LazyVim.pick("smart", { filter = { cwd = true } }),
-        desc = "Smart Find Files (Root Dir)",
-      },
+      -- TODO: experimental
+      { "<leader>ff", LazyVim.pick("smart", { filter = { cwd = true } }), desc = "Find Files (Root Dir)" },
+      { "<leader>fF", LazyVim.pick("smart", { filter = { cwd = true }, root = false }), desc = "Find Files (cwd)" },
+
+      { "<leader>fs", LazyVim.pick("smart", { filter = { cwd = true } }), desc = "Smart Find Files (Root Dir)" },
       {
         "<leader>fS",
         LazyVim.pick("smart", { filter = { cwd = true }, root = false }),
