@@ -102,10 +102,10 @@ return {
       --   max_view_entries = 200,
       -- }
       opts.performance = opts.performance or {}
-      opts.performance.debounce = 10
-      opts.performance.throttle = 10
+      opts.performance.debounce = 20
+      opts.performance.throttle = 20
       opts.performance.max_view_entries = 50
-      opts.performance.fetching_timeout = 100 -- TODO: experimental
+      -- opts.performance.fetching_timeout = 100 -- TODO: experimental
     end,
   },
   {
