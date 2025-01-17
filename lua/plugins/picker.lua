@@ -20,13 +20,6 @@ return {
     },
     keys = {
       { "<leader>s/", "<Cmd>Telescope current_buffer_fuzzy_find<CR>", desc = "Search in current buffer" },
-      {
-        "<leader>gb",
-        function()
-          Snacks.git.blame_line()
-        end,
-        desc = "Git Blame Line",
-      },
     },
   },
 
@@ -52,13 +45,6 @@ return {
     },
     keys = {
       { "<leader>s/", "<cmd>FzfLua grep_curbuf<cr>", desc = "Search in current buffer" },
-      {
-        "<leader>gb",
-        function()
-          Snacks.git.blame_line()
-        end,
-        desc = "Git Blame Line",
-      },
     },
   },
 
@@ -89,13 +75,6 @@ return {
       },
     },
     keys = {
-      { -- TODO: Remove keymap once snacks picker git blame line is fixed.
-        "<leader>gb",
-        function()
-          Snacks.git.blame_line()
-        end,
-        desc = "Git Blame Line",
-      },
       -- TODO: experimental
       { "<leader>ff", LazyVim.pick("smart", { filter = { cwd = true } }), desc = "Find Files (Root Dir)" },
       { "<leader>fF", LazyVim.pick("smart", { filter = { cwd = true }, root = false }), desc = "Find Files (cwd)" },
