@@ -77,15 +77,13 @@ return {
     keys = {
       -- TODO: experimental
       { "<leader>ff", LazyVim.pick("smart", { filter = { cwd = true } }), desc = "Find Files (Root Dir)" },
-      { "<leader>fF", LazyVim.pick("smart", { filter = { cwd = true }, root = false }), desc = "Find Files (cwd)" },
+      { "<leader>fF", LazyVim.pick("smart", { filter = { cwd = true }, root = false }), desc = "Find Files" },
 
-      { "<leader>fs", LazyVim.pick("smart", { filter = { cwd = true } }), desc = "Smart Find Files (Root Dir)" },
-      {
-        "<leader>fS",
-        LazyVim.pick("smart", { filter = { cwd = true }, root = false }),
-        desc = "Smart Find Files (cwd)",
-      },
-      { "<leader>fr", LazyVim.pick("oldfiles", { filter = { cwd = true } }), desc = "Recent" },
+      { "<leader>fr", LazyVim.pick("oldfiles", { filter = { cwd = true } }), desc = "Recent (Root Dir)" },
+      { "<leader>fR", LazyVim.pick("oldfiles", { filter = { cwd = true }, root = false }), desc = "Recent" },
+
+      -- { "<leader>fs", LazyVim.pick("smart", { filter = { cwd = true } }), desc = "Smart Find Files (Root Dir)" },
+      -- { "<leader>fS", LazyVim.pick("smart", { filter = { cwd = true }, root = false }), desc = "Smart Find Files" },
     },
   },
 
