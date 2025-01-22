@@ -88,6 +88,24 @@ return {
   },
 
   {
+    "neovim/nvim-lspconfig",
+    opts = function()
+      if LazyVim.pick.want() ~= "snacks" then
+        return
+      end
+      local Keys = require("lazyvim.plugins.lsp.keymaps").get()
+      -- stylua: ignore
+      vim.list_extend(Keys, {
+        { "gd", function() Snacks.picker.lsp_definitions({ layout = { preview = true } }) end, desc = "Goto Definition", has = "definition" },
+        { "gr", function() Snacks.picker.lsp_references({ layout = { preview = true } }) end, nowait = true, desc = "References" },
+        { "gI", function() Snacks.picker.lsp_implementations({ layout = { preview = true } }) end, desc = "Goto Implementation" },
+        { "gy", function() Snacks.picker.lsp_type_definitions({ layout = {preview = true } }) end, desc = "Goto T[y]pe Definition" },
+        { "<leader>ss", function() Snacks.picker.lsp_symbols({ layout = { preview = true } }) end, desc = "LSP Symbols", has = "documentSymbol" },
+      })
+    end,
+  },
+
+  {
     "stevearc/dressing.nvim",
     -- Enable regardless of chosen picker. Originally, this is only enabled for telescope extra.
     enabled = true,
