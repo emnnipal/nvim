@@ -53,6 +53,9 @@ return {
                 width = 0,
                 height = 0,
                 style = "lazygit",
+                keys = {
+                  term_normal = false, -- Prevent from going to normal mode with esc_esc when in lazygit
+                },
               },
             })
           end,
