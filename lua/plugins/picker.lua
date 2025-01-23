@@ -54,6 +54,11 @@ return {
     ---@type snacks.Config
     opts = {
       picker = {
+        formatters = {
+          file = {
+            truncate = 100, -- truncate the file path to (roughly) this length
+          },
+        },
         layout = {
           preview = false,
           layout = {
