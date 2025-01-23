@@ -80,7 +80,6 @@ return {
       },
     },
     keys = {
-      -- TODO: experimental
       { "<leader>ff", LazyVim.pick("smart", { filter = { cwd = true } }), desc = "Find Files (Root Dir)" },
       { "<leader>fF", LazyVim.pick("smart", { filter = { cwd = true }, root = false }), desc = "Find Files" },
 
