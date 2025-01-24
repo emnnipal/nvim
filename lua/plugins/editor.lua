@@ -1,3 +1,18 @@
+local horizontal_picker_layout = {
+  box = "horizontal",
+  width = 0.8,
+  min_width = 120,
+  height = 0.8,
+  {
+    box = "vertical",
+    border = "rounded",
+    title = "{title} {live} {flags}",
+    { win = "input", height = 1, border = "bottom" },
+    { win = "list", border = "none" },
+  },
+  { win = "preview", title = "{preview}", border = "rounded", width = 0.5 },
+}
+
 return {
   {
     "folke/flash.nvim",
@@ -85,17 +100,16 @@ return {
         {
           "<leader>gb",
           function()
-            Snacks.picker.git_log_line({ layout = { preview = true } })
+            Snacks.picker.git_log_line({ layout = { preview = true, layout = horizontal_picker_layout } })
           end,
           desc = "Git Blame Line",
         },
-
         {
           "<leader>gf",
           function()
-            Snacks.lazygit.log_file()
+            Snacks.picker.git_log_file({ layout = { preview = true, layout = horizontal_picker_layout } })
           end,
-          desc = "Lazygit Current File History",
+          desc = "Git Current File History",
         },
         {
           "<leader>gl",
