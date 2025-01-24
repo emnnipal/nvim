@@ -82,6 +82,13 @@ return {
           end,
           desc = "Close Buffer",
         },
+        {
+          "<leader>gb",
+          function()
+            Snacks.picker.git_log_line({ layout = { preview = true } })
+          end,
+          desc = "Git Blame Line",
+        },
 
         {
           "<leader>gf",
