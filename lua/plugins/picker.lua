@@ -105,6 +105,7 @@ return {
         { "gI", function() Snacks.picker.lsp_implementations({ layout = { preview = true } }) end, desc = "Goto Implementation" },
         { "gy", function() Snacks.picker.lsp_type_definitions({ layout = {preview = true } }) end, desc = "Goto T[y]pe Definition" },
         { "<leader>ss", function() Snacks.picker.lsp_symbols({ layout = { preview = true } }) end, desc = "LSP Symbols", has = "documentSymbol" },
+        { "<leader>sS", function() Snacks.picker.lsp_workspace_symbols({ layout = { preview = true }, filter = LazyVim.config.kind_filter }) end, desc = "LSP Workspace Symbols", has = "workspace/symbols" },
       })
     end,
   },
