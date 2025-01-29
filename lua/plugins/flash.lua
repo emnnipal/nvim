@@ -20,6 +20,7 @@ return {
           ---@param opts Flash.Format
           local function format(opts)
             -- always show first and second label
+            -- TODO: make colors the same as hop.nvim
             return {
               { opts.match.label1, "FlashMatch" },
               { opts.match.label2, "FlashLabel" },
