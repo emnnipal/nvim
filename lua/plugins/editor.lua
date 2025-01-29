@@ -15,19 +15,6 @@ local horizontal_picker_layout = {
 
 return {
   {
-    "folke/flash.nvim",
-    opts = {
-      label = {
-        uppercase = false,
-      },
-      modes = {
-        char = {
-          enabled = false,
-        },
-      },
-    },
-  },
-  {
     "echasnovski/mini.ai",
     enabled = false,
   },
