@@ -1,6 +1,19 @@
 return {
   {
+    "smoka7/hop.nvim",
+    event = "BufReadPre",
+    config = function()
+      local hop = require("hop")
+      hop.setup()
+      vim.keymap.set("n", "m", function()
+        hop.hint_words()
+      end, { remap = true, desc = "Hop" })
+    end,
+  },
+
+  {
     "folke/flash.nvim",
+    enabled = false,
     opts = {
       label = {
         uppercase = false,

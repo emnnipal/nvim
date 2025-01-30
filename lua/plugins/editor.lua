@@ -164,15 +164,4 @@ return {
       default_mappings = false,
     },
   },
-  -- {
-  --   "phaazon/hop.nvim",
-  --   event = "BufReadPre",
-  --   config = function()
-  --     local hop = require("hop")
-  --     hop.setup()
-  --     vim.keymap.set("", "m", function()
-  --       hop.hint_words()
-  --     end, { remap = true, desc = "Hop" })
-  --   end,
-  -- },
 }
