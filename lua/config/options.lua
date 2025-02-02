@@ -13,3 +13,5 @@ vim.o.termsync = false
 vim.g.lazyvim_eslint_auto_format = false
 
 vim.g.snacks_animate = false
+
+vim.g.lazyvim_prettier_needs_config = true
