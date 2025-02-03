@@ -100,9 +100,6 @@ return {
         }),
         desc = "Recent",
       },
-
-      -- { "<leader>fs", LazyVim.pick("smart", { filter = { cwd = true } }), desc = "Smart Find Files (Root Dir)" },
-      -- { "<leader>fS", LazyVim.pick("smart", { filter = { cwd = true }, root = false }), desc = "Smart Find Files" },
     },
   },
 

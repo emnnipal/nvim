@@ -1,5 +1,10 @@
 return {
   {
+    "folke/flash.nvim",
+    enabled = false,
+  },
+
+  {
     "smoka7/hop.nvim",
     event = "BufReadPre",
     config = function()
@@ -9,10 +14,5 @@ return {
         hop.hint_words()
       end, { remap = true, desc = "Hop" })
     end,
-  },
-
-  {
-    "folke/flash.nvim",
-    enabled = false,
   },
 }
