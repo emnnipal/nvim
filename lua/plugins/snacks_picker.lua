@@ -201,4 +201,25 @@ return {
       },
     },
   },
+
+  {
+    "stevearc/dressing.nvim",
+    -- Enable regardless of chosen picker. Originally, this is only enabled for telescope extra.
+    enabled = true,
+
+    -- configuration is from telescope extra
+    lazy = true,
+    init = function()
+      ---@diagnostic disable-next-line: duplicate-set-field
+      vim.ui.select = function(...)
+        require("lazy").load({ plugins = { "dressing.nvim" } })
+        return vim.ui.select(...)
+      end
+      ---@diagnostic disable-next-line: duplicate-set-field
+      vim.ui.input = function(...)
+        require("lazy").load({ plugins = { "dressing.nvim" } })
+        return vim.ui.input(...)
+      end
+    end,
+  },
 }
