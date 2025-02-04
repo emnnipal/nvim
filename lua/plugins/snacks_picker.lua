@@ -1,7 +1,7 @@
 ---@diagnostic disable: missing-fields
 
 ---@type snacks.layout.Box
-local vertical_picker_layout = {
+local vertical_layout = {
   backdrop = false,
   width = 0.5,
   min_width = 100,
@@ -37,7 +37,7 @@ return {
         LazyVim.pick("live_grep", {
           layout = {
             preview = false,
-            layout = vertical_picker_layout,
+            layout = vertical_layout,
           },
         }),
         desc = "Grep (Root Dir)",
@@ -48,7 +48,7 @@ return {
           root = false,
           layout = {
             preview = false,
-            layout = vertical_picker_layout,
+            layout = vertical_layout,
           },
         }),
         desc = "Grep (cwd)",
@@ -59,7 +59,7 @@ return {
           filter = { cwd = true },
           layout = {
             preview = false,
-            layout = vertical_picker_layout,
+            layout = vertical_layout,
           },
         }),
         desc = "Find Files (Root Dir)",
@@ -71,7 +71,7 @@ return {
           root = false,
           layout = {
             preview = false,
-            layout = vertical_picker_layout,
+            layout = vertical_layout,
           },
         }),
         desc = "Find Files",
@@ -83,7 +83,7 @@ return {
           filter = { cwd = true },
           layout = {
             preview = false,
-            layout = vertical_picker_layout,
+            layout = vertical_layout,
           },
         }),
         desc = "Recent (Root Dir)",
@@ -95,7 +95,7 @@ return {
           filter = { cwd = true },
           layout = {
             preview = false,
-            layout = vertical_picker_layout,
+            layout = vertical_layout,
           },
         }),
         desc = "Recent",
@@ -117,7 +117,7 @@ return {
             Snacks.picker.lsp_definitions({
               layout = {
                 preview = true,
-                layout = vertical_picker_layout,
+                layout = vertical_layout,
               },
             })
           end,
@@ -130,7 +130,7 @@ return {
             Snacks.picker.lsp_references({
               layout = {
                 preview = true,
-                layout = vertical_picker_layout,
+                layout = vertical_layout,
               },
             })
           end,
@@ -144,7 +144,7 @@ return {
               filter = LazyVim.config.kind_filter,
               layout = {
                 preview = true,
-                layout = vertical_picker_layout,
+                layout = vertical_layout,
               },
             })
           end,
@@ -156,7 +156,7 @@ return {
           function()
             Snacks.picker.lsp_workspace_symbols({
               filter = LazyVim.config.kind_filter,
-              layout = { preview = true, layout = vertical_picker_layout },
+              layout = { preview = true, layout = vertical_layout },
             })
           end,
           desc = "LSP Workspace Symbols",
@@ -177,7 +177,7 @@ return {
           Snacks.picker.todo_comments({
             layout = {
               preview = true,
-              layout = vertical_picker_layout,
+              layout = vertical_layout,
             },
           })
         end,
@@ -190,7 +190,7 @@ return {
             keywords = { "TODO", "FIX", "FIXME" },
             layout = {
               preview = true,
-              layout = vertical_picker_layout,
+              layout = vertical_layout,
             },
           })
         end,
