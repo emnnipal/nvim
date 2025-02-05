@@ -55,27 +55,37 @@ return {
       },
       {
         "<leader>ff",
-        LazyVim.pick("smart", {
-          filter = { cwd = true },
-          layout = {
-            preview = false,
-            layout = vertical_layout,
-          },
-        }),
+        LazyVim.pick("files", { layout = { preview = false, layout = vertical_layout } }),
         desc = "Find Files (Root Dir)",
       },
       {
         "<leader>fF",
-        LazyVim.pick("smart", {
-          filter = { cwd = true },
-          root = false,
-          layout = {
-            preview = false,
-            layout = vertical_layout,
-          },
-        }),
-        desc = "Find Files",
+        LazyVim.pick("files", { root = false, layout = { preview = false, layout = vertical_layout } }),
+        desc = "Find Files (cwd)",
       },
+      -- {
+      --   "<leader>ff",
+      --   LazyVim.pick("smart", {
+      --     filter = { cwd = true },
+      --     layout = {
+      --       preview = false,
+      --       layout = vertical_layout,
+      --     },
+      --   }),
+      --   desc = "Find Files (Root Dir)",
+      -- },
+      -- {
+      --   "<leader>fF",
+      --   LazyVim.pick("smart", {
+      --     filter = { cwd = true },
+      --     root = false,
+      --     layout = {
+      --       preview = false,
+      --       layout = vertical_layout,
+      --     },
+      --   }),
+      --   desc = "Find Files",
+      -- },
 
       {
         "<leader>fr",
