@@ -1,19 +1,24 @@
 return {
   -- floating neo-tree
-  -- {
-  --   "nvim-neo-tree/neo-tree.nvim",
-  --   opts = {
-  --     window = {
-  --       position = "float",
-  --     },
-  --     filesystem = {
-  --       follow_current_file = {
-  --         enabled = true,
-  --         leave_dirs_open = true,
-  --       },
-  --     },
-  --   },
-  -- },
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    init = function() end,
+    keys = {
+      {
+        "<leader>fe",
+        function()
+          require("neo-tree.command").execute({
+            toggle = true,
+            dir = LazyVim.root(),
+            reveal = true,
+            position = "float",
+          })
+        end,
+        desc = "Explorer NeoTree (Root Dir)",
+      },
+      { "<leader>e", "<leader>fe", desc = "Explorer NeoTree (Root Dir)", remap = true },
+    },
+  },
 
   {
     "snacks.nvim",

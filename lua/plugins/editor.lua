@@ -12,6 +12,8 @@ return {
         scope = { enabled = false },
       },
       input = {
+        enabled = true,
+        icon_pos = false,
         win = {
           width = 35,
           relative = "cursor",
