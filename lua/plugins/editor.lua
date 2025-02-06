@@ -5,6 +5,8 @@ return {
   },
   {
     "snacks.nvim",
+    ---@module 'snacks'
+    ---@type snacks.Config
     opts = {
       indent = {
         scope = { enabled = false },
