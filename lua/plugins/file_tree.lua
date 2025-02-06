@@ -3,6 +3,13 @@ return {
   {
     "nvim-neo-tree/neo-tree.nvim",
     init = function() end,
+    opts = {
+      default_component_configs = {
+        type = {
+          enabled = false,
+        },
+      },
+    },
     keys = {
       {
         "<leader>fe",
