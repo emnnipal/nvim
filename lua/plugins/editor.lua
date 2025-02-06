@@ -11,8 +11,13 @@ return {
       indent = {
         scope = { enabled = false },
       },
-      input = { -- TODO: make snacks input the same as dressing nvim window position
-        enabled = false,
+      input = {
+        win = {
+          width = 35,
+          relative = "cursor",
+          row = -3,
+          col = 0,
+        },
       },
     },
   },
