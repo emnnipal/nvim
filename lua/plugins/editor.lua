@@ -16,7 +16,7 @@ return {
         icon_pos = false,
         win = {
           title_pos = "left",
-          width = 35,
+          -- width = 35,
           relative = "cursor",
           row = -3,
           col = 0,
