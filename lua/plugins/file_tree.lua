@@ -55,7 +55,6 @@ return {
             icons = {
               tree = {
                 vertical = "│  ",
-                -- middle = "│  ",
                 middle = "├╴ ",
                 last = "└╴ ",
               },
