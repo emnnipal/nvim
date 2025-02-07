@@ -9,6 +9,13 @@ return {
           enabled = false,
         },
       },
+      window = {
+        popup = {
+          size = {
+            width = 120,
+          },
+        },
+      },
     },
     keys = {
       {
