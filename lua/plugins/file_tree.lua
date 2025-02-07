@@ -49,15 +49,18 @@ return {
             auto_close = true,
             layout = {
               preset = "vertical",
-              -- layout = { position = "float" },
+              layout = {
+                -- position = "float"
+                width = 120,
+              },
             },
             ---@diagnostic disable: missing-fields
             icons = {
-              tree = {
-                vertical = "│  ",
-                middle = "├╴ ",
-                last = "└╴ ",
-              },
+              -- tree = {
+              --   vertical = "│  ",
+              --   middle = "├╴ ",
+              --   last = "└╴ ",
+              -- },
             },
           },
         },
