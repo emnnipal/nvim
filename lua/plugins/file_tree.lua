@@ -51,6 +51,15 @@ return {
               preset = "vertical",
               -- layout = { position = "float" },
             },
+            ---@diagnostic disable: missing-fields
+            icons = {
+              tree = {
+                vertical = "│  ",
+                -- middle = "│  ",
+                middle = "├╴ ",
+                last = "└╴ ",
+              },
+            },
           },
         },
       },
