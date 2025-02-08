@@ -26,7 +26,8 @@ return {
       picker = {
         formatters = {
           file = {
-            truncate = 100, -- truncate the file path to (roughly) this length
+            -- filename_first = true,
+            truncate = 90, -- truncate the file path to (roughly) this length
           },
         },
       },
