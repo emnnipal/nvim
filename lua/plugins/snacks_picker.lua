@@ -117,7 +117,7 @@ return {
   {
     "neovim/nvim-lspconfig",
     opts = function()
-      if LazyVim.pick.want() ~= "snacks" then
+      if LazyVim.has_extra("editor.snacks_picker") == false then
         return
       end
       local Keys = require("lazyvim.plugins.lsp.keymaps").get()
