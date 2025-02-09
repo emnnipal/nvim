@@ -52,9 +52,7 @@ return {
               local buf_client_names = {}
 
               for _, client in pairs(buf_clients) do
-                if client.name ~= "null-ls" and client.name ~= "copilot" then
-                  table.insert(buf_client_names, client.name)
-                end
+                table.insert(buf_client_names, client.name)
               end
 
               local unique_client_names = table.concat(buf_client_names, ", ")
