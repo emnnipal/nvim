@@ -64,6 +64,7 @@ return {
         LazyVim.pick("files", { root = false, layout = { preview = false, layout = vertical_layout } }),
         desc = "Find Files (cwd)",
       },
+      { "<leader><space>", "<leader>ff", desc = "Find Files (Root Dir)", remap = true },
       -- {
       --   "<leader>ff",
       --   LazyVim.pick("smart", {
