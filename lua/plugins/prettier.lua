@@ -61,7 +61,10 @@ M.has_parser = LazyVim.memoize(M.has_parser)
 return {
   {
     "williamboman/mason.nvim",
-    opts = { ensure_installed = { "prettierd" } },
+    -- TODO: We should no longer need prettier, but we still require it to check if the buffer to be saved has a prettier config.
+    -- If we use PRettierd as a checker to determine whether a buffer has a prettier config, I think it returns a false positive.
+    -- This is why we still use prettier.
+    opts = { ensure_installed = { "prettierd", "prettier" } },
   },
 
   -- conform
