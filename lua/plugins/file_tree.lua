@@ -23,6 +23,9 @@ return {
         type = {
           enabled = false,
         },
+        -- icon = {
+        --   enabled = false,
+        -- },
       },
       window = {
         popup = {
