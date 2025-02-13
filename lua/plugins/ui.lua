@@ -4,6 +4,10 @@ return {
     opts = function(_, opts)
       local icons = require("lazyvim.config").icons
 
+      -- Do not show lualine when using neo-tree.
+      opts.options.ignore_focus = opts.options.ignore_focus or {}
+      table.insert(opts.options.ignore_focus, "neo-tree")
+
       opts.sections = {
         lualine_a = {
           {
