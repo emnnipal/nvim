@@ -3,10 +3,10 @@
 ---@type snacks.layout.Box
 local vertical_layout = {
   backdrop = false,
-  width = 100,
+  width = 110,
   -- min_width = 100,
-  height = 0.6,
-  min_height = 30,
+  height = 0.7,
+  min_height = 24,
   box = "vertical",
   border = "rounded",
   title = "{source} {live}",
