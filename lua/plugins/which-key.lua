@@ -51,27 +51,12 @@ return {
         { "<leader>ico", "<Cmd>GitConflictChooseOurs<CR>", desc = "Choose ours" },
         { "<leader>ict", "<Cmd>GitConflictChooseTheirs<CR>", desc = "Choose theirs" },
 
-        {
-          "<leader>qc",
-          function()
-            Snacks.bufdelete()
-          end,
-          desc = "Close Buffer",
-        },
-        {
-          "<leader>gl",
-          function()
-            Snacks.lazygit.log({ cwd = LazyVim.root.git() })
-          end,
-          desc = "Lazygit Log",
-        },
-        {
-          "<leader>gL",
-          function()
-            Snacks.lazygit.log()
-          end,
-          desc = "Lazygit Log (cwd)",
-        },
+        -- stylua: ignore
+        { "<leader>qc", function() Snacks.bufdelete() end, desc = "Close Buffer" },
+        -- stylua: ignore
+        { "<leader>gl", function() Snacks.lazygit.log({ cwd = LazyVim.root.git() }) end, desc = "Lazygit Log" },
+        -- stylua: ignore
+        { "<leader>gL", function() Snacks.lazygit.log() end, desc = "Lazygit Log (cwd)" },
       },
     },
   },
