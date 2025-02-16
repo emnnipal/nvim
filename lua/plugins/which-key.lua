@@ -3,6 +3,9 @@ return {
     "folke/which-key.nvim",
     opts = {
       preset = "helix",
+      icons = {
+        mappings = false, -- disable all icons in which-key
+      },
       spec = {
         { "<leader>w", "<Cmd>update<CR>", desc = "Write" },
         { "<leader>W", "<Cmd>noautocmd w<CR>", desc = "Save without formatting" },
@@ -19,6 +22,7 @@ return {
           "<leader>gg",
           function()
             ---@module 'snacks'
+            ---@diagnostic disable-next-line: missing-fields
             Snacks.lazygit({
               cwd = LazyVim.root.git(),
               win = {
@@ -68,9 +72,6 @@ return {
           end,
           desc = "Lazygit Log (cwd)",
         },
-      },
-      icons = {
-        mappings = false, -- disable all icons in which-key
       },
     },
   },
