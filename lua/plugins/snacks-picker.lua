@@ -64,6 +64,8 @@ return {
         LazyVim.pick("files", { root = false, layout = { preview = false, layout = vertical_layout } }),
         desc = "Find Files (cwd)",
       },
+      { "<leader>fb", function() Snacks.picker.buffers({ layout = { preview = false, layout = vertical_layout }}) end, desc = "Buffers" },
+      { "<leader>fB", function() Snacks.picker.buffers({ hidden = true, nofile = true, layout = { preview = false, layout = vertical_layout } }) end, desc = "Buffers (all)" },
       { "<leader><space>", "<leader>ff", desc = "Find Files (Root Dir)", remap = true },
       -- {
       --   "<leader>ff",
