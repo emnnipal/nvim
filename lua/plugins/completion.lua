@@ -111,7 +111,7 @@ return {
   {
     "saghen/blink.cmp",
     enabled = LazyVim.has_extra("coding.blink"),
-    -- version = "0.9.0", -- TODO: remove once latest version has fixed emmet-language-server issues
+    -- version = "0.12.4", -- last known stable version
     opts = {
       sources = {
         providers = {
@@ -125,7 +125,7 @@ return {
       },
       completion = {
         list = {
-          selection = { preselect = true, auto_insert = true }, -- TODO: comment this line if you're using version 0.9.0
+          selection = { preselect = true, auto_insert = true },
         },
         menu = {
           draw = {
