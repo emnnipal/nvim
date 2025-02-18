@@ -12,7 +12,7 @@ require("lazy").setup({
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
     -- import any extras modules here
     -- { import = "lazyvim.plugins.extras.coding.copilot" },
-    -- { import = "lazyvim.plugins.extras.formatting.prettier" }, -- TODO: uncomment once prettierd is the one used as formatter instead of prettier
+    -- { import = "lazyvim.plugins.extras.formatting.prettier" }, -- TODO: allow in LazyExtras once prettierd is the one used as formatter instead of prettier
     -- { import = "lazyvim.plugins.extras.util.project" },
 
     -- import/override with your plugins
