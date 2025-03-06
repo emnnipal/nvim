@@ -26,7 +26,7 @@ return {
   },
   {
     "folke/noice.nvim",
-    -- TODO: enable lsp progress and doc hover only
+    -- TODO: enable lsp progress and doc hover only as I now prefer the classic cmd line at the bottom
     -- enabled = false,
     opts = {
       lsp = {
