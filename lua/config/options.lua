@@ -17,5 +17,6 @@ vim.g.snacks_animate = false
 vim.g.lazyvim_prettier_needs_config = true
 
 -- Fix for random alt key presses when pressing esc key if neovim is within tmux.
-vim.o.timeoutlen = 500 -- Adjust this if needed
 vim.o.ttimeoutlen = 0
+
+-- vim.o.timeoutlen = 500 -- Adjust this if needed
