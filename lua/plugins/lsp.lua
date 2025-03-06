@@ -29,6 +29,9 @@ return {
     -- TODO: enable lsp progress and doc hover only as I now prefer the classic cmd line at the bottom
     -- enabled = false,
     opts = {
+      cmdline = {
+        view = "cmdline",
+      },
       lsp = {
         hover = {
           silent = true, -- set to true to not show a message if hover is not available
