@@ -48,7 +48,18 @@ return {
         end,
         desc = "Explorer NeoTree (Root Dir)",
       },
-      { "<leader>e", "<leader>fe", desc = "Explorer NeoTree (Root Dir)", remap = true },
+      {
+        "<leader>fE",
+        function()
+          require("neo-tree.command").execute({
+            toggle = true,
+            dir = vim.uv.cwd(),
+            reveal = true,
+            position = "float",
+          })
+        end,
+        desc = "Explorer NeoTree (cwd)",
+      },
       {
         "<leader>ge",
         function()
