@@ -21,7 +21,7 @@ return {
         },
         lualine_b = {},
         lualine_c = {
-          LazyVim.lualine.root_dir(),
+          vim.tbl_extend("force", LazyVim.lualine.root_dir(), { separator = "" }),
           { LazyVim.lualine.pretty_path() },
         },
         lualine_x = {
@@ -46,6 +46,7 @@ return {
             color = function()
               return { fg = Snacks.util.color("Constant") }
             end,
+            separator = "",
           },
           {
             function()
