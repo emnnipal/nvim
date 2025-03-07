@@ -25,17 +25,6 @@ return {
           { LazyVim.lualine.pretty_path() },
         },
         lualine_x = {
-          {
-            "diagnostics",
-            separator = "",
-            symbols = {
-              error = icons.diagnostics.Error,
-              warn = icons.diagnostics.Warn,
-              info = icons.diagnostics.Info,
-              hint = icons.diagnostics.Hint,
-            },
-          },
-
           { -- Displays the status if you are recording macros.
             function()
               return require("noice").api.status.mode.get()
@@ -48,6 +37,18 @@ return {
             end,
             separator = "",
           },
+
+          {
+            "diagnostics",
+            separator = "",
+            symbols = {
+              error = icons.diagnostics.Error,
+              warn = icons.diagnostics.Warn,
+              info = icons.diagnostics.Info,
+              hint = icons.diagnostics.Hint,
+            },
+          },
+
           {
             function()
               local buf_clients = vim.lsp.get_clients({ bufnr = 0 })
