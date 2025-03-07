@@ -1,10 +1,8 @@
--- TODO: use yazi nvim
 return {
   -- floating neo-tree
   {
     "nvim-neo-tree/neo-tree.nvim",
     enabled = LazyVim.has_extra("editor.neo-tree"),
-    -- enabled = false,
     init = function() end,
     opts = {
       filesystem = {
