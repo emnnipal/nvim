@@ -1,0 +1,49 @@
+return {
+  -- {
+  --   "saghen/blink.cmp",
+  --   enabled = LazyVim.has_extra("coding.blink"),
+  --   -- version = "0.12.4", -- last known stable version
+  --   opts = {
+  --     sources = {
+  --       providers = {
+  --         snippets = {
+  --           enabled = false,
+  --         },
+  --         buffer = {
+  --           enabled = false,
+  --         },
+  --       },
+  --     },
+  --     completion = {
+  --       list = {
+  --         selection = { preselect = true, auto_insert = true },
+  --       },
+  --       menu = {
+  --         draw = {
+  --           treesitter = {},
+  --           columns = { { "label", "kind", gap = 1 }, { "label_description" } },
+  --           components = {
+  --             label = {
+  --               width = { max = 50 },
+  --             },
+  --           },
+  --         },
+  --       },
+  --       documentation = {
+  --         window = {
+  --           border = "rounded",
+  --         },
+  --       },
+  --       accept = { auto_brackets = { enabled = true } },
+  --       ghost_text = {
+  --         enabled = false,
+  --       },
+  --     },
+  --     keymap = {
+  --       preset = "enter",
+  --       ["<Tab>"] = { "select_next", "fallback" },
+  --       ["<S-Tab>"] = { "select_prev", "fallback" },
+  --     },
+  --   },
+  -- },
+}
