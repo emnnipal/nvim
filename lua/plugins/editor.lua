@@ -53,7 +53,6 @@ return {
     },
   },
 
-  -- additional plugins
   {
     "Wansmer/treesj",
     event = "VeryLazy",
