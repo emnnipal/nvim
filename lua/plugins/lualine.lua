@@ -22,9 +22,12 @@ return {
         lualine_b = {},
         lualine_c = {
           LazyVim.lualine.root_dir(),
+          { LazyVim.lualine.pretty_path() },
+        },
+        lualine_x = {
           {
             "diagnostics",
-
+            separator = "",
             symbols = {
               error = icons.diagnostics.Error,
               warn = icons.diagnostics.Warn,
@@ -32,9 +35,7 @@ return {
               hint = icons.diagnostics.Hint,
             },
           },
-          { LazyVim.lualine.pretty_path() },
-        },
-        lualine_x = {
+
           { -- Displays the status if you are recording macros.
             function()
               return require("noice").api.status.mode.get()
