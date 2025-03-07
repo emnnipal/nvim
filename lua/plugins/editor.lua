@@ -10,6 +10,21 @@ return {
         show_buffer_icons = false,
         show_buffer_close_icons = false,
         show_close_icon = false,
+        -- The diagnostics indicator can be set to nil to keep the buffer name highlight but delete the highlighting
+        diagnostics_indicator = function(count, level, diagnostics_dict, context)
+          -- return "(" .. count .. ")"
+          return "●"
+        end,
+        indicator = {
+          -- icon = "▎", -- this should be omitted if indicator style is not 'icon'
+          -- style = "icon" | "underline" | "none",
+          style = "none",
+        },
+
+        modified_icon = "●",
+        -- this takes more space so ew use just an icon instead
+        -- modified_icon = "[+]",
+
         -- always_show_bufferline = false,
         -- diagnostics = false,
         -- diagnostics_update_on_event = false,
