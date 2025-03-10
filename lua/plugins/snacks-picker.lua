@@ -34,6 +34,7 @@ return {
     },
     -- stylua: ignore
     keys = {
+      { "<leader>R", function() Snacks.picker.resume() end, desc = "Use Recent Picker" },
       { "<leader>sg",  LazyVim.pick("live_grep", { layout = { preview = true, layout = vertical_layout } }), desc = "Grep (Root Dir)" },
       { "<leader>sG", LazyVim.pick("live_grep", { root = false, layout = { preview = true, layout = vertical_layout } }), desc = "Grep (cwd)" },
       { "<leader>/", "<leader>sG", desc = "Grep (cwd)", remap = true },
