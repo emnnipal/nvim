@@ -18,7 +18,7 @@ return {
 
         { "<leader>cL", "<Cmd>LspRestart<CR>", desc = "Restart LSP" },
 
-        -- { "<leader>gg", "<cmd>!tmux new-window -n lg 'lazygit'<CR>", desc = "Lazygit (cwd)" },
+        -- { "<leader>gg", "<cmd>silent !tmux new-window -n lg 'lazygit'<CR>", desc = "Lazygit (cwd)" },
         {
           "<leader>gg",
           function()
