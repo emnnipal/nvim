@@ -1,18 +1,4 @@
-local cmp = {} -- statusline components
-
---- highlight pattern
--- This has three parts:
--- 1. the highlight group
--- 2. text content
--- 3. special sequence to restore highlight: %*
--- Example pattern: %#SomeHighlight#some-text%*
-local hi_pattern = "%%#%s#%s%%*"
-
-function _G._statusline_component(name)
-  return cmp[name]()
-end
-
-function cmp.diagnostic_status()
+function Diagnostic_status()
   local ok = ""
 
   local ignore = {
@@ -40,11 +26,7 @@ function cmp.diagnostic_status()
   return ok
 end
 
-function cmp.position()
-  return hi_pattern:format("Search", " %3l:%-2c ")
-end
-
-function cmp.active_lsp()
+function Get_active_lsp()
   local buf_clients = vim.lsp.get_clients({ bufnr = 0 })
   if #buf_clients == 0 then
     return "LSP Inactive"
@@ -62,16 +44,33 @@ function cmp.active_lsp()
   return language_servers
 end
 
+local modes = {
+  n = "NORMAL",
+  i = "INSERT",
+  v = "VISUAL",
+  V = "V-LINE",
+  c = "COMMAND",
+  R = "REPLACE",
+  s = "SELECT",
+  t = "TERMINAL",
+}
+
+function Get_mode()
+  local current_mode = vim.api.nvim_get_mode().mode
+  return modes[current_mode] or current_mode
+end
+
 local statusline = {
+  " %{v:lua.Get_mode()} ",
   '%{expand("%:~:.")}', -- show current buffer file path relative to cwd
   "%r",
   "%m",
-  -- "%{&filetype} ",
+  -- " - %{&filetype} ",
   "%=",
-  '%{%v:lua._statusline_component("diagnostic_status")%} ',
-  '%{%v:lua._statusline_component("active_lsp")%}',
-  -- " %2p%% ",
-  -- " %3l:%-2c ",
+  "%{%v:lua.Diagnostic_status()%}",
+  "%{%v:lua.Get_active_lsp()%}",
+  -- " %2p%% ", -- show line position in percentage
+  -- " %3l:%-2c ", -- show cursor position in column and row number
   -- '%{%v:lua._statusline_component("position")%}',
 }
 
