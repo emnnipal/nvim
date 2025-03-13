@@ -26,12 +26,18 @@ return {
   },
   {
     "folke/noice.nvim",
-    enabled = false,
     opts = {
       cmdline = {
+        enabled = false,
         view = "cmdline",
       },
+      messages = {
+        enabled = false,
+      },
       lsp = {
+        progress = {
+          enabled = false,
+        },
         hover = {
           silent = true, -- set to true to not show a message if hover is not available
         },
