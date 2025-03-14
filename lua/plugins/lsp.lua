@@ -38,6 +38,7 @@ return {
         progress = {
           enabled = false,
         },
+        -- TODO: recreate hover border feature without using experimental noice.nvim
         hover = {
           silent = true, -- set to true to not show a message if hover is not available
         },
