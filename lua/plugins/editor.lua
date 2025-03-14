@@ -45,7 +45,7 @@ return {
         scope = { enabled = false },
       },
       input = {
-        enabled = true,
+        enabled = false,
         icon_pos = false,
         win = {
           title_pos = "left",
