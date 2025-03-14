@@ -16,6 +16,8 @@ function M.diagnostic_status()
     return ok
   end
 
+  -- TODO: update icons for errors and warnings. get the one from helix with just a simple red and orange circle
+
   local levels = vim.diagnostic.severity
   local errors = #vim.diagnostic.get(0, { severity = levels.ERROR })
   if errors > 0 then
