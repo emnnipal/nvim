@@ -2,34 +2,34 @@ local M = {}
 
 _G._statusline = M
 
-function M.diagnostic_status()
-  local ok = ""
+vim.api.nvim_set_hl(0, "StatuslineError", { fg = "#ff5555", bold = true })
+vim.api.nvim_set_hl(0, "StatuslineWarn", { fg = "#ffb86c", bold = true })
 
-  local ignore = {
+function M.diagnostic_status()
+  local ignore_modes = {
     ["c"] = true, -- command mode
     ["t"] = true, -- terminal mode
   }
 
-  local mode = vim.api.nvim_get_mode().mode
-
-  if ignore[mode] then
-    return ok
+  if ignore_modes[vim.api.nvim_get_mode().mode] then
+    return ""
   end
-
-  -- TODO: update icons for errors and warnings. get the one from helix with just a simple red and orange circle
 
   local levels = vim.diagnostic.severity
   local errors = #vim.diagnostic.get(0, { severity = levels.ERROR })
-  if errors > 0 then
-    return " ✘ "
-  end
-
   local warnings = #vim.diagnostic.get(0, { severity = levels.WARN })
-  if warnings > 0 then
-    return " ▲ "
+
+  local result = ""
+
+  if errors > 0 then
+    result = result .. string.format("%%#StatuslineError#%d ✘%%* ", errors)
   end
 
-  return ok
+  if warnings > 0 then
+    result = result .. string.format("%%#StatuslineWarn#%d ▲%%* ", warnings)
+  end
+
+  return result
 end
 
 function M.active_lsp()
