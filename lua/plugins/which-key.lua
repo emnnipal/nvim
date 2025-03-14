@@ -1,3 +1,5 @@
+local has_tmux = vim.fn.executable("tmux") == 1
+
 return {
   {
     "folke/which-key.nvim",
@@ -28,19 +30,34 @@ return {
         {
           "<leader>gg",
           function()
-            ---@module 'snacks'
-            ---@diagnostic disable-next-line: missing-fields
-            Snacks.lazygit({
-              cwd = LazyVim.root.git(),
-              win = {
-                width = 0,
-                height = 0,
-                style = "lazygit",
-                keys = {
-                  term_normal = false, -- Prevent from going to normal mode with esc_esc when in lazygit
+            local cwd = LazyVim.root.git() or vim.fn.getcwd()
+            local project_name = vim.fn.fnamemodify(cwd, ":t") -- Get the last part of the path (project name)
+            local tmux_window = "lg-" .. project_name -- Create a unique tmux window name
+
+            if has_tmux then
+              vim.fn.system(
+                string.format(
+                  "tmux list-windows | grep -q '%s' && tmux select-window -t %s || tmux new-window -n %s 'lazygit'",
+                  tmux_window,
+                  tmux_window,
+                  tmux_window
+                )
+              )
+            else
+              ---@module 'snacks'
+              ---@diagnostic disable-next-line: missing-fields
+              Snacks.lazygit({
+                cwd = cwd,
+                win = {
+                  width = 0,
+                  height = 0,
+                  style = "lazygit",
+                  keys = {
+                    term_normal = false, -- Prevent from going to normal mode with esc_esc when in lazygit
+                  },
                 },
-              },
-            })
+              })
+            end
           end,
           desc = "Lazygit (cwd)",
         },
