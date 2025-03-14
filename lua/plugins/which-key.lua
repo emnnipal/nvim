@@ -18,7 +18,13 @@ return {
 
         { "<leader>cL", "<Cmd>LspRestart<CR>", desc = "Restart LSP" },
 
-        -- { "<leader>gg", "<cmd>silent !tmux new-window -n lg 'lazygit'<CR>", desc = "Lazygit (cwd)" },
+        -- {
+        --   "<leader>gg",
+        --   -- Check if the tmux window "lg" already exists; if it does, switch to it. Otherwise, create a new window for lazygit.
+        --   "<cmd>silent !tmux list-windows | grep -q 'lg' && tmux select-window -t lg || tmux new-window -n lg 'lazygit'<CR>",
+        --   desc = "Lazygit (cwd)",
+        -- },
+
         {
           "<leader>gg",
           function()
