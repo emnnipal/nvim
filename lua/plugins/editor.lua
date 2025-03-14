@@ -12,9 +12,13 @@ return {
         show_close_icon = false,
         -- The diagnostics indicator can be set to nil to keep the buffer name highlight but delete the highlighting
         diagnostics_indicator = function(count, level, diagnostics_dict, context)
-          -- return "(" .. count .. ")"
-          -- TODO: change icons for warning and error. make it smaller than the one provided by lazyvim
-          return "●"
+          local icons = {
+            error = "●",
+            warning = "▲",
+            hint = "󰛨 ",
+            -- hint = "󰌶",
+          }
+          return icons[level] or "◉"
         end,
         indicator = {
           -- icon = "▎", -- this should be omitted if indicator style is not 'icon'
