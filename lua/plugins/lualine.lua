@@ -1,4 +1,9 @@
--- function Diagnostic_status()
+-- local M = {}
+--
+-- _G._statusline = M
+--
+-- local counter = 0
+-- function M.diagnostic_status()
 --   local ok = ""
 --
 --   local ignore = {
@@ -26,7 +31,7 @@
 --   return ok
 -- end
 --
--- function Get_active_lsp()
+-- function M.active_lsp()
 --   local buf_clients = vim.lsp.get_clients({ bufnr = 0 })
 --   if #buf_clients == 0 then
 --     return "LSP Inactive"
@@ -55,20 +60,20 @@
 --   t = "TERMINAL",
 -- }
 --
--- function Get_mode()
+-- function M.display_mode()
 --   local current_mode = vim.api.nvim_get_mode().mode
 --   return modes[current_mode] or current_mode
 -- end
 --
 -- local statusline = {
---   " %{v:lua.Get_mode()} ",
+--   " %{%v:lua._statusline.display_mode()%} ",
 --   '%{expand("%:~:.")}', -- show current buffer file path relative to cwd
 --   "%r",
 --   "%m",
 --   -- " - %{&filetype} ",
 --   "%=",
---   "%{%v:lua.Diagnostic_status()%}",
---   "%{%v:lua.Get_active_lsp()%}",
+--   "%{%v:lua._statusline.diagnostic_status()%}",
+--   "%{%v:lua._statusline.active_lsp()%}",
 --   -- " %2p%% ", -- show line position in percentage
 --   -- " %3l:%-2c ", -- show cursor position in column and row number
 --   -- '%{%v:lua._statusline_component("position")%}',
