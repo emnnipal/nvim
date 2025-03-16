@@ -24,7 +24,7 @@ return {
     ---@type snacks.Config
     opts = {
       picker = {
-        -- ui_select = false,
+        ui_select = false,
         formatters = {
           file = {
             -- filename_first = true,
