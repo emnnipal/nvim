@@ -56,8 +56,6 @@ return {
         },
       },
     },
-    -- NOTE: fix for completely removing noice nvim since snacks nvim in Lazyvim calls noice.nvim
-    config = function() end,
   },
 
   {
