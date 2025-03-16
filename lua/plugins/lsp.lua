@@ -55,17 +55,17 @@ return {
         progress = {
           enabled = false,
         },
+        message = {
+          -- Messages shown by lsp servers
+          enabled = false,
+        },
         -- TODO: recreate hover border feature without using experimental noice.nvim
         hover = {
           -- enabled = false,
           silent = true, -- set to true to not show a message if hover is not available
         },
         signature = {
-          enabled = false,
-        },
-        message = {
-          -- Messages shown by lsp servers
-          enabled = false,
+          -- enabled = true,
         },
       },
       presets = {
