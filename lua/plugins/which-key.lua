@@ -1,14 +1,30 @@
 local has_tmux = vim.fn.executable("tmux") == 1
 
 return {
-  {
+  { -- Useful plugin to show you pending keybinds.
     "folke/which-key.nvim",
+    event = "VimEnter", -- Sets the loading event to 'VimEnter'
     opts = {
+      -- delay between pressing a key and opening which-key (milliseconds)
+      -- this setting is independent of vim.opt.timeoutlen
+      -- delay = 0,
       preset = "helix",
       icons = {
-        mappings = false, -- disable all icons in which-key
+        -- set icon mappings to true if you have a Nerd Font
+        mappings = false,
       },
+
+      -- Document existing key chains
       spec = {
+        mode = { "n", "v" },
+        -- { '<leader>c', group = '[C]ode', mode = { 'n', 'x' } },
+        -- { '<leader>d', group = '[D]ocument' },
+        -- { '<leader>r', group = '[R]ename' },
+        { "<leader>s", group = "[S]earch" },
+        -- { '<leader>w', group = '[W]orkspace' },
+        -- { '<leader>t', group = '[T]oggle' },
+        -- { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
+
         { "<leader>w", "<Cmd>update<CR>", desc = "Write" },
         { "<leader>W", "<Cmd>noautocmd w<CR>", desc = "Save without formatting" },
         { "<leader>bh", "<Cmd>BufferLineCloseLeft<cr>", desc = "Close all to the left" },
@@ -30,7 +46,7 @@ return {
         {
           "<leader>gg",
           function()
-            local cwd = LazyVim.root.git() or vim.fn.getcwd()
+            local cwd = vim.fn.getcwd()
             local project_name = vim.fn.fnamemodify(cwd, ":t") -- Get the last part of the path (project name)
             local tmux_window = "lg-" .. project_name -- Create a unique tmux window name
 
@@ -46,17 +62,17 @@ return {
             else
               ---@module 'snacks'
               ---@diagnostic disable-next-line: missing-fields
-              Snacks.lazygit({
-                cwd = cwd,
-                win = {
-                  width = 0,
-                  height = 0,
-                  style = "lazygit",
-                  keys = {
-                    term_normal = false, -- Prevent from going to normal mode with esc_esc when in lazygit
-                  },
-                },
-              })
+              -- Snacks.lazygit({
+              --   cwd = cwd,
+              --   win = {
+              --     width = 0,
+              --     height = 0,
+              --     style = "lazygit",
+              --     keys = {
+              --       term_normal = false, -- Prevent from going to normal mode with esc_esc when in lazygit
+              --     },
+              --   },
+              -- })
             end
           end,
           desc = "Lazygit (cwd)",
