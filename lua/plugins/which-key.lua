@@ -15,13 +15,14 @@ return {
       },
 
       -- Document existing key chains
+      -- stylua: ignore
       spec = {
         mode = { "n", "v" },
-        { "<leader>c", group = "Code", mode = { "n", "x" } },
         -- { '<leader>d', group = '[D]ocument' },
         -- { '<leader>r', group = '[R]ename' },
         { "<leader>b", group = "Buffers" },
-        { "<leader>b", group = "Buffers" },
+        { "<leader>c", group = "Code", mode = { "n", "x" } },
+        { "<leader>g", group = "Git" },
         { "<leader>f", group = "Files" },
         { "<leader>q", group = "Quit/Session" },
         { "<leader>s", group = "Search" },
@@ -44,6 +45,7 @@ return {
         --   desc = "Lazygit (cwd)",
         -- },
 
+        -- Git
         {
           "<leader>gg",
           function()
@@ -79,6 +81,17 @@ return {
           desc = "Lazygit (cwd)",
         },
 
+        -- { "<leader>gG", function() Snacks.lazygit() end,  desc = "Lazygit (cwd)" },
+        -- stylua: ignore
+        { "<leader>gf", function() Snacks.picker.git_log_file() end,  desc = "Git Current File History" },
+        -- stylua: ignore
+        { "<leader>gl", function() Snacks.picker.git_log({ cwd = vim.fn.getcwd() }) end,  desc = "Git Log" },
+        -- stylua: ignore
+        { "<leader>gL", function() Snacks.picker.git_log() end,  desc = "Git Log (cwd)" },
+        { "<leader>gb", function() Snacks.picker.git_log_line() end,  desc = "Git Blame Line"  },
+        { "<leader>gB", function() Snacks.gitbrowse() end,  desc = "Git Browse (open)" },
+
+
         { "<leader>i", group = "Utilities" },
         { "<leader>ie", "<Cmd>EslintFixAll<CR>", desc = "Fix eslint errors" },
         { "<leader>it", "<Cmd>vs#<CR>", desc = "Reopen recently closed buffer" },
@@ -92,12 +105,6 @@ return {
         { "<leader>ico", "<Cmd>GitConflictChooseOurs<CR>", desc = "Choose ours" },
         { "<leader>ict", "<Cmd>GitConflictChooseTheirs<CR>", desc = "Choose theirs" },
 
-        -- stylua: ignore
-        { "<leader>qc", function() Snacks.bufdelete() end, desc = "Close Buffer" },
-        -- stylua: ignore
-        { "<leader>gl", function() Snacks.lazygit.log({ cwd = LazyVim.root.git() }) end, desc = "Lazygit Log" },
-        -- stylua: ignore
-        { "<leader>gL", function() Snacks.lazygit.log() end, desc = "Lazygit Log (cwd)" },
       },
     },
   },

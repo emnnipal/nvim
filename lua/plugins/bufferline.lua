@@ -54,14 +54,12 @@ return {
         -- end,
       },
     },
+    -- stylua: ignore
     keys = {
-      {
-        "<leader>bo",
-        function()
-          Snacks.bufdelete.other()
-        end,
-        desc = "Delete Other Buffers",
-      },
+      { "<leader>bd", function() Snacks.bufdelete() end, desc = "Close Buffer" },
+      { "<leader>qc", "<leader>bd",  desc = "Close Buffer", remap = true },
+
+      { "<leader>bo", function() Snacks.bufdelete.other() end, desc = "Delete Other Buffers" },
       { "<leader>bp", "<Cmd>BufferLineTogglePin<CR>", desc = "Toggle Pin" },
       { "<leader>bP", "<Cmd>BufferLineGroupClose ungrouped<CR>", desc = "Delete Non-Pinned Buffers" },
       { "<leader>br", "<Cmd>BufferLineCloseRight<CR>", desc = "Delete Buffers to the Right" },
