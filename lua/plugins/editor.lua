@@ -4,4 +4,45 @@
 -- See the kickstart.nvim README for more information
 return {
   "tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
+
+  {
+    "smoka7/hop.nvim",
+    event = "BufReadPre",
+    config = function()
+      local hop = require("hop")
+      hop.setup()
+      vim.keymap.set("n", "m", function()
+        hop.hint_words()
+      end, { remap = true, desc = "Hop" })
+    end,
+  },
+
+  {
+    "Wansmer/treesj",
+    event = "VeryLazy",
+    dependencies = { "nvim-treesitter" },
+    opts = {
+      use_default_keymaps = false,
+      max_join_length = 1200,
+    },
+    keys = {
+      { "<leader>m", "<Cmd>TSJToggle<CR>", desc = "Toggle split/join" },
+    },
+  },
+  {
+    "kylechui/nvim-surround",
+    event = "BufReadPre",
+    opts = {},
+  },
+  {
+    "mg979/vim-visual-multi",
+    event = "BufReadPre",
+  },
+  {
+    "akinsho/git-conflict.nvim",
+    event = "BufReadPre",
+    opts = {
+      default_mappings = false,
+    },
+  },
 }
