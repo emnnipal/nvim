@@ -17,13 +17,14 @@ return {
       -- Document existing key chains
       spec = {
         mode = { "n", "v" },
-        -- { '<leader>c', group = '[C]ode', mode = { 'n', 'x' } },
+        { "<leader>c", group = "Code", mode = { "n", "x" } },
         -- { '<leader>d', group = '[D]ocument' },
         -- { '<leader>r', group = '[R]ename' },
-        { "<leader>s", group = "Search" },
+        { "<leader>b", group = "Buffers" },
+        { "<leader>b", group = "Buffers" },
         { "<leader>f", group = "Files" },
-        -- { '<leader>w', group = '[W]orkspace' },
-        -- { '<leader>t', group = '[T]oggle' },
+        { "<leader>q", group = "Quit/Session" },
+        { "<leader>s", group = "Search" },
         -- { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
 
         { "<leader>w", "<Cmd>update<CR>", desc = "Write" },
