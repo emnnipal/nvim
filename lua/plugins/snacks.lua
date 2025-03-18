@@ -1,3 +1,4 @@
+-- TODO: use mini.icons
 return {
   {
     "folke/snacks.nvim",
