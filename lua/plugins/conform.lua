@@ -1,8 +1,10 @@
+-- TODO: for now, copy how lazyvim implemented it, then figure it out afterwards why folke did the implementation
 return {
-  { -- Autoformat
+  {
     "stevearc/conform.nvim",
-    event = { "BufWritePre" },
-    cmd = { "ConformInfo" },
+    dependencies = { "mason.nvim" },
+    lazy = true,
+    cmd = "ConformInfo",
     keys = {
       {
         "<leader>cf",
