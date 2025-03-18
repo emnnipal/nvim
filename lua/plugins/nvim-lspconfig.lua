@@ -1,3 +1,7 @@
+-- TODO: or do it the classic way, define nvim lspconfig specific stuff on it's own plugin file. lazyvim is nice, but it isn't good if you can't understand it
+
+-- TODO: for conform nvim, do it the classic way first and make it work, then learn how to do extend pattern and implement it via config param of lazy.nvim
+
 return {
   {
     -- Main LSP Configuration

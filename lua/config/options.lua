@@ -13,12 +13,12 @@ vim.opt.conceallevel = 0
 vim.o.termsync = false
 
 -- TODO: lazyvim specific
--- vim.g.lazyvim_eslint_auto_format = false
+vim.g.lazyvim_eslint_auto_format = false
 
 vim.g.snacks_animate = false
 
 -- TODO: lazyvim specific
--- vim.g.lazyvim_prettier_needs_config = true
+vim.g.lazyvim_prettier_needs_config = true
 
 vim.o.showcmd = false -- Hide key presses showing in command line
 
