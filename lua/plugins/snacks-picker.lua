@@ -1,6 +1,6 @@
 ---@diagnostic disable: missing-fields, assign-type-mismatch
 
--- ---@type snacks.layout.Box
+---@type snacks.layout.Box
 local vertical_layout = {
   backdrop = false,
   width = 110,

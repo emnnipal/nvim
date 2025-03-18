@@ -3,7 +3,12 @@ return {
     "folke/snacks.nvim",
     priority = 1000,
     lazy = false,
+    ---@module 'snacks'
+    ---@type snacks.Config
     opts = {
+      dashboard = { enabled = true },
+      indent = { enabled = true, scope = { enabled = false } },
+      picker = { enabled = true },
       -- indent = {
       --   scope = { enabled = false },
       -- },
@@ -19,8 +24,6 @@ return {
           col = 0,
         },
       },
-      indent = { enabled = true, scope = { enabled = false } },
-      picker = { enabled = true },
 
       notifier = { enabled = false },
       scope = { enabled = false },
@@ -30,13 +33,12 @@ return {
       words = { enabled = false },
 
       bigfile = { enabled = false },
-      dashboard = { enabled = true },
-      quickfile = { enabled = true },
-      styles = {
-        notification = {
-          -- wo = { wrap = true } -- Wrap notifications
-        },
-      },
+      quickfile = { enabled = false },
+      -- styles = {
+      --   notification = {
+      --     -- wo = { wrap = true } -- Wrap notifications
+      --   },
+      -- },
     },
     init = function()
       vim.api.nvim_create_autocmd("User", {

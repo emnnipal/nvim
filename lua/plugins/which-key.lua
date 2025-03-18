@@ -62,17 +62,17 @@ return {
             else
               ---@module 'snacks'
               ---@diagnostic disable-next-line: missing-fields
-              -- Snacks.lazygit({
-              --   cwd = cwd,
-              --   win = {
-              --     width = 0,
-              --     height = 0,
-              --     style = "lazygit",
-              --     keys = {
-              --       term_normal = false, -- Prevent from going to normal mode with esc_esc when in lazygit
-              --     },
-              --   },
-              -- })
+              Snacks.lazygit({
+                cwd = cwd,
+                win = {
+                  width = 0,
+                  height = 0,
+                  style = "lazygit",
+                  keys = {
+                    term_normal = false, -- Prevent from going to normal mode with esc_esc when in lazygit
+                  },
+                },
+              })
             end
           end,
           desc = "Lazygit (cwd)",
