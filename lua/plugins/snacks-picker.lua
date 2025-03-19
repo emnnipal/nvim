@@ -128,7 +128,7 @@ return {
   {
     "neovim/nvim-lspconfig",
     opts = function()
-      local Keys = require("config.lsp").get()
+      local Keys = require("config.lsp").keymaps()
       vim.list_extend(Keys, {
         {
           "gd",

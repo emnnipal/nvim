@@ -1,6 +1,6 @@
 local M = {}
 
-function M.get()
+function M.keymaps()
   if M._keys then
     return M._keys
   end
@@ -32,6 +32,53 @@ function M.get()
     }
 
   return M._keys
+end
+
+---@return LazyKeysLsp[]
+function M.resolve(buffer)
+  local Keys = require("lazy.core.handler.keys")
+  if not Keys.resolve then
+    return {}
+  end
+  local spec = vim.tbl_extend("force", {}, M.get())
+  local opts = LazyVim.opts("nvim-lspconfig")
+  local clients = LazyVim.lsp.get_clients({ bufnr = buffer })
+  for _, client in ipairs(clients) do
+    local maps = opts.servers[client.name] and opts.servers[client.name].keys or {}
+    vim.list_extend(spec, maps)
+  end
+  return Keys.resolve(spec)
+end
+
+local skip = { mode = true, id = true, ft = true, rhs = true, lhs = true }
+function M.opts(keys)
+  local opts = {} ---@type LazyKeysBase
+  ---@diagnostic disable-next-line: no-unknown
+  for k, v in pairs(keys) do
+    if type(k) ~= "number" and not skip[k] then
+      ---@diagnostic disable-next-line: no-unknown
+      opts[k] = v
+    end
+  end
+  return opts
+end
+
+function M.on_attach(_, buffer)
+  local keymaps = M.resolve(buffer)
+
+  for _, keys in pairs(keymaps) do
+    local has = not keys.has or M.has(buffer, keys.has)
+    local cond = not (keys.cond == false or ((type(keys.cond) == "function") and not keys.cond()))
+
+    if has and cond then
+      local opts = M.opts(keys)
+      opts.cond = nil
+      opts.has = nil
+      opts.silent = opts.silent ~= false
+      opts.buffer = buffer
+      vim.keymap.set(keys.mode or "n", keys.lhs, keys.rhs, opts)
+    end
+  end
 end
 
 return M

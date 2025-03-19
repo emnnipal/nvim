@@ -6,8 +6,8 @@ return {
     cmd = "Mason",
     keys = { { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" } },
     build = ":MasonUpdate",
-    -- TODO: check what is this for. From lazyvim
-    -- opts_extend = { "ensure_installed" },
+    -- NOTE: This ensures that 'ensure_installed' is not overridden but extended when defined multiple times.
+    opts_extend = { "ensure_installed" },
     opts = {
       ensure_installed = {
         "stylua",
@@ -16,6 +16,7 @@ return {
     },
     ---@param opts MasonSettings | {ensure_installed: string[]}
     config = function(_, opts)
+      vim.print(vim.inspect(opts))
       require("mason").setup(opts)
       local mr = require("mason-registry")
       mr:on("package:install:success", function()
