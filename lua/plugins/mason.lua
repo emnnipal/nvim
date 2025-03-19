@@ -6,7 +6,7 @@ return {
     cmd = "Mason",
     keys = { { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" } },
     build = ":MasonUpdate",
-    -- NOTE: This ensures that 'ensure_installed' is not overridden but extended when defined multiple times.
+    -- NOTE: This ensures that 'ensure_installed' is not overridden but extended when defined multiple times in different plugin files.
     opts_extend = { "ensure_installed" },
     opts = {
       ensure_installed = {
@@ -16,7 +16,6 @@ return {
     },
     ---@param opts MasonSettings | {ensure_installed: string[]}
     config = function(_, opts)
-      vim.print(vim.inspect(opts))
       require("mason").setup(opts)
       local mr = require("mason-registry")
       mr:on("package:install:success", function()

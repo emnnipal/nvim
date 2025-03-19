@@ -1,7 +1,3 @@
--- TODO: or do it the classic way, define nvim lspconfig specific stuff on it's own plugin file. lazyvim is nice, but it isn't good if you can't understand it
-
--- TODO: for conform nvim, do it the classic way first and make it work, then learn how to do extend pattern and implement it via config param of lazy.nvim
-
 return {
   {
     -- Main LSP Configuration
@@ -13,7 +9,7 @@ return {
       -- "WhoIsSethDaniel/mason-tool-installer.nvim",
 
       -- Useful status updates for LSP.
-      { "j-hui/fidget.nvim",       opts = {} },
+      { "j-hui/fidget.nvim", opts = {} },
 
       -- Allows extra capabilities provided by nvim-cmp
       "hrsh7th/cmp-nvim-lsp",
@@ -57,7 +53,7 @@ return {
             },
           },
         },
-      }
+      },
       -- TODO: for testing, do I really need this?
       -- add any global capabilities here
       -- capabilities = {
@@ -68,7 +64,6 @@ return {
       --     },
       --   },
       -- },
-
     },
     config = function(_, opts)
       vim.api.nvim_create_autocmd("LspAttach", {
@@ -142,8 +137,8 @@ return {
           -- When you move your cursor, the highlights will be cleared (the second autocommand).
           local client = vim.lsp.get_client_by_id(event.data.client_id)
           if
-              client
-              and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_documentHighlight, event.buf)
+            client
+            and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_documentHighlight, event.buf)
           then
             local highlight_augroup = vim.api.nvim_create_augroup("kickstart-lsp-highlight", { clear = false })
             vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
@@ -218,8 +213,6 @@ return {
       local servers = opts.servers or {}
       local ensure_installed = vim.tbl_keys(servers or {})
 
-      vim.print(vim.inspect(opts.servers))
-
       -- NOTE: if you want a single plugin handling all the plugin installation, regardless if it's an LSP or a formatter or whatnot, use this.
       -- vim.list_extend(ensure_installed, {
       --   "stylua", -- Used to format Lua code
@@ -228,7 +221,7 @@ return {
 
       require("mason-lspconfig").setup({
         ensure_installed = ensure_installed, -- NOTE: if you use mason-tool-installer, set this to empty table {}
-        automatic_installation = true,       -- NOTE: if you use mason-tool-installer, set this to false.
+        automatic_installation = true, -- NOTE: if you use mason-tool-installer, set this to false.
         handlers = {
           function(server_name)
             local server = servers[server_name] or {}
