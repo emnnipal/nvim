@@ -28,6 +28,8 @@ return {
         { "<leader>s", group = "Search" },
         -- { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
 
+        {  "<leader>l", "<cmd>Lazy<cr>",  desc = "Lazy"  },
+
         { "<leader>w", "<Cmd>update<CR>", desc = "Write" },
         { "<leader>W", "<Cmd>noautocmd w<CR>", desc = "Save without formatting" },
         { "<leader>bh", "<Cmd>BufferLineCloseLeft<cr>", desc = "Close all to the left" },
