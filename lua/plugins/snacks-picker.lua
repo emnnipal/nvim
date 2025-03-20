@@ -49,33 +49,17 @@ return {
       { "<leader>sg",function() Snacks.picker.grep({ layout = { preview = true, layout = vertical_layout } }) end, desc = "Grep (cwd)" },
       { "<leader>/", "<leader>sg", desc = "Grep (cwd)", remap = true },
 
-      -- TODO: remove if I no longer need it.
-      -- TODO: open file picker based on root dir.
-      -- { "<leader>sG",function() Snacks.picker.grep({ root = false, layout = { preview = true, layout = vertical_layout } }) end, desc = "Grep (cwd)" },
-      -- { "<leader>sg",function() Snacks.picker.grep({ layout = { preview = true, layout = vertical_layout } }) end, desc = "Grep (Root Dir)" },
-      -- { "<leader>/", "<leader>sG", desc = "Grep (cwd)", remap = true },
-
       { "<leader>fb", function() Snacks.picker.buffers({ layout = { preview = false, layout = vertical_layout }}) end, desc = "Buffers" },
       { "<leader>fB", function() Snacks.picker.buffers({ hidden = true, nofile = true, layout = { preview = false, layout = vertical_layout } }) end, desc = "Buffers (all)" },
 
       { "<leader>ff",function() Snacks.picker.files({ layout = { preview = false, layout = vertical_layout } }) end, desc = "Find Files (cwd)" },
 
-      -- TODO: remove if I no longer need it.
-      -- TODO: open file picker based on root dir.
-      -- { "<leader>fF",function() Snacks.picker.files({ root = false, layout = { preview = false, layout = vertical_layout } }) end, desc = "Find Files (cwd)" },
-      -- { "<leader>ff",function() Snacks.picker.files({ layout = { preview = false, layout = vertical_layout } }) end, desc = "Find Files (Root Dir)" },
-
-      { "<leader><space>", "<leader>ff", desc = "Find Files (Root Dir)", remap = true },
-
-      -- Smart picker
-      -- { "<leader>ff", LazyVim.pick("smart", { filter = { cwd = true }, layout = { preview = false, layout = vertical_layout } }), desc = "Find Files (Root Dir)" },
-      -- { "<leader>fF", LazyVim.pick("smart", { filter = { cwd = true }, root = false, layout = { preview = false, layout = vertical_layout } }), desc = "Find Files" },
+      -- { "<leader><space>", "<leader>ff", desc = "Find Files (Root Dir)", remap = true },
+      { "<leader><space>", function() Snacks.picker.smart({ layout = { preview = false, layout = vertical_layout } }) end, desc = "Smart Find Files" },
 
       { "<leader>fr",function() Snacks.picker.recent({ filter = { cwd = true }, layout = { preview = false, layout = vertical_layout } }) end, desc = "Recent (cwd)" },
       { "<leader>fR",function() Snacks.picker.recent({ layout = { preview = false, layout = vertical_layout } }) end, desc = "Recent (all)" },
 
-
-      -- TODO: remove unused
       { "<leader>,", function() Snacks.picker.buffers() end, desc = "Buffers" },
       { "<leader>:", function() Snacks.picker.command_history() end, desc = "Command History" },
       { "<leader>n", function() Snacks.picker.notifications() end, desc = "Notification History" },
@@ -90,10 +74,8 @@ return {
       { "<leader>sb", function() Snacks.picker.lines() end, desc = "Buffer Lines" },
       { "<leader>sB", function() Snacks.picker.grep_buffers() end, desc = "Grep Open Buffers" },
       { "<leader>sp", function() Snacks.picker.lazy() end, desc = "Search for Plugin Spec" },
-      -- { "<leader>sw", LazyVim.pick("grep_word"), desc = "Visual selection or word (Root Dir)", mode = { "n", "x" } },
-      -- { "<leader>sW", LazyVim.pick("grep_word", { root = false }), desc = "Visual selection or word (cwd)", mode = { "n", "x" } },
       { "<leader>sw", function() Snacks.picker.grep_word() end, desc = "Visual selection or word", mode = { "n", "x" } },
-      { "<leader>sW", function() Snacks.picker.grep_word({ root = false }) end, desc = "Visual selection or word", mode = { "n", "x" } }, 
+      { "<leader>sW", function() Snacks.picker.grep_word({ root = false }) end, desc = "Visual selection or word", mode = { "n", "x" } },
 
       -- search
       { '<leader>s"', function() Snacks.picker.registers() end, desc = "Registers" },
