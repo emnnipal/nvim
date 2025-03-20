@@ -1,6 +1,3 @@
--- Neo-tree is a Neovim plugin to browse the file system
--- https://github.com/nvim-neo-tree/neo-tree.nvim
-
 return {
   "nvim-neo-tree/neo-tree.nvim",
   version = "*",
@@ -45,14 +42,6 @@ return {
       -- follow_current_file = { enabled = true },
       -- use_libuv_file_watcher = true,
     },
-    default_component_configs = {
-      type = {
-        enabled = false,
-      },
-      -- icon = {
-      --   enabled = false,
-      -- },
-    },
     window = {
       popup = {
         size = {
@@ -81,6 +70,12 @@ return {
       },
     },
     default_component_configs = {
+      type = {
+        enabled = false,
+      },
+      -- icon = {
+      --   enabled = false,
+      -- },
       indent = {
         with_expanders = true, -- if nil and file nesting is enabled, will enable expanders
         expander_collapsed = "",

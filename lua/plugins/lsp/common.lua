@@ -38,6 +38,7 @@ return {
     opts = function(_, opts)
       -- Add your desired syntax parsers here to ensure they are installed
       vim.list_extend(opts.ensure_installed, { "svelte", "prisma" })
+      vim.print(vim.inspect(opts.ensure_installed))
     end,
   },
   {

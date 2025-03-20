@@ -58,6 +58,7 @@ return {
     end,
   },
 
+  -- Snacks Explorer
   -- {
   --   "snacks.nvim",
   --   ---@module 'snacks'

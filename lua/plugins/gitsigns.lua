@@ -1,10 +1,4 @@
 return {
-  -- See `:help gitsigns` to understand what the configuration keys do
-  -- Adds git related signs to the gutter, as well as utilities for managing changes
-
-  -- git signs highlights text that has changed since the list
-  -- git commit, and also lets you interactively stage & unstage
-  -- hunks in a commit.
   {
     "lewis6991/gitsigns.nvim",
     -- event = "LazyFile",

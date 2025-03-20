@@ -35,23 +35,6 @@ return {
         close_command = function(n) Snacks.bufdelete(n) end,
         -- stylua: ignore
         right_mouse_command = function(n) Snacks.bufdelete(n) end,
-        always_show_bufferline = false,
-        -- NOTE: from lazyvim
-        -- offsets = {
-        --   {
-        --     filetype = "neo-tree",
-        --     text = "Neo-tree",
-        --     highlight = "Directory",
-        --     text_align = "left",
-        --   },
-        --   {
-        --     filetype = "snacks_layout_box",
-        --   },
-        -- },
-        -- ---@param opts bufferline.IconFetcherOpts
-        -- get_element_icon = function(opts)
-        --   return LazyVim.config.icons.ft[opts.filetype]
-        -- end,
       },
     },
     -- stylua: ignore
