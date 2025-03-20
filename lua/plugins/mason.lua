@@ -3,7 +3,7 @@ return {
 
     "williamboman/mason.nvim",
     cmd = "Mason",
-    keys = { { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" } },
+    event = "BufReadPre",
     build = ":MasonUpdate",
     -- NOTE: This ensures that 'ensure_installed' is not overridden but extended when defined multiple times in different plugin files.
     opts_extend = { "ensure_installed" },
@@ -36,5 +36,6 @@ return {
         end
       end)
     end,
+    keys = { { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" } },
   },
 }
