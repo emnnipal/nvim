@@ -55,7 +55,6 @@ return {
         additional_vim_regex_highlighting = { "ruby" },
       },
       indent = { enable = true, disable = { "ruby" } },
-      -- TODO: From lazyvim. Check what is this for.
       textobjects = {
         move = {
           enable = true,
