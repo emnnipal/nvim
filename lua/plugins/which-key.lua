@@ -23,9 +23,10 @@ return {
         { "<leader>b", group = "Buffers" },
         { "<leader>c", group = "Code", mode = { "n", "x" } },
         { "<leader>g", group = "Git" },
-        { "<leader>f", group = "Files" },
+        { "<leader>f", group = "File/Find" },
         { "<leader>q", group = "Quit/Session" },
         { "<leader>s", group = "Search" },
+        { "<leader>x", group = "diagnostics/quickfix", icon = { icon = "󱖫 ", color = "green" } },
         -- { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
 
         {  "<leader>l", "<cmd>Lazy<cr>",  desc = "Lazy"  },
