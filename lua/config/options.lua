@@ -31,6 +31,9 @@ vim.g.have_nerd_font = true
 
 --  For more options, you can see `:help option-list`
 
+vim.opt.pumheight = 10 -- Maximum number of entries in a popup
+vim.opt.relativenumber = true -- Relative line numbers
+
 -- Make line numbers default
 vim.opt.number = true
 -- You can also add relative line numbers, to help with jumping.
@@ -58,8 +61,9 @@ vim.opt.breakindent = true
 vim.opt.undofile = true
 
 -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
+vim.opt.smartcase = true -- Don't ignore case with capitals
+vim.opt.smartindent = true -- Insert indents automatically
 vim.opt.ignorecase = true
-vim.opt.smartcase = true
 
 -- Keep signcolumn on by default
 vim.opt.signcolumn = "yes"
