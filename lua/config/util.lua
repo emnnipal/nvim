@@ -6,18 +6,44 @@ function M.is_windows()
 end
 
 -- Source: LazyVim/lua/lazyvim/util/init.lua
-local cache = {} ---@type table<(fun()), table<string, any>>
+local memoizeCache = {} ---@type table<(fun()), table<string, any>>
 ---@generic T: fun()
 ---@param fn T
 ---@return T
 function M.memoize(fn)
   return function(...)
     local key = vim.inspect({ ... })
-    cache[fn] = cache[fn] or {}
-    if cache[fn][key] == nil then
-      cache[fn][key] = fn(...)
+    memoizeCache[fn] = memoizeCache[fn] or {}
+    if memoizeCache[fn][key] == nil then
+      memoizeCache[fn][key] = fn(...)
     end
-    return cache[fn][key]
+    return memoizeCache[fn][key]
+  end
+end
+
+local project_root_cache = {}
+
+function M.find_nearest_package_json()
+  local current_dir = vim.fn.expand("%:p:h")
+
+  -- Normalize current directory to avoid issues
+  current_dir = vim.fn.fnamemodify(current_dir, ":p")
+
+  -- Check cache first
+  if project_root_cache[current_dir] then
+    return project_root_cache[current_dir]
+  end
+
+  -- Find package.json
+  local package_json_path = vim.fn.findfile("package.json", current_dir .. ";")
+  if package_json_path ~= "" then
+    local root = vim.fn.fnamemodify(package_json_path, ":h")
+    -- Normalize the root to avoid mismatches
+    root = vim.fn.fnamemodify(root, ":p")
+    project_root_cache[current_dir] = root
+    return root
+  else
+    return vim.loop.cwd()
   end
 end
 
