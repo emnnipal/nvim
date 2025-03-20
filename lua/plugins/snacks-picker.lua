@@ -23,7 +23,7 @@ return {
     opts = {
       picker = {
         enabled = true,
-        ui_select = false,
+        ui_select = true,
         formatters = {
           file = {
             -- filename_first = true,
