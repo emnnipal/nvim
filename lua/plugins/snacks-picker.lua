@@ -45,35 +45,39 @@ return {
     -- stylua: ignore
     keys = {
       { "<leader>R", function() Snacks.picker.resume() end, desc = "Use Recent Picker" },
-      -- { "<leader>sg",  LazyVim.pick("live_grep", { layout = { preview = true, layout = vertical_layout } }), desc = "Grep (Root Dir)" },
-      -- { "<leader>sG", LazyVim.pick("live_grep", { root = false, layout = { preview = true, layout = vertical_layout } }), desc = "Grep (cwd)" },
-      { "<leader>sg",function() Snacks.picker.grep({ layout = { preview = true, layout = vertical_layout } }) end, desc = "Grep (Root Dir)" },
-      { "<leader>sG",function() Snacks.picker.grep({ root = false, layout = { preview = true, layout = vertical_layout } }) end, desc = "Grep (cwd)" },
-      { "<leader>/", "<leader>sG", desc = "Grep (cwd)", remap = true },
+
+      { "<leader>sg",function() Snacks.picker.grep({ layout = { preview = true, layout = vertical_layout } }) end, desc = "Grep (cwd)" },
+      { "<leader>/", "<leader>sg", desc = "Grep (cwd)", remap = true },
+
+      -- TODO: remove if I no longer need it.
+      -- TODO: open file picker based on root dir.
+      -- { "<leader>sG",function() Snacks.picker.grep({ root = false, layout = { preview = true, layout = vertical_layout } }) end, desc = "Grep (cwd)" },
+      -- { "<leader>sg",function() Snacks.picker.grep({ layout = { preview = true, layout = vertical_layout } }) end, desc = "Grep (Root Dir)" },
+      -- { "<leader>/", "<leader>sG", desc = "Grep (cwd)", remap = true },
+
       { "<leader>fb", function() Snacks.picker.buffers({ layout = { preview = false, layout = vertical_layout }}) end, desc = "Buffers" },
       { "<leader>fB", function() Snacks.picker.buffers({ hidden = true, nofile = true, layout = { preview = false, layout = vertical_layout } }) end, desc = "Buffers (all)" },
 
-      -- { "<leader>fF", LazyVim.pick("files", { layout = { preview = false, layout = vertical_layout } }), desc = "Find Files (Root Dir)" },
-      -- { "<leader>ff", LazyVim.pick("files", { root = false, layout = { preview = false, layout = vertical_layout } }), desc = "Find Files (cwd)" },
-      { "<leader>ff",function() Snacks.picker.files({ layout = { preview = false, layout = vertical_layout } }) end, desc = "Find Files (Root Dir)" },
-      { "<leader>fF",function() Snacks.picker.files({ root = false, layout = { preview = false, layout = vertical_layout } }) end, desc = "Find Files (cwd)" },
+      { "<leader>ff",function() Snacks.picker.files({ layout = { preview = false, layout = vertical_layout } }) end, desc = "Find Files (cwd)" },
+
+      -- TODO: remove if I no longer need it.
+      -- TODO: open file picker based on root dir.
+      -- { "<leader>fF",function() Snacks.picker.files({ root = false, layout = { preview = false, layout = vertical_layout } }) end, desc = "Find Files (cwd)" },
+      -- { "<leader>ff",function() Snacks.picker.files({ layout = { preview = false, layout = vertical_layout } }) end, desc = "Find Files (Root Dir)" },
 
       { "<leader><space>", "<leader>ff", desc = "Find Files (Root Dir)", remap = true },
+
+      -- Smart picker
       -- { "<leader>ff", LazyVim.pick("smart", { filter = { cwd = true }, layout = { preview = false, layout = vertical_layout } }), desc = "Find Files (Root Dir)" },
       -- { "<leader>fF", LazyVim.pick("smart", { filter = { cwd = true }, root = false, layout = { preview = false, layout = vertical_layout } }), desc = "Find Files" },
 
-      -- TODO: remap
-      -- { "<leader>fr", LazyVim.pick("oldfiles", { filter = { cwd = true }, layout = { preview = false, layout = vertical_layout } }), desc = "Recent (Root Dir)" },
-      -- { "<leader>fR", LazyVim.pick("oldfiles", { root = false, filter = { cwd = true }, layout = { preview = false, layout = vertical_layout } }), desc = "Recent" },
-      { "<leader>fr",function() Snacks.picker.recent({ filter = { cwd = true }, layout = { preview = false, layout = vertical_layout } }) end, desc = "Recent (Root Dir)" },
-      { "<leader>fR",function() Snacks.picker.recent({ root = false, filter = { cwd = true }, layout = { preview = false, layout = vertical_layout } }) end, desc = "Recent" },
+      { "<leader>fr",function() Snacks.picker.recent({ filter = { cwd = true }, layout = { preview = false, layout = vertical_layout } }) end, desc = "Recent (cwd)" },
+      { "<leader>fR",function() Snacks.picker.recent({ layout = { preview = false, layout = vertical_layout } }) end, desc = "Recent (all)" },
 
 
       -- TODO: remove unused
       { "<leader>,", function() Snacks.picker.buffers() end, desc = "Buffers" },
-      -- { "<leader>/", LazyVim.pick("grep"), desc = "Grep (Root Dir)" },
       { "<leader>:", function() Snacks.picker.command_history() end, desc = "Command History" },
-      -- { "<leader><space>", LazyVim.pick("files"), desc = "Find Files (Root Dir)" },
       { "<leader>n", function() Snacks.picker.notifications() end, desc = "Notification History" },
       -- find
       { "<leader>fg", function() Snacks.picker.git_files() end, desc = "Find Files (git-files)" },

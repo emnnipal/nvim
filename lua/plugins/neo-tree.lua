@@ -113,30 +113,45 @@ return {
   end,
 
   keys = {
-    -- { -- TODO: this seems to be the same as <leader>E which is opening neo-tree relative the cwd regardless if we are in a monorepo.
-    --   "<leader>e",
-    --   function()
-    --     require("neo-tree.command").execute({
-    --       toggle = true,
-    --       dir = vim.fn.getcwd(), -- TODO: this seems to be not the correct Lazyvim.root equivalent
-    --       reveal = true,
-    --       position = "float",
-    --     })
-    --   end,
-    --   desc = "Explorer NeoTree (Root Dir)",
-    -- },
     {
       "<leader>e",
       function()
         require("neo-tree.command").execute({
           toggle = true,
-          dir = vim.uv.cwd(),
           reveal = true,
           position = "float",
         })
       end,
       desc = "Explorer NeoTree (cwd)",
     },
+
+    -- TODO: remove if I no longer need it.
+    -- TODO: this seems to be the same as <leader>E which is opening neo-tree relative the cwd regardless if we are in a monorepo.
+    -- {
+    --   "<leader>e",
+    --   function()
+    --     require("neo-tree.command").execute({
+    --       toggle = true,
+    --       dir = vim.fn.getcwd(), -- TODO: open neo tree based on root dir
+    --       reveal = true,
+    --       position = "float",
+    --     })
+    --   end,
+    --   desc = "Explorer NeoTree (Root Dir)",
+    -- },
+    -- {
+    --   "<leader>E",
+    --   function()
+    --     require("neo-tree.command").execute({
+    --       toggle = true,
+    --       dir = vim.uv.cwd(),
+    --       reveal = true,
+    --       position = "float",
+    --     })
+    --   end,
+    --   desc = "Explorer NeoTree (cwd)",
+    -- },
+
     {
       "<leader>ge",
       function()
