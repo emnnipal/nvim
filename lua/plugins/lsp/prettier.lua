@@ -1,3 +1,5 @@
+vim.g.lazyvim_prettier_needs_config = true
+
 ---@alias ConformCtx {buf: number, filename: string, dirname: string}
 local M = {}
 
