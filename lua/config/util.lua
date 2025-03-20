@@ -21,32 +21,6 @@ function M.memoize(fn)
   end
 end
 
-local project_root_cache = {}
-
-function M.find_nearest_package_json()
-  local current_dir = vim.fn.expand("%:p:h")
-
-  -- Normalize current directory to avoid issues
-  current_dir = vim.fn.fnamemodify(current_dir, ":p")
-
-  -- Check cache first
-  if project_root_cache[current_dir] then
-    return project_root_cache[current_dir]
-  end
-
-  -- Find package.json
-  local package_json_path = vim.fn.findfile("package.json", current_dir .. ";")
-  if package_json_path ~= "" then
-    local root = vim.fn.fnamemodify(package_json_path, ":h")
-    -- Normalize the root to avoid mismatches
-    root = vim.fn.fnamemodify(root, ":p")
-    project_root_cache[current_dir] = root
-    return root
-  else
-    return vim.loop.cwd()
-  end
-end
-
 function M.git()
   local root = M.get()
   local git_root = vim.fs.find(".git", { path = root, upward = true })[1]
