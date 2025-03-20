@@ -15,7 +15,7 @@ return {
 
   {
     "Wansmer/treesj",
-    event = "VeryLazy",
+    event = "BufWritePre",
     dependencies = { "nvim-treesitter" },
     opts = {
       use_default_keymaps = false,
