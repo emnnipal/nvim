@@ -68,14 +68,14 @@ return {
       },
       -- TODO: for testing, do I really need this?
       -- add any global capabilities here
-      -- capabilities = {
-      --   workspace = {
-      --     fileOperations = {
-      --       didRename = true,
-      --       willRename = true,
-      --     },
-      --   },
-      -- },
+      capabilities = {
+        workspace = {
+          fileOperations = {
+            didRename = true,
+            willRename = true,
+          },
+        },
+      },
     },
     config = function(_, opts)
       vim.api.nvim_create_autocmd("LspAttach", {
@@ -246,7 +246,12 @@ return {
       -- })
 
       local capabilities = vim.lsp.protocol.make_client_capabilities()
-      capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
+      capabilities = vim.tbl_deep_extend(
+        "force",
+        capabilities,
+        require("cmp_nvim_lsp").default_capabilities(),
+        opts.capabilities or {}
+      )
 
       local servers = opts.servers or {}
       local ensure_installed = vim.tbl_keys(servers or {})
