@@ -1,3 +1,18 @@
+---@type snacks.layout.Box
+local vertical_layout = {
+  backdrop = false,
+  width = 110,
+  height = 0.70,
+  box = "vertical",
+  border = "rounded",
+  title = "{source} {live}",
+  title_pos = "center",
+  -- row = 1,
+  { win = "preview", height = 0.6, border = "bottom" },
+  { win = "input", height = 1, border = "bottom" },
+  { win = "list" },
+}
+
 return {
   {
     -- Main LSP Configuration
@@ -76,46 +91,68 @@ return {
           -- for LSP related items. It sets the mode, buffer and description for us each time.
           local map = function(keys, func, desc, mode)
             mode = mode or "n"
-            vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
+            vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = desc })
           end
 
-          -- TODO: check for missed telescope keymaps to snacks picker
-          -- Jump to the definition of the word under your cursor.
-          --  This is where a variable was first declared, or where a function is defined, etc.
-          --  To jump back, press <C-t>.
-          -- map("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
+          -- { "<leader>cl", function() Snacks.picker.lsp_config() end, desc = "Lsp Info" },
+          -- { "gd", vim.lsp.buf.definition, desc = "Goto Definition", has = "definition" },
+          -- { "gr", vim.lsp.buf.references, desc = "References", nowait = true },
 
-          -- Find references for the word under your cursor.
-          -- map("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
+          -- stylua: ignore
+          map("gI", vim.lsp.buf.implementation, "Goto Implementation")
+          map("gy", vim.lsp.buf.type_definition, "Goto T[y]pe Definition")
+          map("gD", vim.lsp.buf.declaration, "Goto Declaration")
+          -- stylua: ignore
+          map("gh", function() return vim.lsp.buf.hover() end, "Hover")
+          -- stylua: ignore
+          map("gk", function() return vim.lsp.buf.signature_help() end, "Signature Help")
+          -- stylua: ignore
+          map("<c-k>", function() return vim.lsp.buf.signature_help() end, "Signature Help", "i")
+          map("<leader>ca", vim.lsp.buf.code_action, "Code Action", { "n", "v" })
+          map("<leader>cc", vim.lsp.codelens.run, "Run Codelens", { "n", "v" })
+          map("<leader>cC", vim.lsp.codelens.refresh, "Refresh & Display Codelens")
+          -- stylua: ignore
+          map("<leader>cR", function() Snacks.rename.rename_file() end, "Rename File")
+          map("<leader>cr", vim.lsp.buf.rename, "Rename")
 
-          -- Jump to the implementation of the word under your cursor.
-          --  Useful when your language has ways of declaring types without an actual implementation.
-          -- map("gI", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
+          -- TODO: how to implement this without lazyvim
 
-          -- Jump to the type of the word under your cursor.
-          --  Useful when you're not sure what type a variable is and you want to see
-          --  the definition of its *type*, not where it was *defined*.
-          -- map("<leader>D", require("telescope.builtin").lsp_type_definitions, "Type [D]efinition")
+          -- map( "<leader>cA", LazyVim.lsp.action.source, desc = "Source Action"),
+          -- { "]]", function() Snacks.words.jump(vim.v.count1) end, has = "documentHighlight",
+          --   desc = "Next Reference", cond = function() return Snacks.words.is_enabled() end },
+          -- { "[[", function() Snacks.words.jump(-vim.v.count1) end, has = "documentHighlight",
+          --   desc = "Prev Reference", cond = function() return Snacks.words.is_enabled() end },
+          -- { "<a-n>", function() Snacks.words.jump(vim.v.count1, true) end, has = "documentHighlight",
+          --   desc = "Next Reference", cond = function() return Snacks.words.is_enabled() end },
+          -- { "<a-p>", function() Snacks.words.jump(-vim.v.count1, true) end, has = "documentHighlight",
+          --   desc = "Prev Reference", cond = function() return Snacks.words.is_enabled() end },
 
-          -- Fuzzy find all the symbols in your current document.
-          --  Symbols are things like variables, functions, types, etc.
-          -- map("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
+          -- TODO: check how lazyvim implemented this to be extensible. 
 
-          -- Fuzzy find all the symbols in your current workspace.
-          --  Similar to document symbols, except searches over your entire project.
-          -- map('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
+          -- Snacks picker specific keymaps
 
-          -- Rename the variable under your cursor.
-          --  Most Language Servers support renaming across files, etc.
-          -- map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
+          -- stylua: ignore
+          map("<leader>cl", function() Snacks.picker.lsp_config() end, "Lsp Info")
 
-          -- Execute a code action, usually your cursor needs to be on top of an error
-          -- or a suggestion from your LSP for this to activate.
-          -- map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction", { "n", "x" })
+          -- stylua: ignore
+          map("gd", function() Snacks.picker.lsp_definitions({ layout = { preview = true, layout = vertical_layout } }) end, "Goto Definition")
 
-          -- WARN: This is not Goto Definition, this is Goto Declaration.
-          --  For example, in C this would take you to the header.
-          -- map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
+          -- stylua: ignore
+          -- map("gr", function() Snacks.picker.lsp_references({ layout = { preview = true, layout = vertical_layout } }) end, "References")
+          vim.keymap.set("n", "gr", function() Snacks.picker.lsp_references({ layout = { preview = true, layout = vertical_layout } }) end, { buffer = event.buf, desc = "References", nowait = true   })
+
+          map("<leader>ss", function()
+            Snacks.picker.lsp_symbols({
+              -- filter = LazyVim.config.kind_filter,
+              layout = { preview = true, layout = vertical_layout },
+            })
+          end, "LSP Symbols")
+          map("<leader>sS", function()
+            Snacks.picker.lsp_workspace_symbols({
+              -- filter = LazyVim.config.kind_filter,
+              layout = { preview = true, layout = vertical_layout },
+            })
+          end, "LSP Workspace Symbols")
 
           -- This function resolves a difference between neovim nightly (version 0.11) and stable (version 0.10)
           ---@param client vim.lsp.Client
@@ -206,6 +243,14 @@ return {
           end,
         },
       })
+
+      -- vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+      --   border = "rounded",
+      -- })
+      --
+      -- vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+      --   border = "rounded",
+      -- })
 
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
