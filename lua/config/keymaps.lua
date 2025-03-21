@@ -45,4 +45,5 @@ vim.keymap.set("n", "<leader>dl", vim.diagnostic.setloclist, { desc = "Open [d]i
 -- local lazyterm = function()
 --   Snacks.terminal(nil, { cwd = LazyVim.root(), border = "rounded" })
 -- end
--- vim.keymap.set("n", "<C-\\>", lazyterm, { desc = "Terminal (root dir)" }) vim.keymap.set("t", "<C-\\>", "<cmd>close<cr>", { desc = "Close Terminal" })
+-- vim.keymap.set("n", "<C-\\>", lazyterm, { desc = "Terminal (root dir)" })
+vim.keymap.set("t", "<C-\\>", "<cmd>close<cr>", { desc = "Close Terminal" })
