@@ -98,24 +98,20 @@ return {
             vim.keymap.set(mode, key, func, options)
           end
 
+
+          -- stylua: ignore start
           -- { "<leader>cl", function() Snacks.picker.lsp_config() end, desc = "Lsp Info" },
           -- { "gd", vim.lsp.buf.definition, desc = "Goto Definition", has = "definition" },
           -- { "gr", vim.lsp.buf.references, desc = "References", nowait = true },
-
-          -- stylua: ignore
-          map("gI", vim.lsp.buf.implementation, {desc = "Goto Implementation" })
+          map("gI", vim.lsp.buf.implementation, { desc = "Goto Implementation" })
           map("gy", vim.lsp.buf.type_definition, { desc = "Goto Type Definition" })
           map("gD", vim.lsp.buf.declaration, { desc = "Goto Declaration" })
-          -- stylua: ignore
           map("gh", function() return vim.lsp.buf.hover() end,{ desc = "Hover" })
-          -- stylua: ignore
           map("gk", function() return vim.lsp.buf.signature_help() end,{ desc = "Signature Help" })
-          -- stylua: ignore
           map("<c-k>", function() return vim.lsp.buf.signature_help() end,{ desc = "Signature Help", mode = "i" })
           map("<leader>ca", vim.lsp.buf.code_action, { desc = "Code Action", mode = { "n", "v" } })
           map("<leader>cc", vim.lsp.codelens.run, { desc = "Run Codelens", mode = { "n", "v" } })
           map("<leader>cC", vim.lsp.codelens.refresh, { desc = "Refresh & Display Codelens" })
-          -- stylua: ignore
           map("<leader>cR", function() Snacks.rename.rename_file() end, { desc = "Rename File" })
           map("<leader>cr", vim.lsp.buf.rename, { desc = "Rename" })
 
@@ -134,30 +130,12 @@ return {
           -- TODO: check how lazyvim implemented this to be extensible. 
 
           -- Snacks picker specific keymaps
-
-          -- stylua: ignore
           map("<leader>cl", function() Snacks.picker.lsp_config() end, { desc = "Lsp Info" })
-
-          -- stylua: ignore
           map("gd", function() Snacks.picker.lsp_definitions({ layout = { preview = true, layout = vertical_layout } }) end, { desc = "Goto Definition" })
-
-          -- stylua: ignore
-          -- map("gr", function() Snacks.picker.lsp_references({ layout = { preview = true, layout = vertical_layout } }) end, "References")
-          -- stylua: ignore
           map("gr", function() Snacks.picker.lsp_references({ layout = { preview = true, layout = vertical_layout } }) end, { desc = "References", nowait = true })
-
-          map("<leader>ss", function()
-            Snacks.picker.lsp_symbols({
-              -- filter = LazyVim.config.kind_filter,
-              layout = { preview = true, layout = vertical_layout },
-            })
-          end, { desc = "LSP Symbols" })
-          map("<leader>sS", function()
-            Snacks.picker.lsp_workspace_symbols({
-              -- filter = LazyVim.config.kind_filter,
-              layout = { preview = true, layout = vertical_layout },
-            })
-          end, { desc = "LSP Workspace Symbols" })
+          map("<leader>ss", function() Snacks.picker.lsp_symbols({ layout = { preview = true, layout = vertical_layout } }) end, { desc = "LSP Symbols" })
+          map("<leader>sS", function() Snacks.picker.lsp_workspace_symbols({ layout = { preview = true, layout = vertical_layout } }) end, { desc = "LSP Workspace Symbols" })
+          -- stylua: ignore end
 
           -- This function resolves a difference between neovim nightly (version 0.11) and stable (version 0.10)
           ---@param client vim.lsp.Client
