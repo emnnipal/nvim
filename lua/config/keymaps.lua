@@ -41,9 +41,6 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 -- Diagnostic keymaps
 vim.keymap.set("n", "<leader>dl", vim.diagnostic.setloclist, { desc = "Open [d]iagnostic Quickfix [l]ist" })
 
--- terminal
--- local lazyterm = function()
---   Snacks.terminal(nil, { cwd = LazyVim.root(), border = "rounded" })
--- end
--- vim.keymap.set("n", "<C-\\>", lazyterm, { desc = "Terminal (root dir)" })
+-- stylua: ignore
+vim.keymap.set("n", "<C-\\>", function() Snacks.terminal() end, { desc = "Terminal (root dir)" })
 vim.keymap.set("t", "<C-\\>", "<cmd>close<cr>", { desc = "Close Terminal" })
