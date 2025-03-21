@@ -1,4 +1,4 @@
-_G.Utils = require("config.util")
+_G.Utils = require("core.util")
 require("config.options")
 require("config.keymaps")
 require("config.autocmd")
