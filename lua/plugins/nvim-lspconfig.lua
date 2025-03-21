@@ -82,9 +82,20 @@ return {
       vim.api.nvim_create_autocmd("LspAttach", {
         group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
         callback = function(event)
-          local map = function(keys, func, desc, mode)
-            mode = mode or "n"
-            vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = desc })
+          --- Maps a keybinding with specified options.
+          --- @param key string: The key sequence to bind.
+          --- @param func string|function: The function to execute.
+          --- @param options? vim.keymap.set.Opts | { mode?: string|string[] } : Optional parameters.
+          local function map(key, func, options)
+            options = options or {}
+            local mode = options.mode or "n"
+
+            options.mode = nil -- Remove mode since it's not a valid option in keymap.set()
+
+            ---@diagnostic disable-next-line: inject-field
+            options.buffer = event.buf
+
+            vim.keymap.set(mode, key, func, options)
           end
 
           -- { "<leader>cl", function() Snacks.picker.lsp_config() end, desc = "Lsp Info" },
@@ -92,21 +103,21 @@ return {
           -- { "gr", vim.lsp.buf.references, desc = "References", nowait = true },
 
           -- stylua: ignore
-          map("gI", vim.lsp.buf.implementation, "Goto Implementation")
-          map("gy", vim.lsp.buf.type_definition, "Goto T[y]pe Definition")
-          map("gD", vim.lsp.buf.declaration, "Goto Declaration")
+          map("gI", vim.lsp.buf.implementation, {desc = "Goto Implementation" })
+          map("gy", vim.lsp.buf.type_definition, { desc = "Goto Type Definition" })
+          map("gD", vim.lsp.buf.declaration, { desc = "Goto Declaration" })
           -- stylua: ignore
-          map("gh", function() return vim.lsp.buf.hover() end, "Hover")
+          map("gh", function() return vim.lsp.buf.hover() end,{ desc = "Hover" })
           -- stylua: ignore
-          map("gk", function() return vim.lsp.buf.signature_help() end, "Signature Help")
+          map("gk", function() return vim.lsp.buf.signature_help() end,{ desc = "Signature Help" })
           -- stylua: ignore
-          map("<c-k>", function() return vim.lsp.buf.signature_help() end, "Signature Help", "i")
-          map("<leader>ca", vim.lsp.buf.code_action, "Code Action", { "n", "v" })
-          map("<leader>cc", vim.lsp.codelens.run, "Run Codelens", { "n", "v" })
-          map("<leader>cC", vim.lsp.codelens.refresh, "Refresh & Display Codelens")
+          map("<c-k>", function() return vim.lsp.buf.signature_help() end,{ desc = "Signature Help", mode = "i" })
+          map("<leader>ca", vim.lsp.buf.code_action, { desc = "Code Action", mode = { "n", "v" } })
+          map("<leader>cc", vim.lsp.codelens.run, { desc = "Run Codelens", mode = { "n", "v" } })
+          map("<leader>cC", vim.lsp.codelens.refresh, { desc = "Refresh & Display Codelens" })
           -- stylua: ignore
-          map("<leader>cR", function() Snacks.rename.rename_file() end, "Rename File")
-          map("<leader>cr", vim.lsp.buf.rename, "Rename")
+          map("<leader>cR", function() Snacks.rename.rename_file() end, { desc = "Rename File" })
+          map("<leader>cr", vim.lsp.buf.rename, { desc = "Rename" })
 
           -- TODO: how to implement this without lazyvim
 
@@ -125,27 +136,28 @@ return {
           -- Snacks picker specific keymaps
 
           -- stylua: ignore
-          map("<leader>cl", function() Snacks.picker.lsp_config() end, "Lsp Info")
+          map("<leader>cl", function() Snacks.picker.lsp_config() end, { desc = "Lsp Info" })
 
           -- stylua: ignore
-          map("gd", function() Snacks.picker.lsp_definitions({ layout = { preview = true, layout = vertical_layout } }) end, "Goto Definition")
+          map("gd", function() Snacks.picker.lsp_definitions({ layout = { preview = true, layout = vertical_layout } }) end, { desc = "Goto Definition" })
 
           -- stylua: ignore
           -- map("gr", function() Snacks.picker.lsp_references({ layout = { preview = true, layout = vertical_layout } }) end, "References")
-          vim.keymap.set("n", "gr", function() Snacks.picker.lsp_references({ layout = { preview = true, layout = vertical_layout } }) end, { buffer = event.buf, desc = "References", nowait = true   })
+          -- stylua: ignore
+          map("gr", function() Snacks.picker.lsp_references({ layout = { preview = true, layout = vertical_layout } }) end, { desc = "References", nowait = true })
 
           map("<leader>ss", function()
             Snacks.picker.lsp_symbols({
               -- filter = LazyVim.config.kind_filter,
               layout = { preview = true, layout = vertical_layout },
             })
-          end, "LSP Symbols")
+          end, { desc = "LSP Symbols" })
           map("<leader>sS", function()
             Snacks.picker.lsp_workspace_symbols({
               -- filter = LazyVim.config.kind_filter,
               layout = { preview = true, layout = vertical_layout },
             })
-          end, "LSP Workspace Symbols")
+          end, { desc = "LSP Workspace Symbols" })
 
           -- This function resolves a difference between neovim nightly (version 0.11) and stable (version 0.10)
           ---@param client vim.lsp.Client
@@ -197,9 +209,8 @@ return {
           --
           -- This may be unwanted, since they displace some of your code
           if client and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf) then
-            map("<leader>ch", function()
-              vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
-            end, "Toggle Inlay Hints")
+          -- stylua: ignore
+            map("<leader>ch", function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf })) end, { desc = "Toggle Inlay Hints" })
           end
         end,
       })
