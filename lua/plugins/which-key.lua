@@ -72,7 +72,7 @@ return {
                 cwd = cwd,
                 win = {
                   width = 0,
-                  height = 0,
+                  height = 0.99, -- Not 100% so that the statusline of lazygit isn't hidden by the command line of neovim.
                   style = "lazygit",
                   keys = {
                     term_normal = false, -- Prevent from going to normal mode with esc_esc when in lazygit
