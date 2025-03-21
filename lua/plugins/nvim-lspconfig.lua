@@ -247,10 +247,15 @@ return {
       -- })
 
       local capabilities = vim.lsp.protocol.make_client_capabilities()
+
+      local has_cmp, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+      -- local has_blink, blink = pcall(require, "blink.cmp")
+
       capabilities = vim.tbl_deep_extend(
         "force",
         capabilities,
-        require("cmp_nvim_lsp").default_capabilities(),
+        has_cmp and cmp_nvim_lsp.default_capabilities() or {},
+        -- has_blink and blink.get_lsp_capabilities() or {},
         opts.capabilities or {}
       )
 
