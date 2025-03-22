@@ -102,52 +102,52 @@ return {
   },
 
   -- TODO: dynamic setup in lsp config
-  -- {
-  --   "neovim/nvim-lspconfig",
-  --   opts = function()
-  --     local Keys = require("config.lsp").keymaps()
-  --     vim.list_extend(Keys, {
-  --       {
-  --         "gd",
-  --         function()
-  --           Snacks.picker.lsp_definitions({ layout = { preview = true, layout = vertical_layout } })
-  --         end,
-  --         desc = "Goto Definition",
-  --         has = "definition",
-  --       },
-  --       {
-  --         "gr",
-  --         function()
-  --           Snacks.picker.lsp_references({ layout = { preview = true, layout = vertical_layout } })
-  --         end,
-  --         nowait = true,
-  --         desc = "References",
-  --       },
-  --       {
-  --         "<leader>ss",
-  --         function()
-  --           Snacks.picker.lsp_symbols({
-  --             -- filter = LazyVim.config.kind_filter,
-  --             layout = { preview = true, layout = vertical_layout },
-  --           })
-  --         end,
-  --         desc = "LSP Symbols",
-  --         has = "documentSymbol",
-  --       },
-  --       {
-  --         "<leader>sS",
-  --         function()
-  --           Snacks.picker.lsp_workspace_symbols({
-  --             -- filter = LazyVim.config.kind_filter,
-  --             layout = { preview = true, layout = vertical_layout },
-  --           })
-  --         end,
-  --         desc = "LSP Workspace Symbols",
-  --         has = "workspace/symbols",
-  --       },
-  --     })
-  --   end,
-  -- },
+  {
+    "neovim/nvim-lspconfig",
+    opts = function()
+      local keymap = require("core.keymaps")
+      keymap.extend_keymaps({
+        {
+          "gd",
+          function()
+            Snacks.picker.lsp_definitions({ layout = { preview = true, layout = vertical_layout } })
+          end,
+          desc = "Goto Definition",
+          has = "definition",
+        },
+        {
+          "gr",
+          function()
+            Snacks.picker.lsp_references({ layout = { preview = true, layout = vertical_layout } })
+          end,
+          nowait = true,
+          desc = "References (Snacks)",
+        },
+        {
+          "<leader>ss",
+          function()
+            Snacks.picker.lsp_symbols({
+              -- filter = LazyVim.config.kind_filter,
+              layout = { preview = true, layout = vertical_layout },
+            })
+          end,
+          desc = "LSP Symbols",
+          has = "documentSymbol",
+        },
+        {
+          "<leader>sS",
+          function()
+            Snacks.picker.lsp_workspace_symbols({
+              -- filter = LazyVim.config.kind_filter,
+              layout = { preview = true, layout = vertical_layout },
+            })
+          end,
+          desc = "LSP Workspace Symbols",
+          has = "workspace/symbols",
+        },
+      })
+    end,
+  },
 
   {
     "folke/snacks.nvim",
