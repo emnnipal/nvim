@@ -121,7 +121,7 @@ return {
             Snacks.picker.lsp_references({ layout = { preview = true, layout = vertical_layout } })
           end,
           nowait = true,
-          desc = "References (Snacks)",
+          desc = "References",
         },
         {
           "<leader>ss",
