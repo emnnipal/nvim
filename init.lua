@@ -2,7 +2,7 @@ _G.Utils = require("core.util")
 require("config.options")
 require("config.keymaps")
 require("config.autocmd")
-require("custom.statusline")
+require("core.statusline")
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
