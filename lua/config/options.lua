@@ -27,6 +27,8 @@ vim.g.have_nerd_font = true
 
 vim.opt.pumheight = 10 -- Maximum number of entries in a popup
 vim.opt.relativenumber = true -- Relative line numbers
+vim.opt.shiftround = true -- Round indent
+vim.opt.shiftwidth = 2 -- Size of an indent
 
 -- Make line numbers default
 vim.opt.number = true
