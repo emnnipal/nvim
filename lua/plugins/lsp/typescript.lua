@@ -107,7 +107,7 @@ return {
           -- },
         },
       },
-      -- TODO: setup in lsp config
+      -- TODO: manually configure first in lspconfig then make it extensible afterwards so you'll have an idea how.
       --
       -- setup = {
       --   --- @deprecated -- tsserver renamed to ts_ls but not yet released, so keep this for now
