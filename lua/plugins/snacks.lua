@@ -7,7 +7,29 @@ return {
     ---@module 'snacks'
     ---@type snacks.Config
     opts = {
-      dashboard = { enabled = true },
+      dashboard = {
+        enabled = true,
+        preset = {
+          header = [[
+  ,-.       _,---._ __  / \  
+ /  )    .-'       `./ /   \ 
+(  (   ,'            `/    /|
+ \  `-"             \'\   / |
+  `.              ,  \ \ /  |
+   /`.          ,'-`----Y   |
+  (            ;        |   '
+  |  ,-.    ,-'         |  / 
+  |  | (   |            | /  
+  )  |  \  `.___________|/   
+  `--'   `--'                
+           __..--''``---....___   _..._    __         
+ /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
+///_.-' _..--.'_    \                    `( ) ) // // 
+/ (_..-' // (< _     ;_..__               ; `' / ///  
+ / // // //  `-._,_)' // / ``--...____..-' /// / //   
+]],
+        },
+      },
       indent = { enabled = true, scope = { enabled = false } },
       picker = { enabled = true },
       -- indent = {
