@@ -2,9 +2,6 @@ local M = {}
 
 _G._statusline = M
 
-vim.api.nvim_set_hl(0, "StatuslineError", { fg = "#ff5555", bold = true })
-vim.api.nvim_set_hl(0, "StatuslineWarn", { fg = "#ffb86c", bold = true })
-
 function M.diagnostic_status()
   local ignore_modes = {
     ["c"] = true, -- command mode
@@ -66,19 +63,23 @@ function M.display_mode()
   return modes[current_mode] or current_mode
 end
 
-local statusline = {
-  " %{%v:lua._statusline.display_mode()%} ",
-  '%{expand("%:~:.")}', -- show current buffer file path relative to cwd
-  "%r",
-  "%m",
-  -- " - %{&filetype} ",
-  "%=",
-  "%{%v:lua._statusline.diagnostic_status()%}",
-  "%{%v:lua._statusline.active_lsp()%}",
-  -- " %2p%% ", -- show line position in percentage
-  -- " %3l:%-2c ", -- show cursor position in column and row number
-}
+function M.setup()
+  local statusline = {
+    " %{%v:lua._statusline.display_mode()%} ",
+    '%{expand("%:~:.")}', -- show current buffer file path relative to cwd
+    "%r",
+    "%m",
+    -- " - %{&filetype} ",
+    "%=",
+    "%{%v:lua._statusline.diagnostic_status()%}",
+    "%{%v:lua._statusline.active_lsp()%}",
+    -- " %2p%% ", -- show line position in percentage
+    -- " %3l:%-2c ", -- show cursor position in column and row number
+  }
 
-vim.o.statusline = table.concat(statusline, "")
+  vim.api.nvim_set_hl(0, "StatuslineError", { fg = "#ff5555", bold = true })
+  vim.api.nvim_set_hl(0, "StatuslineWarn", { fg = "#ffb86c", bold = true })
+  vim.o.statusline = table.concat(statusline, "")
+end
 
 return M

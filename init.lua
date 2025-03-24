@@ -1,8 +1,6 @@
 _G.Utils = require("core.util")
 require("config.options")
 require("config.keymaps")
-require("config.autocmd")
-require("core.statusline")
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
@@ -41,5 +39,5 @@ require("lazy").setup({
   },
 })
 
--- The line beneath this is called `modeline`. See `:help modeline`
--- vim: ts=2 sts=2 sw=2 et
+require("config.autocmd")
+require("core.statusline").setup()
