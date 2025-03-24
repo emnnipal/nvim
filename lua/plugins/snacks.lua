@@ -1,4 +1,3 @@
--- TODO: use mini.icons
 return {
   {
     "folke/snacks.nvim",
@@ -7,29 +6,7 @@ return {
     ---@module 'snacks'
     ---@type snacks.Config
     opts = {
-      dashboard = {
-        enabled = true,
-        preset = {
-          header = [[
-  ,-.       _,---._ __  / \  
- /  )    .-'       `./ /   \ 
-(  (   ,'            `/    /|
- \  `-"             \'\   / |
-  `.              ,  \ \ /  |
-   /`.          ,'-`----Y   |
-  (            ;        |   '
-  |  ,-.    ,-'         |  / 
-  |  | (   |            | /  
-  )  |  \  `.___________|/   
-  `--'   `--'                
-           __..--''``---....___   _..._    __         
- /// //_.-'    .-/";  `        ``<._  ``.''_ `. / // /
-///_.-' _..--.'_    \                    `( ) ) // // 
-/ (_..-' // (< _     ;_..__               ; `' / ///  
- / // // //  `-._,_)' // / ``--...____..-' /// / //   
-]],
-        },
-      },
+      dashboard = { enabled = true },
       indent = { enabled = true, scope = { enabled = false } },
       picker = { enabled = true },
       -- indent = {
