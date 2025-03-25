@@ -80,6 +80,8 @@ function M.setup(buffer)
       end
     end
 
+    -- TODO: map based on has and cond options
+
     if buffer then
       options.buffer = buffer
     end
