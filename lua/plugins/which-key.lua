@@ -18,16 +18,16 @@ return {
       -- stylua: ignore
       spec = {
         mode = { "n", "v" },
-        -- { '<leader>d', group = '[D]ocument' },
         -- { '<leader>r', group = '[R]ename' },
         { "<leader>b", group = "Buffers" },
         { "<leader>c", group = "Code", mode = { "n", "x" } },
-        { "<leader>g", group = "Git" },
         { "<leader>f", group = "File/Find" },
+        { "<leader>g", group = "Git" },
+        -- { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
         { "<leader>q", group = "Quit/Session" },
         { "<leader>s", group = "Search" },
-        { "<leader>x", group = "diagnostics/quickfix", icon = { icon = "󱖫 ", color = "green" } },
-        -- { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
+        { "<leader>u", group = "UI" },
+        { "<leader>x", group = "Diagnostics/Quickfix", icon = { icon = "󱖫 ", color = "green" } },
 
         {  "<leader>l", "<cmd>Lazy<cr>",  desc = "Lazy"  },
 

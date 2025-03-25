@@ -39,7 +39,7 @@ vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" }
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 -- Diagnostic keymaps
-vim.keymap.set("n", "<leader>dl", vim.diagnostic.setloclist, { desc = "Open [d]iagnostic Quickfix [l]ist" })
+vim.keymap.set("n", "<leader>xl", vim.diagnostic.setloclist, { desc = "Open diagnostic Quickfix list" })
 
 -- stylua: ignore
 vim.keymap.set("n", "<C-\\>", function() Snacks.terminal() end, { desc = "Terminal (root dir)" })
