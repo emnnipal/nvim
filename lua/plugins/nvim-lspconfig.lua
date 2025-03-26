@@ -67,7 +67,7 @@ return {
     end,
     config = function(_, opts)
       vim.api.nvim_create_autocmd("LspAttach", {
-        group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
+        group = vim.api.nvim_create_augroup("nvim-lsp-attach", { clear = true }),
         callback = function(event)
           local keymaps = require("core.keymaps")
           keymaps.setup(event.buf)
@@ -94,7 +94,7 @@ return {
             client
             and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_documentHighlight, event.buf)
           then
-            local highlight_augroup = vim.api.nvim_create_augroup("kickstart-lsp-highlight", { clear = false })
+            local highlight_augroup = vim.api.nvim_create_augroup("nvim-lsp-highlight", { clear = false })
             vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
               buffer = event.buf,
               group = highlight_augroup,
@@ -108,10 +108,10 @@ return {
             })
 
             vim.api.nvim_create_autocmd("LspDetach", {
-              group = vim.api.nvim_create_augroup("kickstart-lsp-detach", { clear = true }),
+              group = vim.api.nvim_create_augroup("nvim-lsp-detach", { clear = true }),
               callback = function(detach_event)
                 vim.lsp.buf.clear_references()
-                vim.api.nvim_clear_autocmds({ group = "kickstart-lsp-highlight", buffer = detach_event.buf })
+                vim.api.nvim_clear_autocmds({ group = "nvim-lsp-highlight", buffer = detach_event.buf })
               end,
             })
           end
