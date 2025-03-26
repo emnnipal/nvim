@@ -122,8 +122,6 @@ function M.register_keymaps(keys, buffer)
       end
     end
 
-    -- TODO: map based on has and cond options
-
     if buffer then
       options.buffer = buffer
     end
@@ -134,7 +132,8 @@ end
 -- Setup LSP-specific keymaps for the current client
 --- @param buffer boolean|integer : buffer number from autocmd event
 --- @param client_name string : lsp client name used for caching
---- @param keys? KeymapConfig[] : keymaps
+--- @param keys? KeymapConfig[] : Optional list of keymaps to apply.
+--- If not provided, it will use the default global LSP keymaps from `M.get()`.
 function M.setup(buffer, client_name, keys)
   local lsp_keymap_name = "lsp_keymaps_" .. client_name
   local lsp_keymaps_set = vim.b[buffer][lsp_keymap_name]

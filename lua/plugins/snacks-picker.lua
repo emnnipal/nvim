@@ -101,7 +101,6 @@ return {
     },
   },
 
-  -- TODO: dynamic setup in lsp config
   {
     "neovim/nvim-lspconfig",
     opts = function()
