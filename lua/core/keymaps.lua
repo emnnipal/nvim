@@ -76,6 +76,21 @@ function M.get()
     return M._keys
   end
 
+  --- @type vim.lsp.buf.hover.Opts
+  local hover_opts = {
+    border = "rounded",
+    max_width = 120,
+    winopts = {
+      conceallevel = 3,
+    },
+  }
+
+  --- @type vim.lsp.buf.signature_help.Opts
+  local signature_opts = {
+    border = "rounded",
+    max_width = 120,
+  }
+
   --- @type KeymapConfig[]
   -- stylua: ignore
   M._keys =  {
@@ -85,9 +100,9 @@ function M.get()
     { "gI", vim.lsp.buf.implementation, desc = "Goto Implementation" },
     { "gy", vim.lsp.buf.type_definition, desc = "Goto Type Definition" },
     { "gD", vim.lsp.buf.declaration, desc = "Goto Declaration" },
-    { "gh", function() return vim.lsp.buf.hover() end, desc = "Display hover" },
-    { "gk", function() return vim.lsp.buf.signature_help() end, desc = "Signature Help", has = "signatureHelp" },
-    { "<A-k>", function() return vim.lsp.buf.signature_help() end, mode = "i", desc = "Signature Help", has = "signatureHelp" },
+    { "gh", function() return vim.lsp.buf.hover(hover_opts) end, desc = "Display hover" },
+    { "gk", function() return vim.lsp.buf.signature_help(signature_opts) end, desc = "Signature Help", has = "signatureHelp" },
+    { "<A-k>", function() return vim.lsp.buf.signature_help(signature_opts) end, mode = "i", desc = "Signature Help", has = "signatureHelp" },
     { "<leader>ca", vim.lsp.buf.code_action, desc = "Code Action", mode = { "n", "v" }, has = "codeAction" },
     { "<leader>cc", vim.lsp.codelens.run, desc = "Run Codelens", mode = { "n", "v" }, has = "codeLens" },
     { "<leader>cC", vim.lsp.codelens.refresh, desc = "Refresh & Display Codelens", mode = { "n" }, has = "codeLens" },
