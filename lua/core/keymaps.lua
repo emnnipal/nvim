@@ -3,20 +3,61 @@ local M = {}
 --- Maps a keybinding with specified options.
 --- @param key string: The key sequence to bind.
 --- @param func string|function: The function to execute.
---- @param options? vim.keymap.set.Opts | { mode?: string|string[] } : Optional parameters.
+--- @param options? vim.keymap.set.Opts | { mode?: string|string[], has?: string|string[], cond?: function } : Optional parameters.
 function M.map(key, func, options)
   options = options or {}
   local mode = options.mode or "n"
 
   options.mode = nil -- Remove mode since it's not a valid option in keymap.set()
 
+  local has_capability = true
+  local should_map = true
+
+  -- -- Check for LSP capabilities if `has` is defined
+  -- if options.has then
+  --   has_capability = M.check_capabilities(options.has)
+  -- end
+
+  -- Check the condition function if `cond` is defined
+  if options.cond then
+    should_map = options.cond()
+    options.cond = nil
+  end
+
   ---@diagnostic disable-next-line: inject-field
   options.has = nil -- TODO: set keymap based on has param
-  ---@diagnostic disable-next-line: inject-field
-  options.cond = nil -- TODO: set keymap based on cond param
 
-  vim.keymap.set(mode, key, func, options)
+  -- Only map the key if both conditions are satisfied
+  if has_capability and should_map then
+    vim.keymap.set(mode, key, func, options)
+  end
 end
+
+--- TODO:
+--- --- Checks if the attached LSP client(s) have the specified capability.
+--- --- @param capabilities string|string[]: The capability or list of capabilities to check.
+--- --- @return boolean
+--- function M.check_capabilities(capabilities)
+---   local clients = vim.lsp.get_active_clients({ bufnr = 0 })
+---   if not clients or vim.tbl_isempty(clients) then
+---     return false
+---   end
+---
+---   -- Normalize capabilities to a table if it's a string
+---   if type(capabilities) == "string" then
+---     capabilities = { capabilities }
+---   end
+---
+---   for _, client in ipairs(clients) do
+---     for _, capability in ipairs(capabilities) do
+---       if client.server_capabilities[capability .. "Provider"] then
+---         return true
+---       end
+---     end
+---   end
+---
+---   return false
+--- end
 
 --- @class KeymapConfig: vim.keymap.set.Opts
 --- @field [1] string # The key sequence(s) to bind.
@@ -90,10 +131,23 @@ function M.register_keymaps(keys, buffer)
   end
 end
 
---- @param buffer? boolean|integer : Optional parameters.
-function M.setup(buffer)
-  local keys = M.get()
-  M.register_keymaps(M.get(), buffer)
+-- Setup LSP-specific keymaps for the current client
+--- @param buffer boolean|integer : buffer number from autocmd event
+--- @param client_name string : lsp client name used for caching
+--- @param keys? KeymapConfig[] : keymaps
+function M.setup(buffer, client_name, keys)
+  local lsp_keymap_name = "lsp_keymaps_" .. client_name
+  local lsp_keymaps_set = vim.b[buffer][lsp_keymap_name]
+
+  -- Track if specific keymaps have been set for this LSP
+  if lsp_keymaps_set then
+    return
+  end
+
+  vim.b[buffer][lsp_keymap_name] = true
+
+  local derived_keymaps = keys or M.get()
+  M.register_keymaps(derived_keymaps, buffer)
 end
 
 return M

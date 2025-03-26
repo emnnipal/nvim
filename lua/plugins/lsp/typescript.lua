@@ -60,7 +60,7 @@ return {
                   open = true,
                 })
               end,
-              desc = "Goto Source Definition ZZZZZZZ",
+              desc = "Goto Source Definition",
             },
             {
               "gR",
