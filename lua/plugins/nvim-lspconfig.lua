@@ -71,14 +71,14 @@ return {
 
           local keymaps = require("core.keymaps")
 
-          -- Setup default/global LSP keymaps
-          keymaps.setup(event.buf, "all")
+          if client then
+            -- Setup default/global LSP keymaps
+            keymaps.setup(event.buf, client)
 
-          -- Setup LSP-specific keymaps for the current client
-          if client and client.name then
+            -- Setup LSP-specific keymaps for the current client
             local server_opts = opts.servers[client.name]
             if server_opts and server_opts.keys then
-              keymaps.setup(event.buf, client.name, server_opts.keys)
+              keymaps.setup(event.buf, client, server_opts.keys)
             end
           end
 

@@ -131,11 +131,12 @@ end
 
 -- Setup LSP-specific keymaps for the current client
 --- @param buffer boolean|integer : buffer number from autocmd event
---- @param client_name string : lsp client name used for caching
+--- @param client vim.lsp.Client : lsp client name used for caching
 --- @param keys? KeymapConfig[] : Optional list of keymaps to apply.
 --- If not provided, it will use the default global LSP keymaps from `M.get()`.
-function M.setup(buffer, client_name, keys)
-  local lsp_keymap_name = "lsp_keymaps_" .. client_name
+function M.setup(buffer, client, keys)
+  local lsp_name = keys and client.name or "all"
+  local lsp_keymap_name = "lsp_keymaps_" .. lsp_name
   local lsp_keymaps_set = vim.b[buffer][lsp_keymap_name]
 
   -- Track if specific keymaps have been set for this LSP
