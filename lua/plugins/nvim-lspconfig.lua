@@ -69,8 +69,29 @@ return {
       vim.api.nvim_create_autocmd("LspAttach", {
         group = vim.api.nvim_create_augroup("nvim-lsp-attach", { clear = true }),
         callback = function(event)
+          local client = vim.lsp.get_client_by_id(event.data.client_id)
+
           local keymaps = require("core.keymaps")
-          keymaps.setup(event.buf)
+
+          -- Check if keymaps have already been set for this buffer
+          if not vim.b[event.buf].lsp_keymaps_set then
+            -- Apply default/global LSP keymaps once
+            keymaps.setup(event.buf)
+            vim.b[event.buf].lsp_keymaps_set = true
+          end
+
+          -- Setup LSP-specific keymaps for the current client
+          if client and client.name then
+            local server_opts = opts.servers[client.name]
+            if server_opts and server_opts.keys then
+              -- Track if specific keymaps have been set for this LSP
+              local lsp_keymaps_set = vim.b[event.buf]["lsp_keymaps_" .. client.name]
+              if not lsp_keymaps_set then
+                keymaps.register_keymaps(server_opts.keys, event.buf)
+                vim.b[event.buf]["lsp_keymaps_" .. client.name] = true
+              end
+            end
+          end
 
           -- This function resolves a difference between neovim nightly (version 0.11) and stable (version 0.10)
           ---@param client vim.lsp.Client
@@ -89,7 +110,6 @@ return {
           -- for a little while.
           --    See `:help CursorHold` for information about when this is executed
           -- When you move your cursor, the highlights will be cleared (the second autocommand).
-          local client = vim.lsp.get_client_by_id(event.data.client_id)
           if
             client
             and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_documentHighlight, event.buf)

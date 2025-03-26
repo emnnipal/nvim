@@ -1,12 +1,5 @@
 local M = {}
 
---- @class KeymapConfig: vim.keymap.set.Opts
---- @field [1] string # The key sequence(s) to bind.
---- @field [2] string|function # The function or command to execute.
---- @field mode? string|string[] # Keymap mode(s) (default is "n").
---- @field has? string|string[] # Optional condition(s) to check for capability.
---- @field cond? function # Optional condition to evaluate before applying the keymap.
-
 --- Maps a keybinding with specified options.
 --- @param key string: The key sequence to bind.
 --- @param func string|function: The function to execute.
@@ -24,6 +17,13 @@ function M.map(key, func, options)
 
   vim.keymap.set(mode, key, func, options)
 end
+
+--- @class KeymapConfig: vim.keymap.set.Opts
+--- @field [1] string # The key sequence(s) to bind.
+--- @field [2] string|function # The function or command to execute.
+--- @field mode? string|string[] # Keymap mode(s) (default is "n").
+--- @field has? string|string[] # Optional condition(s) to check for capability.
+--- @field cond? function # Optional condition to evaluate before applying the keymap.
 
 --- @param keys KeymapConfig[]
 function M.extend_keymaps(keys)
@@ -66,9 +66,10 @@ function M.get()
   return M._keys
 end
 
+--- @param keys KeymapConfig[] : Optional parameters.
 --- @param buffer? boolean|integer : Optional parameters.
-function M.setup(buffer)
-  for _, keymap in ipairs(M.get()) do
+function M.register_keymaps(keys, buffer)
+  for _, keymap in ipairs(keys) do
     local key = keymap[1] -- The key sequence
     local func = keymap[2] -- The function to execute
 
@@ -87,6 +88,12 @@ function M.setup(buffer)
     end
     M.map(key, func, options)
   end
+end
+
+--- @param buffer? boolean|integer : Optional parameters.
+function M.setup(buffer)
+  local keys = M.get()
+  M.register_keymaps(M.get(), buffer)
 end
 
 return M
