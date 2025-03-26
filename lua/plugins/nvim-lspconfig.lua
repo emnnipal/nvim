@@ -1,3 +1,4 @@
+-- TODO: migrate to builtin lsp configuration once nvim-lspconfig supports it
 return {
   {
     -- Main LSP Configuration

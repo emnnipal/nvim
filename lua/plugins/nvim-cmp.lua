@@ -1,3 +1,4 @@
+-- TODO: try to use the builtin completion. Ref: https://gpanders.com/blog/whats-new-in-neovim-0-11/
 return {
   { -- Autocompletion
     "hrsh7th/nvim-cmp",
