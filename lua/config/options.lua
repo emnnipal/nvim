@@ -12,6 +12,9 @@ vim.opt.conceallevel = 0
 
 vim.o.termsync = false
 
+-- Let noice nvim handle this for now since nvim-cmp is having weird borders on scroll bar with this option.
+-- vim.o.winborder = "rounded"
+
 vim.g.snacks_animate = false
 
 vim.o.showcmd = false -- Hide key presses showing in command line
