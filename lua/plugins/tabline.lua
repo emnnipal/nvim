@@ -7,12 +7,12 @@ local function update_mini_tabline_colors()
 
   local is_light_theme = vim.o.background == "light"
 
-  -- Darken current background by 20% for the tabline background
   local darker_bg = color.darken(color.to_hex(bg.bg), 0.15)
 
   -- New color for modified buffers (use Statement or a brighter variant of comment)
-  local type_color = vim.api.nvim_get_hl(0, { name = "String" })
-  local modified_fg = is_light_theme and color.darken(color.to_hex(type_color.fg), 0.1) or color.to_hex(type_color.fg)
+  local string_color = vim.api.nvim_get_hl(0, { name = "String" })
+  local modified_fg = is_light_theme and color.darken(color.to_hex(string_color.fg), 0.1)
+    or color.to_hex(string_color.fg)
 
   vim.api.nvim_set_hl(0, "MiniTablineCurrent", {
     bg = bg.bg,
