@@ -79,7 +79,8 @@ return {
       show_icons = false,
       format = function(buf_id, label)
         local modified_indicator = vim.bo[buf_id].modified and "+ " or ""
-        return MiniTabline.default_format(buf_id, label) .. modified_indicator
+        local padding = " "
+        return padding .. MiniTabline.default_format(buf_id, label) .. modified_indicator .. padding
       end,
     },
     config = function(_, opts)
