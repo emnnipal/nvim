@@ -34,11 +34,11 @@ return {
 
         { "<leader>w", "<Cmd>update<CR>", desc = "Write" },
         { "<leader>W", "<Cmd>noautocmd w<CR>", desc = "Save without formatting" },
-        { "<leader>bh", "<Cmd>BufferLineCloseLeft<cr>", desc = "Close all to the left" },
-        { "<leader>bl", "<Cmd>BufferLineCloseRight<cr>", desc = "Close all to the right" },
+        -- { "<leader>bh", "<Cmd>BufferLineCloseLeft<cr>", desc = "Close all to the left" },
+        -- { "<leader>bl", "<Cmd>BufferLineCloseRight<cr>", desc = "Close all to the right" },
 
-        { "<leader>j", "<Cmd>BufferLineCyclePrev<CR>", desc = "Previous Buffer" },
-        { "<leader>k", "<Cmd>BufferLineCycleNext<CR>", desc = "Next Buffer" },
+        -- { "<leader>j", "<Cmd>BufferLineCyclePrev<CR>", desc = "Previous Buffer" },
+        -- { "<leader>k", "<Cmd>BufferLineCycleNext<CR>", desc = "Next Buffer" },
 
         { "<leader>cL", "<Cmd>LspRestart<CR>", desc = "Restart LSP" },
 
