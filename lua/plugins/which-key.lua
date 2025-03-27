@@ -34,20 +34,8 @@ return {
 
         { "<leader>w", "<Cmd>update<CR>", desc = "Write" },
         { "<leader>W", "<Cmd>noautocmd w<CR>", desc = "Save without formatting" },
-        -- { "<leader>bh", "<Cmd>BufferLineCloseLeft<cr>", desc = "Close all to the left" },
-        -- { "<leader>bl", "<Cmd>BufferLineCloseRight<cr>", desc = "Close all to the right" },
-
-        -- { "<leader>j", "<Cmd>BufferLineCyclePrev<CR>", desc = "Previous Buffer" },
-        -- { "<leader>k", "<Cmd>BufferLineCycleNext<CR>", desc = "Next Buffer" },
 
         { "<leader>cL", "<Cmd>LspRestart<CR>", desc = "Restart LSP" },
-
-        -- {
-        --   "<leader>gg",
-        --   -- Check if the tmux window "lg" already exists; if it does, switch to it. Otherwise, create a new window for lazygit.
-        --   "<cmd>silent !tmux list-windows | grep -q 'lg' && tmux select-window -t lg || tmux new-window -n lg 'lazygit'<CR>",
-        --   desc = "Lazygit (cwd)",
-        -- },
 
         -- Git
         {
