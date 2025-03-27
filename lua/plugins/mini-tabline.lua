@@ -91,34 +91,38 @@ return {
         local buffers = vim.api.nvim_list_bufs()
 
         for _, buf in ipairs(buffers) do
-          if buf ~= current_buf and vim.api.nvim_buf_is_loaded(buf) and buf < current_buf then
+          if buf ~= current_buf and vim.fn.buflisted(buf) == 1 and buf < current_buf then
             vim.api.nvim_buf_delete(buf, { force = true })
           end
         end
-      end, {})
+      end, {
+        desc = "Delete all buffers to the left of the current one",
+      })
 
       vim.api.nvim_create_user_command("BuffDeleteRight", function()
         local current_buf = vim.api.nvim_get_current_buf()
         local buffers = vim.api.nvim_list_bufs()
 
         for _, buf in ipairs(buffers) do
-          if buf ~= current_buf and vim.api.nvim_buf_is_loaded(buf) and buf > current_buf then
+          if buf ~= current_buf and vim.fn.buflisted(buf) == 1 and buf > current_buf then
             vim.api.nvim_buf_delete(buf, { force = true })
           end
         end
-      end, {})
+      end, {
+        desc = "Delete all buffers to the right of the current one",
+      })
 
       vim.api.nvim_create_user_command("BuffDeleteOthers", function()
         local current_buf = vim.api.nvim_get_current_buf()
 
-        -- Get all listed buffers
         for _, buf in ipairs(vim.api.nvim_list_bufs()) do
-          -- Skip the current buffer and only delete listed, valid buffers
-          if buf ~= current_buf and vim.api.nvim_buf_is_loaded(buf) then
+          if buf ~= current_buf and vim.fn.buflisted(buf) == 1 then
             vim.api.nvim_buf_delete(buf, { force = false })
           end
         end
-      end, { desc = "Delete all buffers except the current one" })
+      end, {
+        desc = "Delete all buffers except the current one",
+      })
     end,
     keys = {
       { "<leader>j", "<CMD>bprevious<CR>", { desc = "Previous Buffer" } },
