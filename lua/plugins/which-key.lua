@@ -1,4 +1,5 @@
-local has_tmux = vim.fn.executable("tmux") == 1
+-- Check if running inside tmux
+local is_in_tmux = vim.fn.getenv("TMUX") ~= vim.NIL and vim.fn.getenv("TMUX") ~= ""
 
 return {
   { -- Useful plugin to show you pending keybinds.
@@ -53,10 +54,11 @@ return {
           "<leader>gg",
           function()
             local cwd = vim.fn.getcwd()
-            local project_name = vim.fn.fnamemodify(cwd, ":t") -- Get the last part of the path (project name)
-            local tmux_window = "lg-" .. project_name -- Create a unique tmux window name
 
-            if has_tmux then
+            if is_in_tmux then
+              local project_name = vim.fn.fnamemodify(cwd, ":t") -- Get the last part of the path (project name)
+              local tmux_window = "lg-" .. project_name -- Create a unique tmux window name
+
               vim.fn.system(
                 string.format(
                   "tmux list-windows | grep -q '%s' && tmux select-window -t %s || tmux new-window -n %s 'lazygit'",
@@ -80,6 +82,7 @@ return {
                 },
               })
             end
+
           end,
           desc = "Lazygit (cwd)",
         },
