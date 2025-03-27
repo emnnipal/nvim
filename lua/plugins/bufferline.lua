@@ -1,4 +1,8 @@
 return {
+  -- TODO: Migrate to mini.tabline.
+  -- TODO: keymaps for moving and closing buffers
+  -- TODO: colors/highlights
+  -- { "echasnovski/mini.tabline", version = false, opts = { show_icons = false } },
   {
     "akinsho/bufferline.nvim",
     event = "VeryLazy",
