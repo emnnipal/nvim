@@ -86,7 +86,7 @@ return {
     config = function(_, opts)
       require("mini.tabline").setup(opts)
 
-      vim.api.nvim_create_user_command("BDeleteLeft", function()
+      vim.api.nvim_create_user_command("BuffDeleteLeft", function()
         local current_buf = vim.api.nvim_get_current_buf()
         local buffers = vim.api.nvim_list_bufs()
 
@@ -97,7 +97,7 @@ return {
         end
       end, {})
 
-      vim.api.nvim_create_user_command("BDeleteRight", function()
+      vim.api.nvim_create_user_command("BuffDeleteRight", function()
         local current_buf = vim.api.nvim_get_current_buf()
         local buffers = vim.api.nvim_list_bufs()
 
@@ -108,7 +108,7 @@ return {
         end
       end, {})
 
-      vim.api.nvim_create_user_command("BdeleteOthers", function()
+      vim.api.nvim_create_user_command("BuffDeleteOthers", function()
         local current_buf = vim.api.nvim_get_current_buf()
 
         -- Get all listed buffers
@@ -124,13 +124,14 @@ return {
       { "<leader>j", "<CMD>bprevious<CR>", { desc = "Previous Buffer" } },
       { "<leader>k", "<CMD>bnext<CR>", { desc = "Next Buffer" } },
       { "<leader>bd", "<CMD>bdelete<CR>", desc = "Close Buffer" },
+      { "<leader>bo", "<cmd>BuffDeleteOthers<CR>", desc = "Close Other Buffers" },
+
       { "<leader>qc", "<leader>bd", desc = "Close Buffer", remap = true },
       { "<leader>bp", "<leader>j", desc = "Previous Buffer", remap = true },
       { "<leader>bn", "<leader>k", desc = "Next Buffer", remap = true },
-      { "<leader>bo", "<cmd>BdeleteOthers<CR>", desc = "Close Other Buffers" },
 
-      { "<leader>bh", "<CMD>BDeleteLeft<CR>", desc = "Close Buffers to the Left" },
-      { "<leader>bl", "<CMD>BDeleteRight<CR>", desc = "Close Buffers to the Right" },
+      { "<leader>bh", "<CMD>BuffDeleteLeft<CR>", desc = "Close Buffers to the Left" },
+      { "<leader>bl", "<CMD>BuffDeleteRight<CR>", desc = "Close Buffers to the Right" },
     },
   },
 }
