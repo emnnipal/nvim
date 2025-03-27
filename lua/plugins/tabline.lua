@@ -3,25 +3,27 @@ local color = require("core.color")
 local function update_mini_tabline_colors()
   local bg = vim.api.nvim_get_hl(0, { name = "Normal" })
   local comment = vim.api.nvim_get_hl(0, { name = "Comment" })
-  local statement = vim.api.nvim_get_hl(0, { name = "Statement" }) -- For modified icon
+  local darker_comment = color.darken(color.to_hex(comment.fg), 0.3)
+
+  local is_light_theme = vim.o.background == "light"
 
   -- Darken current background by 20% for the tabline background
-  local darker_bg = color.darken(color.to_hex(bg.bg), 0.2)
+  local darker_bg = color.darken(color.to_hex(bg.bg), 0.15)
 
   vim.api.nvim_set_hl(0, "MiniTablineCurrent", {
     bg = bg.bg,
-    fg = bg.fg, -- Active buffer with Normal text color (same as before)
+    fg = bg.fg,
     bold = true,
   })
 
   vim.api.nvim_set_hl(0, "MiniTablineVisible", {
     bg = darker_bg,
-    fg = comment.fg, -- Inactive visible buffers (Comment color)
+    fg = is_light_theme and darker_comment or comment.fg,
   })
 
   vim.api.nvim_set_hl(0, "MiniTablineHidden", {
     bg = darker_bg,
-    fg = comment.fg, -- Hidden buffers with the same Comment color
+    fg = is_light_theme and darker_comment or comment.fg,
   })
 
   vim.api.nvim_set_hl(0, "MiniTablineModifiedCurrent", {
@@ -32,12 +34,12 @@ local function update_mini_tabline_colors()
 
   vim.api.nvim_set_hl(0, "MiniTablineModifiedVisible", {
     bg = darker_bg,
-    fg = statement.fg,
+    fg = is_light_theme and darker_comment or comment.fg,
   })
 
   vim.api.nvim_set_hl(0, "MiniTablineModifiedHidden", {
     bg = darker_bg,
-    fg = comment.fg,
+    fg = is_light_theme and darker_comment or comment.fg,
     bold = true,
     italic = true,
   })
@@ -45,9 +47,10 @@ local function update_mini_tabline_colors()
   vim.api.nvim_set_hl(0, "MiniTablineFill", {
     bg = darker_bg,
   })
+
   vim.api.nvim_set_hl(0, "MiniTablineTrunc", {
     bg = darker_bg,
-    fg = comment.fg,
+    fg = is_light_theme and darker_comment or comment.fg,
   })
 end
 
