@@ -30,6 +30,11 @@ return {
             truncate = 90, -- truncate the file path to (roughly) this length
           },
         },
+        previewers = {
+          git = {
+            builtin = false, -- use Neovim for previewing git output (true) or use git (false)
+          },
+        },
         win = {
           input = {
             keys = {
