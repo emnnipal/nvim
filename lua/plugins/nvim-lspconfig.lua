@@ -85,6 +85,11 @@ return {
             keymaps.setup(event.buf, client, server_opts.keys)
           end
 
+          local server_setup = opts.setup[client.name]
+          if server_setup then
+            server_setup(client, server_opts or {})
+          end
+
           -- Highlight references of the word under your cursor when your cursor rests there
           -- for a little while.
           --    See `:help CursorHold` for information about when this is executed
