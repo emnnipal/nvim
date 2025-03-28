@@ -2,7 +2,7 @@
 local is_in_tmux = vim.fn.getenv("TMUX") ~= vim.NIL and vim.fn.getenv("TMUX") ~= ""
 
 return {
-  { -- Useful plugin to show you pending keybinds.
+  {
     "folke/which-key.nvim",
     event = "VimEnter", -- Sets the loading event to 'VimEnter'
     opts = {
@@ -15,11 +15,9 @@ return {
         mappings = false,
       },
 
-      -- Document existing key chains
       -- stylua: ignore
       spec = {
         mode = { "n", "v" },
-        -- { '<leader>r', group = '[R]ename' },
         { "<leader>b", group = "Buffers" },
         { "<leader>c", group = "Code", mode = { "n", "x" } },
         { "<leader>f", group = "File/Find" },
@@ -75,18 +73,11 @@ return {
           end,
           desc = "Lazygit (cwd)",
         },
-
-        -- { "<leader>gG", function() Snacks.lazygit() end,  desc = "Lazygit (cwd)" },
-        -- stylua: ignore
         { "<leader>gf", function() Snacks.picker.git_log_file() end,  desc = "Git Current File History" },
-        -- stylua: ignore
         { "<leader>gl", function() Snacks.picker.git_log({ cwd = vim.fn.getcwd() }) end,  desc = "Git Log" },
-        -- stylua: ignore
         { "<leader>gL", function() Snacks.picker.git_log() end,  desc = "Git Log (cwd)" },
         { "<leader>gb", function() Snacks.picker.git_log_line() end,  desc = "Git Blame Line"  },
         { "<leader>gB", function() Snacks.gitbrowse() end,  desc = "Git Browse (open)" },
-
-
         { "<leader>i", group = "Utilities" },
         { "<leader>ie", "<Cmd>EslintFixAll<CR>", desc = "Fix eslint errors" },
         { "<leader>it", "<Cmd>vs#<CR>", desc = "Reopen recently closed buffer" },
