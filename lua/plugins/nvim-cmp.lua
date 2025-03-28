@@ -5,8 +5,6 @@ return {
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-path",
-      -- NOTE: we are using noice.nvim so we don't need this for now
-      -- "hrsh7th/cmp-nvim-lsp-signature-help",
     },
     config = function()
       local cmp = require("cmp")
@@ -33,8 +31,6 @@ return {
           },
           { name = "nvim_lsp" },
           { name = "path" },
-          -- NOTE: we are using noice.nvim so we don't need this for now
-          -- { name = "nvim_lsp_signature_help" },
         },
         matching = {
           disallow_fuzzy_matching = true,
