@@ -49,6 +49,7 @@ return {
           },
         },
       },
+      setup = {},
       -- TODO: for testing, do I really need this?
       -- add any global capabilities here
       capabilities = {
