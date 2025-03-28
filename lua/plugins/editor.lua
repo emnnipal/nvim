@@ -40,6 +40,15 @@ return {
     opts = {
       default_mappings = false,
     },
+    keys = {
+      { "<leader>gca", "<Cmd>GitConflictListQf<CR>", desc = "Get all conflict to quickfix" },
+      { "<leader>gcb", "<Cmd>GitConflictChooseBoth<CR>", desc = "Choose both" },
+      { "<leader>gcj", "<Cmd>GitConflictPrevConflict<CR>", desc = "Move to previous conflict" },
+      { "<leader>gck", "<Cmd>GitConflictNextConflict<CR>", desc = "Move to next conflict" },
+      { "<leader>gcn", "<Cmd>GitConflictChooseNone<CR>", desc = "Choose none" },
+      { "<leader>gco", "<Cmd>GitConflictChooseOurs<CR>", desc = "Choose ours" },
+      { "<leader>gct", "<Cmd>GitConflictChooseTheirs<CR>", desc = "Choose theirs" },
+    },
   },
 
   -- Automatically add closing tags for HTML and JSX
