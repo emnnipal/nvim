@@ -21,7 +21,7 @@ end
 
 local check_external_reqs = function()
   -- Basic utils: `git`, `make`, `unzip`
-  for _, exe in ipairs({ "git", "make", "unzip", "rg", "lazygit", "fd" }) do
+  for _, exe in ipairs({ "git", "make", "unzip", "rg", "lazygit", "fd", "delta" }) do
     local is_executable = vim.fn.executable(exe) == 1
     if is_executable then
       vim.health.ok(string.format("Found executable: '%s'", exe))
