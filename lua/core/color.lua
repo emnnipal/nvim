@@ -1,20 +1,27 @@
 local M = {}
 
---- Convert color from number to hex string.
---- @param color number|string The color value, either a number or a hex string.
---- @return string The color in hex format.
+--- Convert color from number to hex
+---@param color number|string Color value (either hex or number)
+---@return string|nil Hex representation of the color or nil if invalid
 function M.to_hex(color)
   if type(color) == "number" then
     return string.format("#%06x", color)
   end
-  return color -- Already in hex if not a number
+  if type(color) == "string" and color:match("^#%x%x%x%x%x%x$") then
+    return color
+  end
+  return nil -- Return nil for invalid colors
 end
 
---- Darken a hex color by a percentage.
---- @param color string The hex color string (e.g., "#RRGGBB").
---- @param percent number The percentage to darken (0.0 to 1.0).
---- @return string The darkened hex color.
+--- Darken a color by a given percentage
+---@param color string|nil Hex value of the color
+---@param percent number Percentage to darken the color
+---@return string|nil Darkened hex value or nil if invalid color
 function M.darken(color, percent)
+  if not color or #color ~= 7 then
+    return nil
+  end
+
   local r = tonumber(color:sub(2, 3), 16)
   local g = tonumber(color:sub(4, 5), 16)
   local b = tonumber(color:sub(6, 7), 16)
