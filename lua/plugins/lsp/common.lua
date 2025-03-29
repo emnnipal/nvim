@@ -11,8 +11,6 @@ return {
       -- servers = {
       --   eslint = {
       --     settings = {
-      --       -- This change in https://github.com/LazyVim/LazyVim/pull/2071 broke ESLint when
-      --       -- working with mono repositories. To address this issue, I am fixing the change by adding this configuration.
       --       workingDirectory = { mode = "auto" },
       --     },
       --   },

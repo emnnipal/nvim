@@ -65,7 +65,6 @@ return {
   --   ---@diagnostic disable-next-line: missing-fields
   --   opts = {
   --     explorer = {
-  --       enabled = LazyVim.has_extra("editor.snacks_explorer"),
   --       replace_netrw = true,
   --     },
   --     picker = {

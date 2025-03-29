@@ -1,7 +1,6 @@
 return {
   -- {
   --   "saghen/blink.cmp",
-  --   enabled = LazyVim.has_extra("coding.blink"),
   --   -- version = "0.12.4", -- last known stable version
   --   opts = {
   --     sources = {

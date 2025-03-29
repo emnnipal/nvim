@@ -1,4 +1,4 @@
-vim.g.lazyvim_prettier_needs_config = true
+vim.g.prettier_needs_config = true
 
 ---@alias ConformCtx {buf: number, filename: string, dirname: string}
 local M = {}
@@ -76,7 +76,7 @@ return {
       opts.formatters = opts.formatters or {}
       opts.formatters.prettierd = {
         condition = function(_, ctx)
-          return M.has_parser(ctx) and (vim.g.lazyvim_prettier_needs_config ~= true or M.has_config(ctx))
+          return M.has_parser(ctx) and (vim.g.prettier_needs_config ~= true or M.has_config(ctx))
         end,
       }
     end,

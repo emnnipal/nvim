@@ -1,6 +1,6 @@
-vim.g.lazyvim_eslint_auto_format = false
+vim.g.eslint_auto_format = false
 
-local auto_format = vim.g.lazyvim_eslint_auto_format == nil or vim.g.lazyvim_eslint_auto_format
+local auto_format = vim.g.eslint_auto_format == nil or vim.g.eslint_auto_format
 
 return {
   {

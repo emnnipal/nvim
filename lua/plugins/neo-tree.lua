@@ -15,13 +15,13 @@ return {
   --     },
   --   },
   -- },
-  -- NOTE: from lazyvim
+  -- TODO: check if this is needed
   -- deactivate = function()
   --   vim.cmd [[Neotree close]]
   -- end,
 
   opts = {
-    -- NOTE: from lazyvim
+    -- TODO: check if this is still needed
     -- sources = { 'filesystem', 'buffers', 'git_status' },
     -- open_files_do_not_replace_types = { 'terminal', 'Trouble', 'trouble', 'qf', 'Outline' },
     filesystem = {
@@ -37,7 +37,7 @@ return {
           ".env",
         },
       },
-      -- NOTE: from lazyvim
+      -- TODO: check if this is needed
       -- bind_to_cwd = false,
       -- follow_current_file = { enabled = true },
       -- use_libuv_file_watcher = true,

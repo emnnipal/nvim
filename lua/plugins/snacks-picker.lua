@@ -131,7 +131,6 @@ return {
           "<leader>ss",
           function()
             Snacks.picker.lsp_symbols({
-              -- filter = LazyVim.config.kind_filter,
               layout = { preview = true, layout = vertical_layout },
             })
           end,
@@ -142,7 +141,6 @@ return {
           "<leader>sS",
           function()
             Snacks.picker.lsp_workspace_symbols({
-              -- filter = LazyVim.config.kind_filter,
               layout = { preview = true, layout = vertical_layout },
             })
           end,
