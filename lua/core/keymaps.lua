@@ -80,6 +80,7 @@ function M.get()
   local hover_opts = {
     border = "rounded",
     max_width = 120,
+    max_height = 18,
     winopts = {
       conceallevel = 3,
     },
@@ -89,6 +90,7 @@ function M.get()
   local signature_opts = {
     border = "rounded",
     max_width = 120,
+    max_height = 18,
   }
 
   --- @type KeymapConfig[]
