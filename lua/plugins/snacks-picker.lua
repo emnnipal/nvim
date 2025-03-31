@@ -60,7 +60,7 @@ return {
       { "<leader>ff",function() Snacks.picker.files({ layout = { preview = false, layout = vertical_layout } }) end, desc = "Find Files (cwd)" },
 
       -- { "<leader><space>", "<leader>ff", desc = "Find Files (Root Dir)", remap = true },
-      { "<leader><space>", function() Snacks.picker.smart({ layout = { preview = false, layout = vertical_layout } }) end, desc = "Smart Find Files" },
+      { "<leader><space>", function() Snacks.picker.smart({ filter = { cwd = true }, layout = { preview = false, layout = vertical_layout } }) end, desc = "Smart Find Files" },
 
       { "<leader>fr",function() Snacks.picker.recent({ filter = { cwd = true }, layout = { preview = false, layout = vertical_layout } }) end, desc = "Recent (cwd)" },
       { "<leader>fR",function() Snacks.picker.recent({ layout = { preview = false, layout = vertical_layout } }) end, desc = "Recent (all)" },
