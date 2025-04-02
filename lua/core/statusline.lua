@@ -65,7 +65,7 @@ end
 
 function M.setup()
   local statusline = {
-    " %{%v:lua._statusline.display_mode()%} ",
+    " %{%v:lua._statusline.display_mode()%}  ",
     '%{expand("%:~:.")}', -- show current buffer file path relative to cwd
     " %r",
     "%m",
