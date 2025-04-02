@@ -19,11 +19,11 @@ function M.diagnostic_status()
   local result = ""
 
   if errors > 0 then
-    result = result .. string.format("%%#StatuslineError#%d ●%%* ", errors)
+    result = result .. string.format("%%#StatusLineError#%d ●%%* ", errors)
   end
 
   if warnings > 0 then
-    result = result .. string.format("%%#StatuslineWarn#%d ▲%%* ", warnings)
+    result = result .. string.format("%%#StatusLineWarn#%d ▲%%* ", warnings)
   end
 
   return result
@@ -103,14 +103,15 @@ function M.setup()
     " ",
   }
 
+  -- Set status line highlights
   local cursor_hl = vim.api.nvim_get_hl(0, { name = "CursorLineNr", link = false })
-  vim.api.nvim_set_hl(0, "StatusLineScroll", { fg = cursor_hl.fg, bg = cursor_hl.bg })
-
   local error_hl = vim.api.nvim_get_hl(0, { name = "DiagnosticError", link = false })
-  vim.api.nvim_set_hl(0, "StatuslineError", { fg = error_hl.fg, bold = true })
-
   local warning_hl = vim.api.nvim_get_hl(0, { name = "DiagnosticWarn", link = false })
-  vim.api.nvim_set_hl(0, "StatuslineWarn", { fg = warning_hl.fg, bold = true })
+
+  vim.api.nvim_set_hl(0, "StatusLineScroll", { fg = cursor_hl.fg, bg = cursor_hl.bg })
+  vim.api.nvim_set_hl(0, "StatusLineError", { fg = error_hl.fg, bold = true })
+  vim.api.nvim_set_hl(0, "StatusLineWarn", { fg = warning_hl.fg, bold = true })
+
   vim.o.statusline = table.concat(statusline, "")
 end
 
