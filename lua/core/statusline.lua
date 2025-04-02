@@ -19,11 +19,11 @@ function M.diagnostic_status()
   local result = ""
 
   if errors > 0 then
-    result = result .. string.format("%%#StatusLineError#%d ●%%* ", errors)
+    result = result .. string.format("%%#StatuslineError#%d ●%%* ", errors)
   end
 
   if warnings > 0 then
-    result = result .. string.format("%%#StatusLineWarn#%d ▲%%* ", warnings)
+    result = result .. string.format("%%#StatuslineWarn#%d ▲%%* ", warnings)
   end
 
   return result
@@ -83,7 +83,7 @@ function M.get_scrollbar()
   local i = math.floor((cur_line - 1) / lines * #sbar_chars) + 1
   local sbar = string.rep(sbar_chars[i], 2)
 
-  return "%#StatusLineScroll#" .. sbar .. "%*"
+  return "%#StatuslineScroll#" .. sbar .. "%*"
 end
 
 function M.setup()
@@ -108,9 +108,9 @@ function M.setup()
   local error_hl = vim.api.nvim_get_hl(0, { name = "DiagnosticError", link = false })
   local warning_hl = vim.api.nvim_get_hl(0, { name = "DiagnosticWarn", link = false })
 
-  vim.api.nvim_set_hl(0, "StatusLineScroll", { fg = cursor_hl.fg, bg = cursor_hl.bg })
-  vim.api.nvim_set_hl(0, "StatusLineError", { fg = error_hl.fg, bold = true })
-  vim.api.nvim_set_hl(0, "StatusLineWarn", { fg = warning_hl.fg, bold = true })
+  vim.api.nvim_set_hl(0, "StatuslineScroll", { fg = cursor_hl.fg, bg = cursor_hl.bg })
+  vim.api.nvim_set_hl(0, "StatuslineError", { fg = error_hl.fg, bold = true })
+  vim.api.nvim_set_hl(0, "StatuslineWarn", { fg = warning_hl.fg, bold = true })
 
   vim.o.statusline = table.concat(statusline, "")
 end
