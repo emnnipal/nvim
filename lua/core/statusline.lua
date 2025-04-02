@@ -63,6 +63,29 @@ function M.display_mode()
   return modes[current_mode] or current_mode
 end
 
+function M.get_scrollbar()
+  local sbar_chars = {
+    "▔",
+    "🮂",
+    "🬂",
+    "🮃",
+    "▀",
+    "▄",
+    "▃",
+    "🬭",
+    "▂",
+    "▁",
+  }
+
+  local cur_line = vim.api.nvim_win_get_cursor(0)[1]
+  local lines = vim.api.nvim_buf_line_count(0)
+
+  local i = math.floor((cur_line - 1) / lines * #sbar_chars) + 1
+  local sbar = string.rep(sbar_chars[i], 2)
+
+  return "%#StatusLineScroll#" .. sbar .. "%*"
+end
+
 function M.setup()
   local statusline = {
     " %{%v:lua._statusline.display_mode()%}  ",
@@ -75,10 +98,19 @@ function M.setup()
     "%{%v:lua._statusline.active_lsp()%}",
     -- " %2p%% ", -- show line position in percentage
     -- " %3l:%-2c ", -- show cursor position in column and row number
+    "  ",
+    "%{%v:lua._statusline.get_scrollbar()%}",
+    " ",
   }
 
-  vim.api.nvim_set_hl(0, "StatuslineError", { fg = "#ff5555", bold = true })
-  vim.api.nvim_set_hl(0, "StatuslineWarn", { fg = "#ffb86c", bold = true })
+  local cursor_hl = vim.api.nvim_get_hl(0, { name = "CursorLineNr", link = false })
+  vim.api.nvim_set_hl(0, "StatusLineScroll", { fg = cursor_hl.fg, bg = cursor_hl.bg })
+
+  local error_hl = vim.api.nvim_get_hl(0, { name = "DiagnosticError", link = false })
+  vim.api.nvim_set_hl(0, "StatuslineError", { fg = error_hl.fg, bold = true })
+
+  local warning_hl = vim.api.nvim_get_hl(0, { name = "DiagnosticWarn", link = false })
+  vim.api.nvim_set_hl(0, "StatuslineWarn", { fg = warning_hl.fg, bold = true })
   vim.o.statusline = table.concat(statusline, "")
 end
 
