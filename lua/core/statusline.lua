@@ -86,6 +86,17 @@ function M.get_scrollbar()
   return "%#StatuslineScroll#" .. sbar .. "%*"
 end
 
+function M.setup_highlights()
+  -- Set status line highlights
+  local cursor_hl = vim.api.nvim_get_hl(0, { name = "CursorLineNr", link = false })
+  local error_hl = vim.api.nvim_get_hl(0, { name = "DiagnosticError", link = false })
+  local warning_hl = vim.api.nvim_get_hl(0, { name = "DiagnosticWarn", link = false })
+
+  vim.api.nvim_set_hl(0, "StatuslineScroll", { fg = cursor_hl.fg, bg = cursor_hl.bg })
+  vim.api.nvim_set_hl(0, "StatuslineError", { fg = error_hl.fg, bold = true })
+  vim.api.nvim_set_hl(0, "StatuslineWarn", { fg = warning_hl.fg, bold = true })
+end
+
 function M.setup()
   local statusline = {
     " %{%v:lua._statusline.display_mode()%}  ",
@@ -101,14 +112,16 @@ function M.setup()
     "  %{%v:lua._statusline.get_scrollbar()%} ",
   }
 
-  -- Set status line highlights
-  local cursor_hl = vim.api.nvim_get_hl(0, { name = "CursorLineNr", link = false })
-  local error_hl = vim.api.nvim_get_hl(0, { name = "DiagnosticError", link = false })
-  local warning_hl = vim.api.nvim_get_hl(0, { name = "DiagnosticWarn", link = false })
+  -- Update colors on startup
+  vim.api.nvim_create_autocmd("VimEnter", {
+    callback = M.setup_highlights,
+  })
 
-  vim.api.nvim_set_hl(0, "StatuslineScroll", { fg = cursor_hl.fg, bg = cursor_hl.bg })
-  vim.api.nvim_set_hl(0, "StatuslineError", { fg = error_hl.fg, bold = true })
-  vim.api.nvim_set_hl(0, "StatuslineWarn", { fg = warning_hl.fg, bold = true })
+  -- Run on startup and when changing themes
+  vim.api.nvim_create_autocmd("ColorScheme", {
+    pattern = "*",
+    callback = M.setup_highlights,
+  })
 
   vim.o.statusline = table.concat(statusline, "")
 end
