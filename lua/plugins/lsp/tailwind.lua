@@ -4,7 +4,7 @@ return {
     opts = {
       servers = {
         tailwindcss = {
-          filetypes = { "javascriptreact", "typescriptreact", "vue", "svelte", "html", "css" },
+          filetypes = { "javascriptreact", "typescriptreact", "vue", "svelte", "html", "css", "scss", "less" },
         },
       },
       -- setup = {
