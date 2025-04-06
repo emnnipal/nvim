@@ -100,7 +100,13 @@ end
 function M.setup()
   local statusline = {
     " %{%v:lua._statusline.display_mode()%}  ",
-    '%{expand("%:~:.")}', -- show current buffer file path relative to cwd
+
+    "%#Comment#", -- Start Comment highlight
+    "%{fnamemodify(expand('%:~:.'), ':h') .. '/'}", -- Current buffer file path relative to cwd without the filename itself.
+    "%*", -- Reset to normal highlight
+
+    "%t", -- Current buffer filename only.
+
     " %r",
     "%m",
     -- " - %{&filetype} ",
