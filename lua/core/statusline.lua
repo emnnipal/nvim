@@ -112,7 +112,11 @@ function M.setup()
     -- " - %{&filetype} ",
     "%=",
     "%{%v:lua._statusline.diagnostic_status()%}",
+
+    "%#Comment#", -- Start Comment highlight
     "%{%v:lua._statusline.active_lsp()%}",
+    "%*", -- Reset to normal highlight
+
     -- " %2p%% ", -- show line position in percentage
     -- " %3l:%-2c ", -- show cursor position in column and row number
     "  %{%v:lua._statusline.get_scrollbar()%} ",
