@@ -15,6 +15,9 @@ return {
             workingDirectories = { mode = "auto" },
             format = auto_format,
           },
+          keys = {
+            { "<leader>ce", "<Cmd>EslintFixAll<CR>", desc = "Fix eslint errors" },
+          },
         },
       },
       setup = {
