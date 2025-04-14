@@ -6,24 +6,7 @@ return {
     "MunifTanjim/nui.nvim",
   },
   cmd = "Neotree",
-  -- opts = {
-  --   filesystem = {
-  --     window = {
-  --       mappings = {
-  --         ['\\'] = 'close_window',
-  --       },
-  --     },
-  --   },
-  -- },
-  -- TODO: check if this is needed
-  -- deactivate = function()
-  --   vim.cmd [[Neotree close]]
-  -- end,
-
   opts = {
-    -- TODO: check if this is still needed
-    -- sources = { 'filesystem', 'buffers', 'git_status' },
-    -- open_files_do_not_replace_types = { 'terminal', 'Trouble', 'trouble', 'qf', 'Outline' },
     filesystem = {
       filtered_items = {
         visible = false,
@@ -37,10 +20,6 @@ return {
           ".env",
         },
       },
-      -- TODO: check if this is needed
-      -- bind_to_cwd = false,
-      -- follow_current_file = { enabled = true },
-      -- use_libuv_file_watcher = true,
     },
     window = {
       popup = {

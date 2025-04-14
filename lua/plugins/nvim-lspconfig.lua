@@ -1,4 +1,3 @@
--- TODO: migrate to builtin lsp configuration once nvim-lspconfig supports it
 return {
   {
     -- Main LSP Configuration
@@ -50,8 +49,6 @@ return {
         },
       },
       setup = {},
-      -- TODO: for testing, do I really need this?
-      -- add any global capabilities here
       capabilities = {
         workspace = {
           fileOperations = {
