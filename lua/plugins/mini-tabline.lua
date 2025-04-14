@@ -136,6 +136,7 @@ return {
 
       { "<leader>bh", "<CMD>BuffDeleteLeft<CR>", desc = "Close Buffers to the Left" },
       { "<leader>bl", "<CMD>BuffDeleteRight<CR>", desc = "Close Buffers to the Right" },
+      { "<leader>bt", "<Cmd>vs#<CR>", desc = "Reopen recently closed buffer" },
     },
   },
 }
