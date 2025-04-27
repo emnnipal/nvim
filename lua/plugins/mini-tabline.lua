@@ -125,8 +125,8 @@ return {
       })
     end,
     keys = {
-      { "<leader>j", "<CMD>bprevious<CR>", { desc = "Previous Buffer" } },
-      { "<leader>k", "<CMD>bnext<CR>", { desc = "Next Buffer" } },
+      { "<leader>j", "<CMD>bprevious<CR>", desc = "Previous Buffer" },
+      { "<leader>k", "<CMD>bnext<CR>", desc = "Next Buffer" },
       { "<leader>bd", "<CMD>bdelete<CR>", desc = "Close Buffer" },
       { "<leader>bo", "<cmd>BuffDeleteOthers<CR>", desc = "Close Other Buffers" },
 
