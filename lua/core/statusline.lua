@@ -115,7 +115,7 @@ function M.setup()
     "%{%v:lua._statusline.active_lsp()%}",
     -- " %2p%% ", -- show line position in percentage
     -- " %3l:%-2c ", -- show cursor position in column and row number
-    "  %{%v:lua._statusline.get_scrollbar()%} ",
+    -- "  %{%v:lua._statusline.get_scrollbar()%} ",
   }
 
   -- Update colors on startup
