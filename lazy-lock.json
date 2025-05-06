@@ -5,7 +5,7 @@
   "conform.nvim": { "branch": "master", "commit": "372fc521f8421b7830ea6db4d6ea3bae1c77548c" },
   "fidget.nvim": { "branch": "main", "commit": "d9ba6b7bfe29b3119a610892af67602641da778e" },
   "git-conflict.nvim": { "branch": "main", "commit": "a1badcd070d176172940eb55d9d59029dad1c5a6" },
-  "gitsigns.nvim": { "branch": "main", "commit": "056d5ea359efe35c4e25e2ebcc255117ac86500d" },
+  "gitsigns.nvim": { "branch": "main", "commit": "5624b5ebe6988c75d3f4eb588b9f31f3847a721c" },
   "grug-far.nvim": { "branch": "main", "commit": "6ff8a205a29db3a9b08e5debe09452b4d6fd6591" },
   "hop.nvim": { "branch": "master", "commit": "9c6a1dd9afb53a112b128877ccd583a1faa0b8b6" },
   "lazy.nvim": { "branch": "main", "commit": "6c3bda4aca61a13a9c63f1c1d1b16b9d3be90d7a" },
