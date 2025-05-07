@@ -18,7 +18,7 @@ return {
     },
   },
   {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     opts = function(_, opts)
       -- Add your desired languages here to ensure they are installed
       vim.list_extend(opts.ensure_installed or {}, {

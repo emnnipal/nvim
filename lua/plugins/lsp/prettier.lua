@@ -53,7 +53,7 @@ M.has_parser = Utils.memoize(M.has_parser)
 
 return {
   {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     -- NOTE: We should no longer need `prettier`, but we still require it
     -- as a checker to determine whether the buffer being saved has a prettier config.
     -- If we use `prettierd` for this check, it returns a false positive even when the

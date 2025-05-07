@@ -1,7 +1,7 @@
 return {
   {
 
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     cmd = "Mason",
     event = "BufReadPre",
     build = ":MasonUpdate",
