@@ -5,7 +5,10 @@ return {
     event = "BufReadPre",
     dependencies = {
       { "mason-org/mason.nvim", opts = {} },
-      "mason-org/mason-lspconfig.nvim",
+      {
+        "mason-org/mason-lspconfig.nvim",
+        version = "1.32.0", -- TODO: remove once we have migrated our lspconfig to new vim.lsp.config of nvim 0.11
+      },
 
       { "j-hui/fidget.nvim", opts = {} },
 
