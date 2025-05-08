@@ -34,7 +34,7 @@ return {
             columns = { { "label", "kind", gap = 1 }, { "label_description" } },
             components = {
               label = {
-                width = { max = 40 },
+                width = { max = 50 },
               },
             },
           },
