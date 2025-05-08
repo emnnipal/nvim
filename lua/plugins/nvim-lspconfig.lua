@@ -13,6 +13,7 @@ return {
       { "j-hui/fidget.nvim", opts = {} },
 
       -- "hrsh7th/cmp-nvim-lsp",
+      "saghen/blink.cmp",
     },
     opts = {
       --  Add any additional override configuration in the following tables. Available keys are:
