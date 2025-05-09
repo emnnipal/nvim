@@ -66,7 +66,14 @@ return {
       fuzzy = {
         implementation = "rust",
         sorts = {
-          -- (optionally) always prioritize exact matches
+          -- Deprioritize emmet lsp cmp items
+          function(a, b)
+            if (a.client_name == nil or b.client_name == nil) or (a.client_name == b.client_name) then
+              return
+            end
+            return b.client_name == "emmet_language_server"
+          end,
+
           "exact",
           "score",
           "sort_text",
