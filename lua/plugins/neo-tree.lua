@@ -5,7 +5,7 @@ return {
     "nvim-lua/plenary.nvim",
     "MunifTanjim/nui.nvim",
   },
-  cmd = "Neotree",
+  lazy = false,
   opts = {
     filesystem = {
       filtered_items = {
