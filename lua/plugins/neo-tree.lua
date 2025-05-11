@@ -5,9 +5,10 @@ return {
     "nvim-lua/plenary.nvim",
     "MunifTanjim/nui.nvim",
   },
-  lazy = false,
+  cmd = "Neotree",
   opts = {
     filesystem = {
+      hijack_netrw_behavior = "disabled",
       filtered_items = {
         visible = false,
         hide_dotfiles = false,
