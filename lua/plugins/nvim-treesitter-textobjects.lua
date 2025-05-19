@@ -2,7 +2,7 @@ return {
   {
     "nvim-treesitter/nvim-treesitter-textobjects",
     event = "VeryLazy",
-    enabled = true,
+    enabled = false,
     config = function()
       -- If treesitter is already loaded, we need to run config again for textobjects
       if Utils.is_loaded("nvim-treesitter") then
