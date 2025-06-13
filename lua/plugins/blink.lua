@@ -8,7 +8,7 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 return {
   {
     "saghen/blink.cmp",
-    enabled = false,
+    -- enabled = false,
     event = "VimEnter",
     version = "1.*",
     dependencies = {
