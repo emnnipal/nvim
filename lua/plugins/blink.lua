@@ -10,7 +10,7 @@ return {
     "saghen/blink.cmp",
     -- enabled = false,
     event = "VimEnter",
-    version = "1.*",
+    version = "*",
     dependencies = {
       "folke/lazydev.nvim",
     },
