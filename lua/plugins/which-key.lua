@@ -4,7 +4,7 @@ local is_in_tmux = vim.fn.getenv("TMUX") ~= vim.NIL and vim.fn.getenv("TMUX") ~=
 return {
   {
     "folke/which-key.nvim",
-    event = "VimEnter", -- Sets the loading event to 'VimEnter'
+    event = "VimEnter",
     opts = {
       -- delay between pressing a key and opening which-key (milliseconds)
       -- this setting is independent of vim.o.timeoutlen
@@ -23,7 +23,6 @@ return {
         { "<leader>f", group = "File/Find" },
         { "<leader>g", group = "Git" },
         { "<leader>gc", group = "Resolve Git Conflicts" },
-        -- { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
         { "<leader>q", group = "Quit/Session" },
         { "<leader>s", group = "Search" },
         { "<leader>u", group = "UI" },
