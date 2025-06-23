@@ -10,7 +10,8 @@ return {
     "saghen/blink.cmp",
     enabled = false,
     event = "VimEnter",
-    version = "*",
+    version = "*", -- comment out to use the main branch
+    -- build = "cargo build --release", -- uncomment when using the main branch
     dependencies = {
       "folke/lazydev.nvim",
     },
