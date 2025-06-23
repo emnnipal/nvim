@@ -24,7 +24,7 @@ return {
   { -- Autocompletion
     "hrsh7th/nvim-cmp",
     event = "InsertEnter",
-    -- enabled = false,
+    enabled = vim.g.cmp_plugin == "nvim-cmp",
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-path",

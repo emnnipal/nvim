@@ -8,10 +8,10 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 return {
   {
     "saghen/blink.cmp",
-    enabled = false,
+    enabled = vim.g.cmp_plugin == "blink",
     event = "VimEnter",
-    version = "*", -- comment out to use the main branch
-    -- build = "cargo build --release", -- uncomment when using the main branch
+    version = not vim.g.use_blink_main and "*" or nil,
+    build = vim.g.use_blink_main and "cargo build --release" or nil,
     dependencies = {
       "folke/lazydev.nvim",
     },

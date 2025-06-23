@@ -22,10 +22,14 @@ vim.o.showcmd = false -- Hide key presses showing in command line
 vim.o.ttimeoutlen = 0
 -- vim.o.timeoutlen = 500 -- Adjust this if needed
 
--- Set to true if you have a Nerd Font installed and selected in the terminal
-vim.g.have_nerd_font = true
+--- Completion plugin to use: `"nvim-cmp"` or `"blink"`
+---@type "nvim-cmp" | "blink"
+vim.g.cmp_plugin = "nvim-cmp"
 
---  For more options, you can see `:help option-list`
+--- Use the `main` branch of `blink.cmp` instead of the latest release.
+--- Set to `true` if you want to track the latest changes from the main branch.
+---@type boolean
+vim.g.use_blink_main = false
 
 vim.o.pumheight = 10 -- Maximum number of entries in a popup
 vim.o.relativenumber = true -- Relative line numbers
