@@ -1,3 +1,25 @@
+--- Returns a comparator that deprioritizes a specific CompletionItemKind
+---@param kind number
+---@return function
+local function deprioritize_kind(kind)
+  return function(entry1, entry2)
+    local kind1 = entry1:get_kind() or 0
+    local kind2 = entry2:get_kind() or 0
+
+    if kind1 == kind2 then
+      return nil
+    end
+
+    if kind1 == kind then
+      return false
+    elseif kind2 == kind then
+      return true
+    end
+
+    return nil
+  end
+end
+
 return {
   { -- Autocompletion
     "hrsh7th/nvim-cmp",
@@ -10,6 +32,8 @@ return {
     config = function()
       local cmp = require("cmp")
       local auto_select = true
+      local compare = require("cmp.config.compare")
+      local types = require("cmp.types")
 
       cmp.setup({
         completion = {
@@ -81,6 +105,24 @@ return {
           -- custom performance options
           debounce = 20,
           max_view_entries = 50,
+        },
+        sorting = {
+          priority_weight = 2,
+          comparators = {
+            deprioritize_kind(types.lsp.CompletionItemKind.Text),
+
+            -- default comparators from https://github.com/hrsh7th/nvim-cmp/blob/main/lua/cmp/config/default.lua
+            compare.offset,
+            compare.exact,
+            -- compare.scopes,
+            compare.score,
+            compare.recently_used,
+            compare.locality,
+            compare.kind,
+            compare.sort_text,
+            compare.length,
+            compare.order,
+          },
         },
       })
     end,
