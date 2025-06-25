@@ -72,7 +72,7 @@ return {
           expandable_indicator = true,
           fields = { "abbr", "kind", "menu" }, -- order of fields
           format = function(entry, item)
-            local max_label_width = 50
+            local max_label_width = 60
             local max_detail_width = 30
 
             local menu = item.menu
