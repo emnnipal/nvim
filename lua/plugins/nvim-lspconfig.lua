@@ -13,6 +13,7 @@ return {
 
       vim.g.cmp_plugin == "nvim-cmp" and "hrsh7th/cmp-nvim-lsp" or nil,
       vim.g.cmp_plugin == "blink" and "saghen/blink.cmp" or nil,
+      vim.g.cmp_plugin == "nvim-ix" and "hrsh7th/nvim-ix" or nil,
     },
     opts = {
       -- NOTE: ensure only LSP servers are installed here, mason.nvim handles formatters
@@ -134,12 +135,14 @@ return {
 
       local has_cmp, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
       local has_blink, blink = pcall(require, "blink.cmp")
+      local has_nvim_ix, nvim_ix = pcall(require, "ix")
 
       capabilities = vim.tbl_deep_extend(
         "force",
         capabilities,
         has_cmp and cmp_nvim_lsp.default_capabilities() or {},
         has_blink and blink.get_lsp_capabilities() or {},
+        has_nvim_ix and nvim_ix.get_capabilities() or {},
         opts.capabilities or {}
       )
 

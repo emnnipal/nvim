@@ -22,9 +22,9 @@ vim.o.showcmd = false -- Hide key presses showing in command line
 vim.o.ttimeoutlen = 0
 -- vim.o.timeoutlen = 500 -- Adjust this if needed
 
---- Completion plugin to use: `"nvim-cmp"` or `"blink"`
----@type "nvim-cmp" | "blink"
-vim.g.cmp_plugin = "nvim-cmp"
+--- Completion plugin to use: `nvim-cmp`, `blink` or `nvim-ix`
+---@type "nvim-cmp" | "blink" | "nvim-ix"
+vim.g.cmp_plugin = "nvim-ix"
 
 --- Use the `main` branch of `blink.cmp` instead of the latest release.
 --- Set to `true` if you want to track the latest changes from the main branch.
