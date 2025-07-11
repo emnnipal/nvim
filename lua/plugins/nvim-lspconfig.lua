@@ -135,14 +135,12 @@ return {
 
       local has_cmp, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
       local has_blink, blink = pcall(require, "blink.cmp")
-      local has_nvim_ix, nvim_ix = pcall(require, "ix")
 
       capabilities = vim.tbl_deep_extend(
         "force",
         capabilities,
         has_cmp and cmp_nvim_lsp.default_capabilities() or {},
         has_blink and blink.get_lsp_capabilities() or {},
-        has_nvim_ix and nvim_ix.get_capabilities() or {},
         opts.capabilities or {}
       )
 
