@@ -27,7 +27,7 @@ return {
         formatters = {
           file = {
             filename_first = true,
-            truncate = 90, -- truncate the file path to (roughly) this length
+            truncate = 104, -- truncate the file path to (roughly) this length
           },
         },
         previewers = {
