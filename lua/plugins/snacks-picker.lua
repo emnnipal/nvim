@@ -26,7 +26,7 @@ return {
         ui_select = true,
         formatters = {
           file = {
-            -- filename_first = true,
+            filename_first = true,
             truncate = 90, -- truncate the file path to (roughly) this length
           },
         },
