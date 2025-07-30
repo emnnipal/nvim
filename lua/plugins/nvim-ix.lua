@@ -10,6 +10,28 @@ return {
       completion = {
         preselect = true,
       },
+      attach = {
+        insert_mode = function()
+          vim.print("buftype: " .. vim.inspect(vim.bo.buftype))
+          -- do not allow 'prompt' buftype so that cmp won't show in snacks picker
+          if vim.bo.buftype == "nofile" or vim.bo.buftype == "prompt" then
+            return
+          end
+          do
+            local service = ix.get_completion_service({ recreate = true })
+            -- service:register_source(ix.source.completion.github(), { group = 1 })
+            -- service:register_source(ix.source.completion.calc(), { group = 1 })
+            -- service:register_source(ix.source.completion.emoji(), { group = 1 })
+            service:register_source(ix.source.completion.path(), { group = 10 })
+            ix.source.completion.attach_lsp(service, { group = 20 })
+            -- service:register_source(ix.source.completion.buffer(), { group = 20, dedup = true })
+          end
+          do
+            local service = ix.get_signature_help_service({ recreate = true })
+            ix.source.signature_help.attach_lsp(service)
+          end
+        end,
+      },
     })
 
     vim.keymap.set({ "i", "c" }, "<C-f>", ix.action.scroll(0 + 3))
