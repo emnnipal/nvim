@@ -1,4 +1,5 @@
 local M = {}
+local icon = require("core.icons")
 
 _G._statusline = M
 
@@ -19,11 +20,11 @@ function M.diagnostic_status()
   local result = ""
 
   if errors > 0 then
-    result = result .. string.format("%%#StatuslineError#%d ●%%* ", errors)
+    result = result .. string.format("%%#StatuslineError#%d %s%%* ", errors, icon.diagnostic.ERROR)
   end
 
   if warnings > 0 then
-    result = result .. string.format("%%#StatuslineWarn#%d ▲%%* ", warnings)
+    result = result .. string.format("%%#StatuslineWarn#%d %s%%* ", warnings, icon.diagnostic.WARN)
   end
 
   return result

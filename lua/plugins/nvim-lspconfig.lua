@@ -96,6 +96,8 @@ return {
         end,
       })
 
+      local icon = require("core.icons")
+
       -- Diagnostic Config
       vim.diagnostic.config({
         severity_sort = true,
@@ -107,10 +109,10 @@ return {
         -- underline = { severity = vim.diagnostic.severity.ERROR },
         signs = {
           text = {
-            [vim.diagnostic.severity.ERROR] = "●",
-            [vim.diagnostic.severity.WARN] = "▲",
-            [vim.diagnostic.severity.INFO] = "●",
-            [vim.diagnostic.severity.HINT] = "●",
+            [vim.diagnostic.severity.ERROR] = icon.diagnostic.ERROR,
+            [vim.diagnostic.severity.WARN] = icon.diagnostic.WARN,
+            [vim.diagnostic.severity.INFO] = icon.diagnostic.INFO,
+            [vim.diagnostic.severity.HINT] = icon.diagnostic.HINT,
           },
         },
         virtual_text = {
