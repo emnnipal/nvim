@@ -24,7 +24,7 @@ vim.o.ttimeoutlen = 0
 
 --- Completion plugin to use: `nvim-cmp`, `blink` or `nvim-ix`
 ---@type "nvim-cmp" | "blink" | "nvim-ix"
-vim.g.cmp_plugin = "nvim-ix"
+vim.g.cmp_plugin = "nvim-cmp"
 
 --- Use the `main` branch of `blink.cmp` instead of the latest release.
 --- Set to `true` if you want to track the latest changes from the main branch.
