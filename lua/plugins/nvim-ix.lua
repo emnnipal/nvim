@@ -12,7 +12,6 @@ return {
       },
       attach = {
         insert_mode = function()
-          vim.print("buftype: " .. vim.inspect(vim.bo.buftype))
           -- do not allow 'prompt' buftype so that cmp won't show in snacks picker
           if vim.bo.buftype == "nofile" or vim.bo.buftype == "prompt" then
             return
