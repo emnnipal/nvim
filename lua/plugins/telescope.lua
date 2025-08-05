@@ -1,3 +1,12 @@
+if vim.g.picker_plugin == "telescope" then
+  vim.api.nvim_create_autocmd("ColorScheme", {
+    pattern = "*",
+    callback = function()
+      vim.api.nvim_set_hl(0, "Directory", { link = "Comment" }) -- Directory highlight of smart open files
+    end,
+  })
+end
+
 return {
   {
     "nvim-telescope/telescope.nvim",

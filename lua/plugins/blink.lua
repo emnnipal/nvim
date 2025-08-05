@@ -1,9 +1,11 @@
-vim.api.nvim_create_autocmd("ColorScheme", {
-  pattern = "*",
-  callback = function()
-    vim.api.nvim_set_hl(0, "BlinkCmpLabelDescription", { link = "Comment" })
-  end,
-})
+if vim.g.cmp_plugin == "blink" then
+  vim.api.nvim_create_autocmd("ColorScheme", {
+    pattern = "*",
+    callback = function()
+      vim.api.nvim_set_hl(0, "BlinkCmpLabelDescription", { link = "Comment" })
+    end,
+  })
+end
 
 return {
   {
