@@ -60,7 +60,9 @@ return {
               return math.min(max_lines, 20)
             end,
           },
-
+          path_display = {
+            filename_first = true,
+          },
           prompt_prefix = " ",
           selection_caret = " ",
           -- open files in the first window that is an actual file.
@@ -91,6 +93,8 @@ return {
             },
             n = {
               ["q"] = actions.close,
+              ["<C-p>"] = require("telescope.actions.layout").toggle_preview,
+              ["<a-p>"] = require("telescope.actions.layout").toggle_preview,
             },
           },
           preview = {
@@ -160,24 +164,58 @@ return {
       { "<leader>sW", "<cmd>Telescope grep_string root=false<cr>", mode = "v", desc = "Selection (cwd)" },
       -- { "<leader>sW", LazyVim.pick("grep_string", { root = false }), mode = "v", desc = "Selection (cwd)" },
       { "<leader>uC", "<cmd>Telescope colorscheme enable_preview=true<cr>", desc = "Colorscheme with Preview" },
-      {
-        "<leader>ss",
-        function()
-          require("telescope.builtin").lsp_document_symbols({
-            -- symbols = LazyVim.config.get_kind_filter(),
-          })
-        end,
-        desc = "Goto Symbol",
-      },
-      {
-        "<leader>sS",
-        function()
-          require("telescope.builtin").lsp_dynamic_workspace_symbols({
-            -- symbols = LazyVim.config.get_kind_filter(),
-          })
-        end,
-        desc = "Goto Symbol (Workspace)",
-      },
     },
+  },
+
+  {
+    "neovim/nvim-lspconfig",
+    opts = function()
+      if vim.g.picker_plugin ~= "telescope" then
+        return
+      end
+      local keymap = require("core.keymaps")
+      keymap.extend_keymaps({
+        {
+          "gd",
+          function()
+            require("telescope.builtin").lsp_definitions({ reuse_win = true })
+          end,
+          desc = "Goto Definition",
+          has = "definition",
+        },
+        { "gr", "<cmd>Telescope lsp_references<cr>", desc = "References", nowait = true },
+        {
+          "gI",
+          function()
+            require("telescope.builtin").lsp_implementations({ reuse_win = true })
+          end,
+          desc = "Goto Implementation",
+        },
+        {
+          "gy",
+          function()
+            require("telescope.builtin").lsp_type_definitions({ reuse_win = true })
+          end,
+          desc = "Goto T[y]pe Definition",
+        },
+
+        {
+          "<leader>ss",
+          function()
+            require("telescope.builtin").lsp_document_symbols()
+          end,
+          desc = "LSP Symbols",
+          has = "documentSymbol",
+        },
+        {
+          "<leader>sS",
+          function()
+            require("telescope.builtin").lsp_dynamic_workspace_symbols()
+          end,
+          desc = "LSP Workspace Symbols",
+          has = "workspace/symbols",
+        },
+      })
+    end,
   },
 }

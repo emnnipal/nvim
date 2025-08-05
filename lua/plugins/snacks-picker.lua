@@ -110,6 +110,10 @@ return {
   {
     "neovim/nvim-lspconfig",
     opts = function()
+      if vim.g.picker_plugin ~= "snacks" then
+        return
+      end
+
       local keymap = require("core.keymaps")
       keymap.extend_keymaps({
         {
