@@ -20,6 +20,7 @@ return {
     "folke/snacks.nvim",
     ---@module 'snacks'
     ---@type snacks.Config
+    enabled = vim.g.picker_plugin == "snacks",
     opts = {
       picker = {
         enabled = true,
