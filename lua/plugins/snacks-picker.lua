@@ -20,7 +20,6 @@ return {
     "folke/snacks.nvim",
     ---@module 'snacks'
     ---@type snacks.Config
-    enabled = vim.g.picker_plugin == "snacks",
     opts = {
       picker = {
         enabled = true,
@@ -100,7 +99,7 @@ return {
       { "<leader>sl", function() Snacks.picker.loclist() end, desc = "Location List" },
       { "<leader>sM", function() Snacks.picker.man() end, desc = "Man Pages" },
       { "<leader>sm", function() Snacks.picker.marks() end, desc = "Marks" },
-      { "<leader>sR", function() Snacks.picker.resume() end, desc = "Resume" },
+      { "<leader>sR", function() Snacks.picker.resume() end, desc = "Use Recent Picker" },
       { "<leader>sq", function() Snacks.picker.qflist() end, desc = "Quickfix List" },
       { "<leader>su", function() Snacks.picker.undo() end, desc = "Undotree" },
       -- ui
