@@ -110,6 +110,7 @@ return {
       }
     end,
 
+    -- stylua: ignore
     keys = {
       { "<leader>s/", "<Cmd>Telescope current_buffer_fuzzy_find<CR>", desc = "Search in current buffer" },
 
@@ -132,7 +133,7 @@ return {
       { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
       { "<leader>fR", "<cmd>Telescope resume<cr>", desc = "Recent Picker" },
       -- git
-      { "<leader>gc", "<cmd>Telescope git_commits<CR>", desc = "Commits" },
+      { "<leader>gC", "<cmd>Telescope git_commits<CR>", desc = "Commits" },
       { "<leader>gs", "<cmd>Telescope git_status<CR>", desc = "Status" },
       -- search
 
@@ -144,7 +145,7 @@ return {
       { "<leader>sC", "<cmd>Telescope commands<cr>", desc = "Commands" },
       { "<leader>sd", "<cmd>Telescope diagnostics bufnr=0<cr>", desc = "Document Diagnostics" },
       { "<leader>sD", "<cmd>Telescope diagnostics<cr>", desc = "Workspace Diagnostics" },
-      { "<leader>sg", "<cmd>Telescope live_grep<cr>", desc = "Grep (cwd)" },
+      { "<leader>sg", "<cmd>Telescope live_grep previewer=true<cr>", desc = "Grep (cwd)" },
       { "<leader>sh", "<cmd>Telescope help_tags<cr>", desc = "Help Pages" },
       { "<leader>sH", "<cmd>Telescope highlights<cr>", desc = "Search Highlight Groups" },
       { "<leader>sj", "<cmd>Telescope jumplist<cr>", desc = "Jumplist" },
@@ -155,13 +156,13 @@ return {
       { "<leader>so", "<cmd>Telescope vim_options<cr>", desc = "Options" },
       { "<leader>sR", "<cmd>Telescope resume<cr>", desc = "Use Recent Picker" },
       { "<leader>sq", "<cmd>Telescope quickfix<cr>", desc = "Quickfix List" },
-      { "<leader>sw", "<cmd>Telescope grep_string word_match=-w<cr>", desc = "Word (Root Dir)" },
+      { "<leader>sw", "<cmd>Telescope grep_string word_match=-w previewer=true<cr>", desc = "Word (Root Dir)" },
       -- { "<leader>sw", LazyVim.pick("grep_string", { word_match = "-w" }), desc = "Word (Root Dir)" },
-      { "<leader>sW", "<cmd>Telescope grep_string root=false word_match=-w<cr>", desc = "Word (cwd)" },
+      { "<leader>sW", "<cmd>Telescope grep_string root=false word_match=-w previewer=true<cr>", desc = "Word (cwd)" },
       -- { "<leader>sW", LazyVim.pick("grep_string", { root = false, word_match = "-w" }), desc = "Word (cwd)" },
-      { "<leader>sw", "<cmd>Telescope grep_string word_match=-w<cr>", mode = "v", desc = "Selection (Root Dir)" },
+      { "<leader>sw", "<cmd>Telescope grep_string word_match=-w previewer=true<cr>", mode = "v", desc = "Selection (Root Dir)" },
       -- { "<leader>sw", LazyVim.pick("grep_string"), mode = "v", desc = "Selection (Root Dir)" },
-      { "<leader>sW", "<cmd>Telescope grep_string root=false<cr>", mode = "v", desc = "Selection (cwd)" },
+      { "<leader>sW", "<cmd>Telescope grep_string root=false previewer=true<cr>", mode = "v", desc = "Selection (cwd)" },
       -- { "<leader>sW", LazyVim.pick("grep_string", { root = false }), mode = "v", desc = "Selection (cwd)" },
       { "<leader>uC", "<cmd>Telescope colorscheme enable_preview=true<cr>", desc = "Colorscheme with Preview" },
     },
@@ -178,12 +179,12 @@ return {
         {
           "gd",
           function()
-            require("telescope.builtin").lsp_definitions({ reuse_win = true })
+            require("telescope.builtin").lsp_definitions({ reuse_win = true, previewer = true })
           end,
           desc = "Goto Definition",
           has = "definition",
         },
-        { "gr", "<cmd>Telescope lsp_references<cr>", desc = "References", nowait = true },
+        { "gr", "<cmd>Telescope lsp_references previewer=true<cr>", desc = "References", nowait = true },
         {
           "gI",
           function()
@@ -202,7 +203,7 @@ return {
         {
           "<leader>ss",
           function()
-            require("telescope.builtin").lsp_document_symbols()
+            require("telescope.builtin").lsp_document_symbols({ previewer = true })
           end,
           desc = "LSP Symbols",
           has = "documentSymbol",
@@ -210,7 +211,7 @@ return {
         {
           "<leader>sS",
           function()
-            require("telescope.builtin").lsp_dynamic_workspace_symbols()
+            require("telescope.builtin").lsp_dynamic_workspace_symbols({ previewer = true })
           end,
           desc = "LSP Workspace Symbols",
           has = "workspace/symbols",
