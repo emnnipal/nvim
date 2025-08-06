@@ -2,7 +2,7 @@ if vim.g.picker_plugin == "telescope" then
   vim.api.nvim_create_autocmd("ColorScheme", {
     pattern = "*",
     callback = function()
-      vim.api.nvim_set_hl(0, "Directory", { link = "Comment" }) -- Directory highlight of smart open files
+      vim.api.nvim_set_hl(0, "SmartOpenDirectory", { link = "Comment" }) -- Directory highlight of smart open files
     end,
   })
 end
@@ -181,7 +181,7 @@ return {
 
   {
     "danielfalk/smart-open.nvim",
-    branch = "0.2.x",
+    branch = "0.3.x",
     enabled = vim.g.picker_plugin == "telescope",
     config = function()
       require("telescope").load_extension("smart_open")
