@@ -9,6 +9,7 @@ return {
     ix.setup({
       completion = {
         preselect = true,
+        auto_select_first = true,
       },
       attach = {
         insert_mode = function()
@@ -41,7 +42,7 @@ return {
     vim.keymap.set({ "i", "c" }, "<S-Tab>", ix.action.completion.select_prev())
     vim.keymap.set({ "i", "c" }, "<C-e>", ix.action.completion.close())
     ix.charmap.set("c", "<CR>", ix.action.completion.commit_cmdline())
-    ix.charmap.set("i", "<CR>", ix.action.completion.commit({ select_first = true }))
+    ix.charmap.set("i", "<CR>", ix.action.completion.commit())
     vim.keymap.set("i", "<Down>", ix.action.completion.select_next())
     vim.keymap.set("i", "<Up>", ix.action.completion.select_prev())
     vim.keymap.set(
