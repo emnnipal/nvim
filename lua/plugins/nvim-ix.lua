@@ -11,6 +11,9 @@ return {
         preselect = true,
         auto_select_first = true,
       },
+      signature_help = {
+        auto = false,
+      },
       attach = {
         insert_mode = function()
           -- do not allow 'prompt' buftype so that cmp won't show in snacks picker
@@ -24,7 +27,7 @@ return {
             -- service:register_source(ix.source.completion.emoji(), { group = 1 })
             service:register_source(ix.source.completion.path(), { group = 10 })
             ix.source.completion.attach_lsp(service, { group = 20 })
-            -- service:register_source(ix.source.completion.buffer(), { group = 20, dedup = true })
+            -- service:register_source(ix.source.completion.buffer(), { group = 30, dedup = true })
           end
           do
             local service = ix.get_signature_help_service({ recreate = true })
