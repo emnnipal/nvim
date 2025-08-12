@@ -22,7 +22,7 @@ return {
     ---@type snacks.Config
     opts = {
       picker = {
-        enabled = true,
+        enabled = vim.g.picker_plugin == "snacks",
         ui_select = true,
         formatters = {
           file = {

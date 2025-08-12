@@ -8,7 +8,6 @@ return {
     opts = {
       dashboard = { enabled = true },
       indent = { enabled = true, scope = { enabled = false } },
-      picker = { enabled = vim.g.picker_plugin == "snacks" },
       -- indent = {
       --   scope = { enabled = false },
       -- },
