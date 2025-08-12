@@ -23,8 +23,7 @@ return {
         end,
       },
     },
-
-    opts = function()
+    config = function()
       local actions = require("telescope.actions")
 
       local open_with_trouble = function(...)
@@ -41,7 +40,7 @@ return {
         require("telescope.builtin").find_files({ hidden = true, default_text = line })
       end
 
-      return {
+      require("telescope").setup({
         defaults = {
           results_title = false,
           sorting_strategy = "ascending",
@@ -106,7 +105,9 @@ return {
             open_buffer_indicators = { previous = "⏺︎", others = "◌" },
           },
         },
-      }
+      })
+
+      pcall(require("telescope").load_extension, "fzf")
     end,
 
     -- stylua: ignore
