@@ -165,6 +165,18 @@ return {
   },
 
   {
+    "folke/snacks.nvim",
+    opts = function()
+      if vim.g.picker_plugin == "telescope" then
+        ---@diagnostic disable-next-line: duplicate-set-field
+        vim.ui.select = function(...)
+          return Snacks.picker.select(...)
+        end
+      end
+    end,
+  },
+
+  {
     "danielfalk/smart-open.nvim",
     branch = "0.3.x",
     enabled = vim.g.picker_plugin == "telescope",
