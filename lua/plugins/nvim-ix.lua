@@ -13,6 +13,14 @@ return {
       completion = {
         preselect = true,
         auto_select_first = true,
+        lsp = {
+          servers = {
+            -- This is example configuration for emmet_language_server.
+            emmet_language_server = {
+              priority = -1,
+            },
+          },
+        },
       },
       signature_help = {
         auto = false,
