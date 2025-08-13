@@ -6,6 +6,13 @@ return {
   },
   config = function()
     local ix = require("ix")
+    local servers = {
+      -- This is example configuration for emmet_language_server.
+      emmet_language_server = {
+        priority = -1,
+      },
+    }
+
     ix.setup({
       expand_snippet = function(snippet_body)
         vim.snippet.expand(snippet_body) -- for `neovim built-in` users
@@ -14,12 +21,7 @@ return {
         preselect = true,
         auto_select_first = true,
         lsp = {
-          servers = {
-            -- This is example configuration for emmet_language_server.
-            emmet_language_server = {
-              priority = -1,
-            },
-          },
+          servers = servers,
         },
       },
       signature_help = {
@@ -37,7 +39,14 @@ return {
             -- service:register_source(ix.source.completion.calc(), { group = 1 })
             -- service:register_source(ix.source.completion.emoji(), { group = 1 })
             service:register_source(ix.source.completion.path(), { group = 10 })
-            ix.source.completion.attach_lsp(service, { group = 20 })
+            ix.source.completion.attach_lsp(service, {
+              default = {
+                group = 20,
+                priority = 1,
+              },
+              servers = servers,
+            })
+
             -- service:register_source(ix.source.completion.buffer(), { group = 30, dedup = true })
           end
           do
