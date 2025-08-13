@@ -65,7 +65,20 @@ return {
     vim.keymap.set({ "i", "c" }, "<C-b>", ix.action.scroll(0 - 3))
 
     vim.keymap.set({ "i", "c" }, "<C-Space>", ix.action.completion.complete())
-    vim.keymap.set({ "i", "c" }, "<Tab>", ix.action.completion.select_next())
+
+    -- vim.keymap.set({ "i", "c" }, "<Tab>", ix.action.completion.select_next())
+    vim.keymap.set({ "i", "c" }, "<Tab>", function()
+      ix.do_action(function(ctx)
+        local selection = ctx.completion.get_selection()
+        if ctx.completion.is_menu_visible() and selection then
+          ctx.completion.select(selection.index + 1)
+        else
+          -- fall back to Tab if the menu is not visible
+          vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Tab>", true, false, true), "n", true)
+        end
+      end)
+    end)
+
     vim.keymap.set({ "i", "c" }, "<S-Tab>", ix.action.completion.select_prev())
     vim.keymap.set({ "i", "c" }, "<C-e>", ix.action.completion.close())
     ix.charmap.set("c", "<CR>", ix.action.completion.commit_cmdline())
