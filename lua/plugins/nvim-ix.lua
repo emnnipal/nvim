@@ -7,6 +7,9 @@ return {
   config = function()
     local ix = require("ix")
     ix.setup({
+      expand_snippet = function(snippet_body)
+        vim.snippet.expand(snippet_body) -- for `neovim built-in` users
+      end,
       completion = {
         preselect = true,
         auto_select_first = true,
