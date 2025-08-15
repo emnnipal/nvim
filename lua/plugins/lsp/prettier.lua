@@ -1,5 +1,9 @@
 vim.g.prettier_needs_config = true
 
+--- Picker plugin to use: `prettier` or `prettierd`
+---@type "prettier" | "prettierd"
+local prettier_package = "prettierd"
+
 ---@alias ConformCtx {buf: number, filename: string, dirname: string}
 local M = {}
 
@@ -70,11 +74,11 @@ return {
       opts.formatters_by_ft = opts.formatters_by_ft or {}
       for _, ft in ipairs(supported) do
         opts.formatters_by_ft[ft] = opts.formatters_by_ft[ft] or {}
-        table.insert(opts.formatters_by_ft[ft], "prettierd")
+        table.insert(opts.formatters_by_ft[ft], prettier_package)
       end
 
       opts.formatters = opts.formatters or {}
-      opts.formatters.prettierd = {
+      opts.formatters[prettier_package] = {
         condition = function(_, ctx)
           return M.has_parser(ctx) and (vim.g.prettier_needs_config ~= true or M.has_config(ctx))
         end,
@@ -89,7 +93,7 @@ return {
     opts = function(_, opts)
       local nls = require("null-ls")
       opts.sources = opts.sources or {}
-      table.insert(opts.sources, nls.builtins.formatting.prettierd)
+      table.insert(opts.sources, nls.builtins.formatting[prettier_package])
     end,
   },
 }
