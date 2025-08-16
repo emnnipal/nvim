@@ -1,3 +1,12 @@
+if vim.g.cmp_plugin == "nvim-ix" then
+  vim.api.nvim_create_autocmd("ColorScheme", {
+    pattern = "*",
+    callback = function()
+      vim.api.nvim_set_hl(0, "CmpKitCompletionItemDescription", { link = "Comment" })
+    end,
+  })
+end
+
 return {
   "hrsh7th/nvim-ix",
   enabled = vim.g.cmp_plugin == "nvim-ix",
