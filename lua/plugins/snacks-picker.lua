@@ -15,6 +15,17 @@ local vertical_layout = {
   { win = "list" },
 }
 
+if vim.g.picker_plugin == "snacks" then
+  local keymap = require("core.lsp-keymaps")
+    -- stylua: ignore
+  keymap.extend_keymaps({
+    { "gd", function() Snacks.picker.lsp_definitions({ layout = { preview = true, layout = vertical_layout } }) end, desc = "Goto Definition", has = "definition" },
+    { "gr", function() Snacks.picker.lsp_references({ layout = { preview = true, layout = vertical_layout } }) end, nowait = true, desc = "References" },
+    { "<leader>ss", function() Snacks.picker.lsp_symbols({ layout = { preview = true, layout = vertical_layout } }) end, desc = "LSP Symbols", has = "documentSymbol" },
+    { "<leader>sS", function() Snacks.picker.lsp_workspace_symbols({ layout = { preview = true, layout = vertical_layout } }) end, desc = "LSP Workspace Symbols", has = "workspace/symbols" },
+  })
+end
+
 return {
   {
     "folke/snacks.nvim",
@@ -105,55 +116,6 @@ return {
       -- ui
       { "<leader>uC", function() Snacks.picker.colorschemes() end, desc = "Colorschemes" },
     },
-  },
-
-  {
-    "neovim/nvim-lspconfig",
-    opts = function()
-      if vim.g.picker_plugin ~= "snacks" then
-        return
-      end
-
-      local keymap = require("core.lsp-keymaps")
-      keymap.extend_keymaps({
-        {
-          "gd",
-          function()
-            Snacks.picker.lsp_definitions({ layout = { preview = true, layout = vertical_layout } })
-          end,
-          desc = "Goto Definition",
-          has = "definition",
-        },
-        {
-          "gr",
-          function()
-            Snacks.picker.lsp_references({ layout = { preview = true, layout = vertical_layout } })
-          end,
-          nowait = true,
-          desc = "References",
-        },
-        {
-          "<leader>ss",
-          function()
-            Snacks.picker.lsp_symbols({
-              layout = { preview = true, layout = vertical_layout },
-            })
-          end,
-          desc = "LSP Symbols",
-          has = "documentSymbol",
-        },
-        {
-          "<leader>sS",
-          function()
-            Snacks.picker.lsp_workspace_symbols({
-              layout = { preview = true, layout = vertical_layout },
-            })
-          end,
-          desc = "LSP Workspace Symbols",
-          has = "workspace/symbols",
-        },
-      })
-    end,
   },
 
   {

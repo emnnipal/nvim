@@ -5,6 +5,17 @@ if vim.g.picker_plugin == "telescope" then
       vim.api.nvim_set_hl(0, "SmartOpenDirectory", { link = "Comment" }) -- Directory highlight of smart open files
     end,
   })
+
+  local keymap = require("core.lsp-keymaps")
+    -- stylua: ignore
+  keymap.extend_keymaps({
+    { "gd", function() require("telescope.builtin").lsp_definitions({ reuse_win = true, previewer = true }) end, desc = "Goto Definition", has = "definition" },
+    { "gr", "<cmd>Telescope lsp_references previewer=true<cr>", desc = "References", nowait = true },
+    { "gI", function() require("telescope.builtin").lsp_implementations({ reuse_win = true }) end, desc = "Goto Implementation" },
+    { "gy", function() require("telescope.builtin").lsp_type_definitions({ reuse_win = true }) end, desc = "Goto T[y]pe Definition" },
+    { "<leader>ss", function() require("telescope.builtin").lsp_document_symbols({ previewer = true }) end, desc = "LSP Symbols", has = "documentSymbol" },
+    { "<leader>sS", function() require("telescope.builtin").lsp_dynamic_workspace_symbols({ previewer = true }) end, desc = "LSP Workspace Symbols", has = "workspace/symbols" },
+  })
 end
 
 return {
@@ -194,57 +205,5 @@ return {
         end,
       },
     },
-  },
-
-  {
-    "neovim/nvim-lspconfig",
-    opts = function()
-      if vim.g.picker_plugin ~= "telescope" then
-        return
-      end
-      local keymap = require("core.lsp-keymaps")
-      keymap.extend_keymaps({
-        {
-          "gd",
-          function()
-            require("telescope.builtin").lsp_definitions({ reuse_win = true, previewer = true })
-          end,
-          desc = "Goto Definition",
-          has = "definition",
-        },
-        { "gr", "<cmd>Telescope lsp_references previewer=true<cr>", desc = "References", nowait = true },
-        {
-          "gI",
-          function()
-            require("telescope.builtin").lsp_implementations({ reuse_win = true })
-          end,
-          desc = "Goto Implementation",
-        },
-        {
-          "gy",
-          function()
-            require("telescope.builtin").lsp_type_definitions({ reuse_win = true })
-          end,
-          desc = "Goto T[y]pe Definition",
-        },
-
-        {
-          "<leader>ss",
-          function()
-            require("telescope.builtin").lsp_document_symbols({ previewer = true })
-          end,
-          desc = "LSP Symbols",
-          has = "documentSymbol",
-        },
-        {
-          "<leader>sS",
-          function()
-            require("telescope.builtin").lsp_dynamic_workspace_symbols({ previewer = true })
-          end,
-          desc = "LSP Workspace Symbols",
-          has = "workspace/symbols",
-        },
-      })
-    end,
   },
 }

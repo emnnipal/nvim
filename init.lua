@@ -27,3 +27,4 @@ require("lazy").setup({
 
 require("config.autocmd")
 require("core.statusline").setup()
+require("core.lsp").setup()
