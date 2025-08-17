@@ -202,7 +202,7 @@ return {
       if vim.g.picker_plugin ~= "telescope" then
         return
       end
-      local keymap = require("core.keymaps")
+      local keymap = require("core.lsp-keymaps")
       keymap.extend_keymaps({
         {
           "gd",

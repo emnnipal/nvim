@@ -1,4 +1,4 @@
-local color = require("core.color")
+local color = require("util.color")
 
 local function update_mini_tabline_colors()
   local bg = vim.api.nvim_get_hl(0, { name = "Normal" })

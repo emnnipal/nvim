@@ -46,7 +46,7 @@ return {
             "gD",
             function()
               local params = vim.lsp.util.make_position_params()
-              require("core.lsp").execute({
+              require("util.lsp").execute({
                 command = "typescript.goToSourceDefinition",
                 arguments = { params.textDocument.uri, params.position },
                 open = true,
@@ -57,7 +57,7 @@ return {
           {
             "gR",
             function()
-              require("core.lsp").execute({
+              require("util.lsp").execute({
                 command = "typescript.findAllFileReferences",
                 arguments = { vim.uri_from_bufnr(0) },
                 open = true,
@@ -123,7 +123,7 @@ return {
           {
             "<leader>cV",
             function()
-              require("core.lsp").execute({ command = "typescript.selectTypeScriptVersion" })
+              require("util.lsp").execute({ command = "typescript.selectTypeScriptVersion" })
             end,
             desc = "Select TS workspace version",
           },
@@ -213,7 +213,7 @@ return {
             command = "node",
             -- 💀 Make sure to update this path to point to your installation
             args = {
-              Utils.get_pkg_path("js-debug-adapter", "/js-debug/src/dapDebugServer.js"),
+              Util.get_pkg_path("js-debug-adapter", "/js-debug/src/dapDebugServer.js"),
               "${port}",
             },
           },

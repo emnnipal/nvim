@@ -52,8 +52,8 @@ function M.has_parser(ctx)
   return ok and parser and parser ~= vim.NIL
 end
 
-M.has_config = Utils.memoize(M.has_config)
-M.has_parser = Utils.memoize(M.has_parser)
+M.has_config = Util.memoize(M.has_config)
+M.has_parser = Util.memoize(M.has_parser)
 
 return {
   {

@@ -1,4 +1,4 @@
-_G.Utils = require("core.util")
+_G.Util = require("util.init")
 require("config.options")
 require("config.keymaps")
 

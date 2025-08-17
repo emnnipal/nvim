@@ -1,5 +1,5 @@
 local M = {}
-local icon = require("core.icons")
+local icon = require("util.icons")
 
 _G._statusline = M
 

@@ -50,7 +50,7 @@ return {
             return
           end
 
-          local keymaps = require("core.keymaps")
+          local keymaps = require("core.lsp-keymaps")
 
           -- Setup default/global LSP keymaps
           keymaps.setup(event.buf, client)
@@ -99,7 +99,7 @@ return {
         end,
       })
 
-      local icon = require("core.icons")
+      local icon = require("util.icons")
 
       -- Diagnostic Config
       vim.diagnostic.config({

@@ -114,7 +114,7 @@ return {
         return
       end
 
-      local keymap = require("core.keymaps")
+      local keymap = require("core.lsp-keymaps")
       keymap.extend_keymaps({
         {
           "gd",
@@ -159,7 +159,7 @@ return {
   {
     "folke/snacks.nvim",
     opts = function(_, opts)
-      if Utils.has("trouble.nvim") then
+      if Util.has("trouble.nvim") then
         return vim.tbl_deep_extend("force", opts or {}, {
           picker = {
             actions = {

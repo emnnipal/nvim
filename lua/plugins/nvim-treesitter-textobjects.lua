@@ -5,8 +5,8 @@ return {
     enabled = false,
     config = function()
       -- If treesitter is already loaded, we need to run config again for textobjects
-      if Utils.is_loaded("nvim-treesitter") then
-        local opts = Utils.opts("nvim-treesitter")
+      if Util.is_loaded("nvim-treesitter") then
+        local opts = Util.opts("nvim-treesitter")
         require("nvim-treesitter.configs").setup({ textobjects = opts.textobjects })
       end
 
