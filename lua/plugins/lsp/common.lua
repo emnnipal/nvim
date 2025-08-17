@@ -1,23 +1,5 @@
 return {
   {
-    "neovim/nvim-lspconfig",
-    opts = {
-      inlay_hints = { enabled = false },
-      -- autoformat = false, -- disable autoformat for lsp
-      -- setup = {
-      --   -- disable auto fix for eslint
-      --   eslint = function() end,
-      -- },
-      -- servers = {
-      --   eslint = {
-      --     settings = {
-      --       workingDirectory = { mode = "auto" },
-      --     },
-      --   },
-      -- },
-    },
-  },
-  {
     "mason-org/mason.nvim",
     opts = function(_, opts)
       -- Add your desired languages here to ensure they are installed

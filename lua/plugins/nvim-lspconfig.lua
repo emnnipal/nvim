@@ -16,6 +16,8 @@ return {
       vim.g.cmp_plugin == "nvim-ix" and "hrsh7th/nvim-ix" or nil,
     },
     opts = {
+      -- inlay_hints = { enabled = true },
+      -- autoformat = false, -- disable autoformat for lsp
       -- NOTE: ensure only LSP servers are installed here, mason.nvim handles formatters
       servers = {
         lua_ls = {
