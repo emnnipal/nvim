@@ -12,6 +12,8 @@ return {
     opts = {
       -- make sure mason installs the server
       servers = {
+        ---@diagnostic disable: missing-fields, inject-field
+        ---@type vim.lsp.ClientConfig
         yamlls = {
           -- Have to add this for yamlls to understand that we support line folding
           capabilities = {
@@ -23,12 +25,9 @@ return {
             },
           },
           -- lazy-load schemastore when needed
-          on_new_config = function(new_config)
-            new_config.settings.yaml.schemas = vim.tbl_deep_extend(
-              "force",
-              new_config.settings.yaml.schemas or {},
-              require("schemastore").yaml.schemas()
-            )
+          before_init = function(_, config)
+            config.settings.yaml.schemas =
+              vim.tbl_deep_extend("force", config.settings.yaml.schemas or {}, require("schemastore").yaml.schemas())
           end,
           settings = {
             redhat = { telemetry = { enabled = false } },
