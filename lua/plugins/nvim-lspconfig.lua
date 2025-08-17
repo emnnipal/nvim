@@ -4,21 +4,17 @@ return {
     event = "BufReadPre",
     dependencies = {
       { "mason-org/mason.nvim", opts = {} },
-      {
-        "mason-org/mason-lspconfig.nvim",
-        version = "1.32.0", -- TODO: remove once we have migrated our lspconfig to new vim.lsp.config of nvim 0.11
-      },
+      { "mason-org/mason-lspconfig.nvim" },
 
       { "j-hui/fidget.nvim", opts = {} },
 
       vim.g.cmp_plugin == "nvim-cmp" and "hrsh7th/cmp-nvim-lsp" or nil,
       vim.g.cmp_plugin == "blink" and "saghen/blink.cmp" or nil,
-      vim.g.cmp_plugin == "nvim-ix" and "hrsh7th/nvim-ix" or nil,
     },
     opts = {
       inlay_hints = { enabled = false },
       -- autoformat = false, -- disable autoformat for lsp
-      -- NOTE: ensure only LSP servers are installed here, mason.nvim handles formatters
+      -- NOTE: Only install LSP servers here. Formatters are managed by mason.nvim
       servers = {
         lua_ls = {
           settings = {
@@ -149,23 +145,19 @@ return {
       local servers = opts.servers or {}
       local ensure_installed = vim.tbl_keys(servers or {})
 
-      -- NOTE: if you want a single plugin handling all the plugin installation, regardless if it's an LSP or a formatter or whatnot, use this.
-      -- vim.list_extend(ensure_installed, {
-      --   "stylua", -- Used to format Lua code
-      -- })
-      -- require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
+      vim.lsp.config("*", {
+        capabilities = capabilities,
+      })
+
+      for server, config in pairs(servers) do
+        if not vim.tbl_isempty(config) then
+          vim.lsp.config(server, config)
+        end
+      end
 
       require("mason-lspconfig").setup({
-        ensure_installed = ensure_installed, -- NOTE: if you use mason-tool-installer, set this to empty table {}
-        automatic_installation = true, -- TODO: remove once mason is updated to latest (2.x.x)
+        ensure_installed = ensure_installed,
         automatic_enable = true,
-        handlers = {
-          function(server_name)
-            local server = servers[server_name] or {}
-            server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-            require("lspconfig")[server_name].setup(server)
-          end,
-        },
       })
     end,
   },

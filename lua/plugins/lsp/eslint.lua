@@ -14,7 +14,7 @@ return {
             format = auto_format,
           },
           keys = {
-            { "<leader>ce", "<Cmd>EslintFixAll<CR>", desc = "Fix eslint errors" },
+            { "<leader>ce", "<Cmd>LspEslintFixAll<CR>", desc = "Fix eslint errors" },
           },
         },
       },

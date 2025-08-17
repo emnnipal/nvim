@@ -2,7 +2,6 @@ return {
   {
 
     "mason-org/mason.nvim",
-    version = "1.11.0", -- TODO: remove once we have migrated our lspconfig to new vim.lsp.config of nvim 0.11
     cmd = "Mason",
     event = "BufReadPre",
     build = ":MasonUpdate",
