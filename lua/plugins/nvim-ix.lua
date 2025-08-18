@@ -32,10 +32,6 @@ return {
         lsp = {
           servers = servers,
         },
-        performance = {
-          fetching_timeout_ms = 500,
-          menu_update_throttle_ms = 20,
-        },
       },
       signature_help = {
         auto = false,
