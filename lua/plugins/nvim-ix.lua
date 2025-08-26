@@ -88,6 +88,10 @@ return {
       ctx.completion.select(selection.index - 1)
     end)
 
+    map_completion_key("<Esc>", function(ctx)
+      ctx.completion.hide()
+    end)
+
     vim.keymap.set({ "i", "c" }, "<C-f>", ix.action.scroll(0 + 3))
     vim.keymap.set({ "i", "c" }, "<C-b>", ix.action.scroll(0 - 3))
 
