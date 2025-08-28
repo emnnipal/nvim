@@ -63,11 +63,13 @@ return {
             ix.source.signature_help.attach_lsp(service)
           end
         end,
+        --disable nvim-ix cmdline completion
+        cmdline_mode = function() end,
       },
     })
 
-    local function map_completion_key(key, action)
-      vim.keymap.set({ "i", "c" }, key, function()
+    local function map_completion_key(mode, key, action)
+      vim.keymap.set(mode, key, function()
         ix.do_action(function(ctx)
           local selection = ctx.completion.get_selection()
           if ctx.completion.is_menu_visible() and selection then
@@ -80,21 +82,21 @@ return {
       end)
     end
 
-    map_completion_key("<Tab>", function(ctx, selection)
+    map_completion_key("i", "<Tab>", function(ctx, selection)
       ctx.completion.select(selection.index + 1)
     end)
 
-    map_completion_key("<S-Tab>", function(ctx, selection)
+    map_completion_key("i", "<S-Tab>", function(ctx, selection)
       ctx.completion.select(selection.index - 1)
     end)
 
-    vim.keymap.set({ "i", "c" }, "<C-f>", ix.action.scroll(0 + 3))
-    vim.keymap.set({ "i", "c" }, "<C-b>", ix.action.scroll(0 - 3))
+    vim.keymap.set("i", "<C-f>", ix.action.scroll(0 + 3))
+    vim.keymap.set("i", "<C-b>", ix.action.scroll(0 - 3))
 
-    vim.keymap.set({ "i", "c" }, "<C-Space>", ix.action.completion.complete())
+    vim.keymap.set("i", "<C-Space>", ix.action.completion.complete())
 
-    vim.keymap.set({ "i", "c" }, "<C-e>", ix.action.completion.close())
-    ix.charmap.set("c", "<CR>", ix.action.completion.commit_cmdline())
+    vim.keymap.set("i", "<C-e>", ix.action.completion.close())
+    -- ix.charmap.set("c", "<CR>", ix.action.completion.commit_cmdline())
     ix.charmap.set("i", "<CR>", ix.action.completion.commit())
     vim.keymap.set("i", "<Down>", ix.action.completion.select_next())
     vim.keymap.set("i", "<Up>", ix.action.completion.select_prev())
