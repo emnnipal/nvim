@@ -72,7 +72,7 @@ vim.api.nvim_create_autocmd("VimEnter", {
 
 return {
   {
-    "echasnovski/mini.tabline",
+    "nvim-mini/mini.tabline",
     version = false,
     event = "BufReadPre",
     opts = {
