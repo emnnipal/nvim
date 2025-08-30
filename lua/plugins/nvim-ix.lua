@@ -68,6 +68,9 @@ return {
       },
     })
 
+    ---@param mode string|string[]
+    ---@param key string
+    ---@param action function
     local function map_completion_key(mode, key, action)
       vim.keymap.set(mode, key, function()
         ix.do_action(function(ctx)
