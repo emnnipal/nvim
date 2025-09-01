@@ -99,11 +99,11 @@ return {
           },
         },
         extensions = {
-          smart_open = {
-            match_algorithm = "fzf",
-            disable_devicons = false,
-            open_buffer_indicators = { previous = "⏺︎", others = "◌" },
-          },
+          -- smart_open = {
+          --   match_algorithm = "fzf",
+          --   disable_devicons = false,
+          --   open_buffer_indicators = { previous = "⏺︎", others = "◌" },
+          -- },
         },
       })
 
@@ -128,8 +128,8 @@ return {
         "<cmd>Telescope buffers sort_mru=true sort_lastused=true ignore_current_buffer=true<cr>",
         desc = "Buffers",
       },
-      -- { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find Files (cwd)" },
-      { "<leader>ff", function () require('telescope').extensions.smart_open.smart_open ({ cwd_only = true, filename_first = true }) end, desc = "Find Files (cwd)" },
+      { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find Files (cwd)" },
+      -- { "<leader>ff", function () require('telescope').extensions.smart_open.smart_open ({ cwd_only = true, filename_first = true }) end, desc = "Find Files (cwd)" },
       { "<leader>fg", "<cmd>Telescope git_files<cr>", desc = "Find Files (git-files)" },
       { "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
       { "<leader>fR", "<cmd>Telescope resume<cr>", desc = "Recent Picker" },
@@ -177,24 +177,24 @@ return {
     end,
   },
 
-  {
-    "danielfalk/smart-open.nvim",
-    branch = "0.3.x",
-    enabled = vim.g.picker_plugin == "telescope",
-    config = function()
-      require("telescope").load_extension("smart_open")
-    end,
-    dependencies = {
-      "kkharji/sqlite.lua",
-      {
-        "nvim-telescope/telescope-fzf-native.nvim",
-        build = "make",
-        cond = function()
-          return vim.fn.executable("make") == 1
-        end,
-      },
-    },
-  },
+  -- {
+  --   "danielfalk/smart-open.nvim",
+  --   branch = "0.3.x",
+  --   enabled = vim.g.picker_plugin == "telescope",
+  --   config = function()
+  --     require("telescope").load_extension("smart_open")
+  --   end,
+  --   dependencies = {
+  --     "kkharji/sqlite.lua",
+  --     {
+  --       "nvim-telescope/telescope-fzf-native.nvim",
+  --       build = "make",
+  --       cond = function()
+  --         return vim.fn.executable("make") == 1
+  --       end,
+  --     },
+  --   },
+  -- },
 
   {
     "neovim/nvim-lspconfig",
