@@ -32,6 +32,13 @@ return {
         lsp = {
           servers = servers,
         },
+        performance = {
+          fetching_timeout_ms = 500,
+
+          -- default
+          -- fetching_timeout_ms = 120,
+          menu_update_throttle_ms = 32,
+        },
       },
       signature_help = {
         auto = false,
