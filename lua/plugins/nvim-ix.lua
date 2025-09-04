@@ -33,7 +33,7 @@ return {
           servers = servers,
         },
         performance = {
-          fetching_timeout_ms = 500,
+          fetching_timeout_ms = 750, -- prevent emmet from showing immediately instead of waiting for vtsls by increasing fetching timeout
 
           -- default
           -- fetching_timeout_ms = 120,
