@@ -24,7 +24,7 @@ vim.o.ttimeoutlen = 0
 
 --- Completion plugin to use: `nvim-cmp`, `blink` or `nvim-ix`
 ---@type "nvim-cmp" | "blink" | "nvim-ix"
-vim.g.cmp_plugin = "nvim-cmp"
+vim.g.cmp_plugin = "blink"
 
 --- Picker plugin to use: `snacks` or `telescope`
 ---@type "snacks" | "telescope"
