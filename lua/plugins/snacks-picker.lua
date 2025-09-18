@@ -77,8 +77,8 @@ return {
       { "<leader>gs", function() Snacks.picker.git_status() end, desc = "Git Status" },
       { "<leader>gS", function() Snacks.picker.git_stash() end, desc = "Git Stash" },
       -- Grep
-      { "<leader>sb", function() Snacks.picker.lines() end, desc = "Buffer Lines" },
-      { "<leader>sB", function() Snacks.picker.grep_buffers() end, desc = "Grep Open Buffers" },
+      { "<leader>sb", function() Snacks.picker.lines({ layout = { preview = true, layout = vertical_layout } }) end, desc = "Buffer Lines" },
+      { "<leader>sB", function() Snacks.picker.grep_buffers({ layout = { preview = true, layout = vertical_layout } }) end, desc = "Grep Open Buffers" },
       { "<leader>sp", function() Snacks.picker.lazy() end, desc = "Search for Plugin Spec" },
       { "<leader>sw", function() Snacks.picker.grep_word({ layout = { preview = true , layout= vertical_layout } }) end, desc = "Visual selection or word", mode = { "n", "x" } },
       { "<leader>sW", function() Snacks.picker.grep_word({ root = false,  layout = { preview = true , layout= vertical_layout } }) end, desc = "Visual selection or word", mode = { "n", "x" } },
