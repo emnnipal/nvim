@@ -62,8 +62,7 @@ return {
               },
               servers = servers,
             })
-
-            -- service:register_source(ix.source.completion.buffer(), { group = 30, dedup = true })
+            service:register_source(ix.source.completion.buffer(), { group = 30, dedup = true })
           end
           do
             local service = ix.get_signature_help_service({ recreate = true })
