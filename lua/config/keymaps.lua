@@ -12,8 +12,6 @@ vim.keymap.set({ "", "v" }, "H", "^")
 vim.keymap.set({ "", "v" }, "L", "$")
 
 vim.keymap.set("n", "gl", vim.diagnostic.open_float, { desc = "Line diagnostics" })
-vim.keymap.set("n", "<A-k>", "<Plug>(VM-Add-Cursor-Up)")
-vim.keymap.set("n", "<A-j>", "<Plug>(VM-Add-Cursor-Down)")
 
 -- quit
 vim.keymap.set({ "n", "v" }, "<leader>qq", "<cmd>qa<cr>", { desc = "Quit All" })

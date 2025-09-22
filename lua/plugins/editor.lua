@@ -42,6 +42,18 @@ return {
         ["I Return"] = "<S-CR>",
       }
     end,
+    keys = {
+      {
+        "<A-k>",
+        "<Plug>(VM-Add-Cursor-Up)",
+        desc = "Select multi cursor up",
+      },
+      {
+        "<A-j>",
+        "<Plug>(VM-Add-Cursor-Down)",
+        desc = "Select multi cursor down",
+      },
+    },
   },
   {
     "akinsho/git-conflict.nvim",
