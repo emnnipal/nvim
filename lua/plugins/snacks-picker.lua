@@ -52,7 +52,7 @@ return {
       { "<leader>R", function() Snacks.picker.resume() end, desc = "Use Recent Picker" },
 
       { "<leader>sg",function() Snacks.picker.grep({ layout = { preview = true, layout = vertical_layout } }) end, desc = "Grep (cwd)" },
-      { "<leader>/", "<leader>sb", desc = "Grep (cwd)", remap = true },
+      { "<leader>/", "<leader>sg", desc = "Grep (cwd)", remap = true },
 
       { "<leader>fb", function() Snacks.picker.buffers({ layout = { preview = false, layout = vertical_layout }}) end, desc = "Buffers" },
       { "<leader>fB", function() Snacks.picker.buffers({ hidden = true, nofile = true, layout = { preview = false, layout = vertical_layout } }) end, desc = "Buffers (all)" },
