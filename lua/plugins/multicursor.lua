@@ -44,11 +44,11 @@ return {
         -- layerSet({ "n", "x" }, "<left>", mc.prevCursor)
         -- layerSet({ "n", "x" }, "<right>", mc.nextCursor)
 
-        set({ "n", "x" }, "q", function()
+        layerSet({ "n", "x" }, "q", function()
           mc.matchSkipCursor(1)
         end, { desc = "Skip multi cursor down" })
 
-        set({ "n", "x" }, "Q", function()
+        layerSet({ "n", "x" }, "Q", function()
           mc.matchSkipCursor(-1)
         end, { desc = "Skip multi cursor up" })
 
@@ -76,6 +76,7 @@ return {
       hl(0, "MultiCursorDisabledSign", { link = "SignColumn" })
     end,
   },
+
   -- {
   --   "mg979/vim-visual-multi",
   --   event = "BufReadPre",
