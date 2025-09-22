@@ -6,7 +6,18 @@ return {
       { "mason-org/mason.nvim", opts = {} },
       { "mason-org/mason-lspconfig.nvim" },
 
-      { "j-hui/fidget.nvim", opts = {} },
+      {
+        "j-hui/fidget.nvim",
+        opts = {
+          notification = {
+            window = {
+              -- NOTE: There’s an issue with this commit https://github.com/j-hui/fidget.nvim/commit/5e0804e7fb9511d046e52146f47f571278eabc33.
+              -- It changes `max_width` to 0.3, which causes a memory leak in neovim when opening a file named "required-permissions.decorator.ts".
+              max_width = 0, -- `0` means no maximum width.
+            },
+          },
+        },
+      },
 
       vim.g.cmp_plugin == "nvim-cmp" and "hrsh7th/cmp-nvim-lsp" or nil,
       vim.g.cmp_plugin == "blink" and "saghen/blink.cmp" or nil,
