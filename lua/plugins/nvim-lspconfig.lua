@@ -12,7 +12,7 @@ return {
           notification = {
             window = {
               -- NOTE: There’s an issue with this commit https://github.com/j-hui/fidget.nvim/commit/5e0804e7fb9511d046e52146f47f571278eabc33.
-              -- It changes `max_width` to 0.3, which causes a memory leak in neovim when opening a file named "required-permissions.decorator.ts".
+              -- It changes `max_width` to `0.3` and `reflow` to `ellipsis`, which causes a memory leak in neovim when opening a file named "required-permissions.decorator.ts".
               max_width = 0, -- `0` means no maximum width.
             },
           },
