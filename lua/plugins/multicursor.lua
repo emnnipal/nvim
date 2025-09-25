@@ -25,7 +25,7 @@ return {
       set({ "n", "x" }, "<C-n>", function()
         mc.matchAddCursor(1)
       end, { desc = "Select cursor down by matching word" })
-      set({ "n", "x" }, "<leader>N", function()
+      set({ "n", "x" }, "<C-p>", function()
         mc.matchAddCursor(-1)
       end, { desc = "Select cursor up by matching word" })
 
