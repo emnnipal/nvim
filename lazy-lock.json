@@ -12,7 +12,7 @@
   "lazy.nvim": { "branch": "main", "commit": "6c3bda4aca61a13a9c63f1c1d1b16b9d3be90d7a" },
   "lazydev.nvim": { "branch": "main", "commit": "258d2a5ef4a3e3d6d9ba9da72c9725c53e9afcbd" },
   "mason-lspconfig.nvim": { "branch": "main", "commit": "f760507df8c49a4bf46a4d12e1fc616797508979" },
-  "mason.nvim": { "branch": "main", "commit": "b3689a41dd77e5294498dba9757fb22cc80cbebd" },
+  "mason.nvim": { "branch": "main", "commit": "a83eabdc8c49c0c93bf5bb162fa3b57404a9d095" },
   "mini.icons": { "branch": "main", "commit": "e8fae66cb400744daeedf6e387347df50271c252" },
   "mini.tabline": { "branch": "main", "commit": "c08c7a9715d29139128f8087338e78923f34e72c" },
   "multicursor.nvim": { "branch": "main", "commit": "0c6ceae228bf209e8b8717df9de500770c4e7022" },
