@@ -52,6 +52,14 @@ return {
           mc.matchSkipCursor(-1)
         end, { desc = "Skip cursor up" })
 
+        layerSet({ "n", "x" }, "n", function()
+          mc.matchAddCursor(1)
+        end, { desc = "Select cursor down by matching word" })
+
+        layerSet({ "n", "x" }, "N", function()
+          mc.matchAddCursor(-1)
+        end, { desc = "Select cursor up by matching word" })
+
         -- Delete the main cursor.
         layerSet({ "n", "x" }, "<leader>x", mc.deleteCursor, { desc = "Remove current cursor" })
 
