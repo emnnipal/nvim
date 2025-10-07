@@ -1,6 +1,7 @@
 return {
   {
     "jake-stewart/multicursor.nvim",
+    -- stylua: ignore
     config = function()
       local mc = require("multicursor-nvim")
       mc.setup()
@@ -8,26 +9,14 @@ return {
       local set = vim.keymap.set
 
       -- Add or skip cursor above/below the main cursor.
-      set({ "n", "x" }, "<A-k>", function()
-        mc.lineAddCursor(-1)
-      end, { desc = "Select cursor up" })
-      set({ "n", "x" }, "<A-j>", function()
-        mc.lineAddCursor(1)
-      end, { desc = "Select cursor down" })
-      set({ "n", "x" }, "<A-K>", function()
-        mc.lineSkipCursor(-1)
-      end, { desc = "Skip cursor up" })
-      set({ "n", "x" }, "<A-J>", function()
-        mc.lineSkipCursor(1)
-      end, { desc = "Skip cursor down" })
+      set({ "n", "x" }, "<A-k>", function() mc.lineAddCursor(-1) end, { desc = "Select cursor up" })
+      set({ "n", "x" }, "<A-j>", function() mc.lineAddCursor(1) end, { desc = "Select cursor down" })
+      set({ "n", "x" }, "<A-K>", function() mc.lineSkipCursor(-1) end, { desc = "Skip cursor up" })
+      set({ "n", "x" }, "<A-J>", function() mc.lineSkipCursor(1) end, { desc = "Skip cursor down" })
 
       -- Add or skip adding a new cursor by matching word/selection
-      set({ "n", "x" }, "<C-n>", function()
-        mc.matchAddCursor(1)
-      end, { desc = "Select cursor down by matching word" })
-      set({ "n", "x" }, "<C-p>", function()
-        mc.matchAddCursor(-1)
-      end, { desc = "Select cursor up by matching word" })
+      set({ "n", "x" }, "<C-n>", function() mc.matchAddCursor(1) end, { desc = "Select cursor down by matching word" })
+      set({ "n", "x" }, "<C-p>", function() mc.matchAddCursor(-1) end, { desc = "Select cursor up by matching word" })
 
       -- Add and remove cursors with control + left click.
       -- set("n", "<c-leftmouse>", mc.handleMouse)
@@ -44,21 +33,13 @@ return {
         -- layerSet({ "n", "x" }, "<left>", mc.prevCursor)
         -- layerSet({ "n", "x" }, "<right>", mc.nextCursor)
 
-        layerSet({ "n", "x" }, "q", function()
-          mc.matchSkipCursor(1)
-        end, { desc = "Skip cursor down" })
+        layerSet({ "n", "x" }, "q", function() mc.matchSkipCursor(1) end, { desc = "Skip cursor down" })
 
-        layerSet({ "n", "x" }, "Q", function()
-          mc.matchSkipCursor(-1)
-        end, { desc = "Skip cursor up" })
+        layerSet({ "n", "x" }, "Q", function() mc.matchSkipCursor(-1) end, { desc = "Skip cursor up" })
 
-        layerSet({ "n", "x" }, "n", function()
-          mc.matchAddCursor(1)
-        end, { desc = "Select cursor down by matching word" })
+        layerSet({ "n", "x" }, "n", function() mc.matchAddCursor(1) end, { desc = "Select cursor down by matching word" })
 
-        layerSet({ "n", "x" }, "N", function()
-          mc.matchAddCursor(-1)
-        end, { desc = "Select cursor up by matching word" })
+        layerSet({ "n", "x" }, "N", function() mc.matchAddCursor(-1) end, { desc = "Select cursor up by matching word" })
 
         -- Delete the main cursor.
         layerSet({ "n", "x" }, "<leader>x", mc.deleteCursor, { desc = "Remove current cursor" })
