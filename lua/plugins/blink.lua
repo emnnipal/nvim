@@ -7,6 +7,20 @@ if vim.g.cmp_plugin == "blink" then
   })
 end
 
+local sorting = {
+  -- Deprioritize emmet lsp cmp items
+  function(a, b)
+    if (a.client_name == nil or b.client_name == nil) or (a.client_name == b.client_name) then
+      return
+    end
+    return b.client_name == "emmet_language_server"
+  end,
+
+  "exact",
+  "score",
+  "sort_text",
+}
+
 return {
   {
     "saghen/blink.cmp",
@@ -75,51 +89,26 @@ return {
 
       fuzzy = {
         implementation = "rust",
-        -- sorts = function()
-        --   local filetype = vim.bo.filetype
-        --
-        --   local emmet_file_map = {
-        --     typescriptreact = true,
-        --     javascriptreact = true,
-        --   }
-        --
-        --   if emmet_file_map[filetype] then
-        --     return {
-        --       -- Uncomment if you're using emmet_language_server
-        --       -- Deprioritize emmet lsp cmp items
-        --       function(a, b)
-        --         if (a.client_name == nil or b.client_name == nil) or (a.client_name == b.client_name) then
-        --           return
-        --         end
-        --         return b.client_name == "emmet_language_server"
-        --       end,
-        --
-        --       "exact",
-        --       "score",
-        --       "sort_text",
-        --     }
-        --   end
-        --
-        --   return {
-        --     "exact",
-        --     "score",
-        --     "sort_text",
-        --   }
-        -- end,
-        sorts = {
-          -- Uncomment if you're using emmet_language_server
-          -- Deprioritize emmet lsp cmp items
-          function(a, b)
-            if (a.client_name == nil or b.client_name == nil) or (a.client_name == b.client_name) then
-              return
-            end
-            return b.client_name == "emmet_language_server"
-          end,
+        -- TODO: remove main branch handling in next release
+        sorts = vim.g.use_blink_main and function()
+          local filetype = vim.bo.filetype
 
-          "exact",
-          "score",
-          "sort_text",
-        },
+          local emmet_file_map = {
+            typescriptreact = true,
+            javascriptreact = true,
+          }
+
+          if emmet_file_map[filetype] then
+            vim.print("YEAH")
+            return sorting
+          end
+
+          return {
+            "exact",
+            "score",
+            "sort_text",
+          }
+        end or sorting,
       },
 
       -- Shows a signature help window while you type arguments for a function
