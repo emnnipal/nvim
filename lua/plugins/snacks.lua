@@ -26,7 +26,7 @@ return {
 
       notifier = { enabled = false },
       scope = { enabled = false },
-      scroll = { enabled = true },
+      scroll = { enabled = false },
       statuscolumn = { enabled = false },
       toggle = { enabled = false },
       words = { enabled = false },
