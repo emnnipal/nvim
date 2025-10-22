@@ -137,6 +137,7 @@ return {
           function()
             Snacks.picker.lsp_symbols({
               layout = { preview = true, layout = vertical_layout },
+              keep_parents = true,
             })
           end,
           desc = "LSP Symbols",
@@ -147,6 +148,7 @@ return {
           function()
             Snacks.picker.lsp_workspace_symbols({
               layout = { preview = true, layout = vertical_layout },
+              keep_parents = true,
             })
           end,
           desc = "LSP Workspace Symbols",
