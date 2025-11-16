@@ -7,20 +7,6 @@ if vim.g.cmp_plugin == "blink" then
   })
 end
 
-local sorting = {
-  -- Deprioritize emmet lsp cmp items
-  function(a, b)
-    if (a.client_name == nil or b.client_name == nil) or (a.client_name == b.client_name) then
-      return
-    end
-    return b.client_name == "emmet_language_server"
-  end,
-
-  "exact",
-  "score",
-  "sort_text",
-}
-
 return {
   {
     "saghen/blink.cmp",
@@ -89,8 +75,7 @@ return {
 
       fuzzy = {
         implementation = "rust",
-        -- TODO: remove main branch handling in next release
-        sorts = vim.g.use_blink_main and function()
+        sorts = function()
           local filetype = vim.bo.filetype
 
           local emmet_file_map = {
@@ -100,7 +85,19 @@ return {
 
           if emmet_file_map[filetype] then
             vim.print("YEAH")
-            return sorting
+            return {
+              -- Deprioritize emmet lsp cmp items
+              function(a, b)
+                if (a.client_name == nil or b.client_name == nil) or (a.client_name == b.client_name) then
+                  return
+                end
+                return b.client_name == "emmet_language_server"
+              end,
+
+              "exact",
+              "score",
+              "sort_text",
+            }
           end
 
           return {
@@ -108,7 +105,7 @@ return {
             "score",
             "sort_text",
           }
-        end or sorting,
+        end,
       },
 
       -- Shows a signature help window while you type arguments for a function
