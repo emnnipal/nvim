@@ -84,7 +84,6 @@ return {
           }
 
           if emmet_file_map[filetype] then
-            vim.print("YEAH")
             return {
               -- Deprioritize emmet lsp cmp items
               function(a, b)
