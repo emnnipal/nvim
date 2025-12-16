@@ -3,6 +3,7 @@ return {
     "nvim-treesitter/nvim-treesitter",
     version = false, -- last release is way too old and doesn't work on Windows
     build = ":TSUpdate",
+    branch = "master",
     main = "nvim-treesitter.configs", -- Sets main module to use for opts
     opts_extend = { "ensure_installed" },
     opts = {
