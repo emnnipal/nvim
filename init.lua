@@ -23,6 +23,10 @@ require("lazy").setup({
   change_detection = {
     notify = false,
   },
+  -- automatically check for plugin updates
+  checker = {
+    enabled = false,
+  },
 })
 
 require("config.autocmd")
