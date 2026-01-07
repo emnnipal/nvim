@@ -93,14 +93,14 @@ return {
                 return b.client_name == "emmet_language_server"
               end,
 
-              "exact",
+              -- "exact",
               "score",
               "sort_text",
             }
           end
 
           return {
-            "exact",
+            -- "exact",
             "score",
             "sort_text",
           }
