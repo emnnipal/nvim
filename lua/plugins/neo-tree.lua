@@ -32,13 +32,14 @@ return {
         ["l"] = "open",
         ["h"] = "close_node",
         ["<space>"] = "none",
-        ["Y"] = {
+        ["<C-o>"] = {
           function(state)
             local node = state.tree:get_node()
             local path = node:get_id()
-            vim.fn.setreg("+", path, "c")
+            local rel_path = vim.fn.fnamemodify(path, ":.")
+            vim.fn.setreg("+", rel_path, "c")
           end,
-          desc = "Copy Path to Clipboard",
+          desc = "Copy Relative Path to Clipboard",
         },
         ["O"] = {
           function(state)
