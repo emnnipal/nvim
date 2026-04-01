@@ -16,7 +16,7 @@ return {
         "javascript",
         "jsdoc",
         "json",
-        "jsonc",
+        -- "jsonc", -- unsupported in nvim-treesitter. comment out for now
         "lua",
         "luadoc",
         "luap",
