@@ -34,8 +34,24 @@ return {
         menu = {
           draw = {
             treesitter = {},
-            columns = { { "label", "kind", gap = 1 }, { "label_description" } },
+            columns = {
+              { "label", gap = 1 },
+              -- Empty fill component pushes kind text to the right edge.
+              { "kind_right_pad", "kind", gap = 0 },
+              { "label_description" },
+            },
+
             components = {
+              -- Spacer used only for layout: consumes remaining column width so `kind` is right-aligned.
+              kind_right_pad = {
+                width = { fill = true },
+                text = function()
+                  return ""
+                end,
+              },
+              kind = {
+                width = { fill = false },
+              },
               label = {
                 width = { max = 60 },
               },
