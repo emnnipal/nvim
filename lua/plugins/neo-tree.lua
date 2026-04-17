@@ -51,9 +51,12 @@ return {
         },
         ["O"] = {
           function(state)
-            require("lazy.util").open(state.tree:get_node().path, { system = true })
+            local node = state.tree:get_node()
+            local target = node.type == "directory" and node.path or vim.fs.dirname(node.path) or node.path
+
+            require("lazy.util").open(target, { system = true })
           end,
-          desc = "Open with System Application",
+          desc = "Open Directory in Finder",
         },
         ["P"] = { "toggle_preview", config = { use_float = false } },
       },
