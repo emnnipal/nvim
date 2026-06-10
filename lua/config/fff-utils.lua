@@ -131,12 +131,29 @@ function M.move_to_edge(edge)
 end
 
 function M.setup_highlights()
-  vim.api.nvim_set_hl(0, "FFFSearchMatch", {
-    link = "Search",
+  local orange = vim.api.nvim_get_hl(0, { name = "Constant", link = false })
+
+  -- Grep result list matches use this group. Keep the original Search-style
+  -- blue background there.
+  vim.api.nvim_set_hl(0, "FFFSearchMatch", { link = "Search" })
+
+  -- fff hardcodes IncSearch for grep matches in the preview window. Make only
+  -- those hardcoded preview matches obvious with the theme's orange-ish
+  -- Constant color.
+  vim.api.nvim_set_hl(0, "IncSearch", {
+    fg = orange.fg or "#ff9e64",
+    bold = true,
   })
 end
 
 function M.setup_autocmds()
+  vim.api.nvim_create_autocmd("ColorScheme", {
+    group = vim.api.nvim_create_augroup("FffCustomHighlights", { clear = true }),
+    callback = function()
+      vim.schedule(M.setup_highlights)
+    end,
+  })
+
   vim.api.nvim_create_autocmd("FileType", {
     pattern = { "fff_input", "fff_list", "fff_preview", "fff_file_info" },
     callback = function(args)
