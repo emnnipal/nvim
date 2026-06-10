@@ -46,7 +46,7 @@ end
 return {
   {
     "dmtrKovalenko/fff.nvim",
-    enabled = true,
+    enabled = vim.g.picker_plugin == "fff",
     build = function()
       -- downloads a prebuilt binary or falls back to cargo build
       require("fff.download").download_or_build_binary()
@@ -72,8 +72,16 @@ return {
       grep = {
         modes = { "fuzzy", "plain", "regex" },
       },
+      hl = {
+        matched = "FFFSearchMatch",
+        grep_match = "FFFSearchMatch",
+      },
     },
     config = function(_, opts)
+      vim.api.nvim_set_hl(0, "FFFSearchMatch", {
+        link = "Search",
+      })
+
       require("fff").setup(opts)
 
       vim.api.nvim_create_autocmd("FileType", {

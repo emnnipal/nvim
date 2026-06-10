@@ -26,9 +26,9 @@ vim.o.ttimeoutlen = 0
 ---@type "nvim-cmp" | "blink" | "nvim-ix"
 vim.g.cmp_plugin = "blink"
 
---- Picker plugin to use: `snacks` or `telescope`
----@type "snacks" | "telescope"
-vim.g.picker_plugin = "snacks"
+--- Picker plugin to use: `snacks`, `fff` or `telescope`
+---@type "snacks" | "telescope" | "fff"
+vim.g.picker_plugin = "fff"
 
 --- Use the `main` branch of `blink.cmp` instead of the latest release.
 --- Set to `true` if you want to track the latest changes from the main branch.
