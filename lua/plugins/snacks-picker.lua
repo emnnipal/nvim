@@ -58,7 +58,7 @@ return {
       { "<leader>fB", function() Snacks.picker.buffers({ hidden = true, nofile = true, layout = { preview = false, layout = vertical_layout } }) end, desc = "Buffers (all)" },
 
       -- { "<leader>ff", function() Snacks.picker.smart({ filter = { cwd = true }, layout = { preview = false, layout = vertical_layout } }) end, desc = "Smart Find Files" },
-      { "<leader>ff",function() Snacks.picker.files({ layout = { preview = false, layout = vertical_layout } }) end, desc = "Find Files (cwd)" },
+      -- { "<leader>ff",function() Snacks.picker.files({ layout = { preview = false, layout = vertical_layout } }) end, desc = "Find Files (cwd)" },
 
       -- { "<leader><space>", "<leader>ff", desc = "Smart Find Files", remap = true },
       { "<leader><space>", function() Snacks.picker.smart({ filter = { cwd = true }, layout = { preview = false, layout = vertical_layout } }) end, desc = "Smart Find Files" },
