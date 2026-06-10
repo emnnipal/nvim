@@ -49,9 +49,6 @@ return {
     },
     -- stylua: ignore
     keys = {
-      { "<leader>R", function() Snacks.picker.resume() end, desc = "Use Recent Picker" },
-
-
       { "<leader>fb", function() Snacks.picker.buffers({ layout = { preview = false, layout = vertical_layout }}) end, desc = "Buffers" },
       { "<leader>fB", function() Snacks.picker.buffers({ hidden = true, nofile = true, layout = { preview = false, layout = vertical_layout } }) end, desc = "Buffers (all)" },
 
@@ -92,7 +89,7 @@ return {
       { "<leader>sl", function() Snacks.picker.loclist() end, desc = "Location List" },
       { "<leader>sM", function() Snacks.picker.man() end, desc = "Man Pages" },
       { "<leader>sm", function() Snacks.picker.marks() end, desc = "Marks" },
-      { "<leader>sR", function() Snacks.picker.resume() end, desc = "Use Recent Picker" },
+      { "<leader>sR", function() Snacks.picker.resume() end, desc = "Recent Snacks Picker" },
       { "<leader>sq", function() Snacks.picker.qflist() end, desc = "Quickfix List" },
       { "<leader>su", function() Snacks.picker.undo() end, desc = "Undotree" },
       -- ui
@@ -104,6 +101,8 @@ return {
     "folke/snacks.nvim",
     -- stylua: ignore
     keys = vim.g.picker_plugin == "snacks" and {
+      { "<leader>R", function() Snacks.picker.resume() end, desc = "Use Recent Picker" },
+
       { "<leader>sg", function() Snacks.picker.grep({ layout = { preview = true, layout = vertical_layout } }) end, desc = "Grep (cwd)" },
       { "<leader>/", "<leader>sg", desc = "Grep (cwd)", remap = true },
 

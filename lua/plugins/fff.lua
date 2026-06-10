@@ -1,47 +1,4 @@
-local function get_visual_selection()
-  local ok, lines = pcall(vim.fn.getregion, vim.fn.getpos("'<"), vim.fn.getpos("'>"), {
-    type = vim.fn.visualmode(),
-  })
-  if not ok or not lines or vim.tbl_isempty(lines) then
-    return nil
-  end
-
-  local text = table.concat(lines, " ")
-  text = vim.trim(text)
-
-  return text ~= "" and text or nil
-end
-
-local function live_grep_word(opts)
-  opts = opts or {}
-
-  local query = opts.visual and get_visual_selection() or vim.fn.expand("<cword>")
-  opts.visual = nil
-
-  require("fff").live_grep(vim.tbl_deep_extend("force", {
-    query = query,
-    title = "Grep Word",
-  }, opts or {}))
-end
-
-local function toggle_fff_preview()
-  local ok, picker = pcall(require, "fff.picker_ui.picker_ui")
-  if not ok or not picker.state or not picker.state.active then
-    return
-  end
-
-  local config = picker.state.config
-  config.preview = config.preview or {}
-  config.preview.enabled = not config.preview.enabled
-
-  picker.relayout()
-
-  if config.preview.enabled then
-    picker.update_preview()
-  else
-    picker.clear_preview()
-  end
-end
+local fff_utils = require("config.fff-utils")
 
 return {
   {
@@ -78,63 +35,55 @@ return {
       },
     },
     config = function(_, opts)
-      vim.api.nvim_set_hl(0, "FFFSearchMatch", {
-        link = "Search",
-      })
-
+      fff_utils.setup_highlights()
       require("fff").setup(opts)
-
-      vim.api.nvim_create_autocmd("FileType", {
-        pattern = { "fff_input", "fff_list", "fff_preview", "fff_file_info" },
-        callback = function(args)
-          vim.keymap.set({ "n", "i" }, "<a-p>", toggle_fff_preview, {
-            buffer = args.buf,
-            silent = true,
-            desc = "Toggle FFF preview",
-          })
-        end,
-      })
+      fff_utils.setup_autocmds()
     end,
     keys = {
       {
+        "<leader>R",
+        fff_utils.resume_picker,
+        desc = "Resume FFF Picker",
+      },
+      {
         "<leader>ff",
         function()
-          require("fff").find_files({ preview = { enabled = false }, title = "Find Files" })
+          fff_utils.open_picker("files", { preview = { enabled = false }, title = "Find Files" })
         end,
         desc = "Open file picker",
       },
       {
         "<leader><space>",
         function()
-          require("fff").find_files({ preview = { enabled = false }, title = "Find Files" })
+          fff_utils.open_picker("files", { preview = { enabled = false }, title = "Find Files" })
         end,
         desc = "Find Files",
       },
       {
         "<leader>sg",
         function()
-          require("fff").live_grep({ title = "Grep" })
+          fff_utils.open_picker("grep", { title = "Grep" })
         end,
         desc = "Grep (cwd)",
       },
       {
         "<leader>/",
         function()
-          require("fff").live_grep({ title = "Grep" })
+          fff_utils.open_picker("grep", { title = "Grep" })
         end,
         desc = "Grep (cwd)",
       },
       {
         "<leader>sw",
         function()
-          live_grep_word()
+          fff_utils.live_grep_word()
         end,
         desc = "Visual selection or word",
       },
       {
         "<leader>sw",
         function()
-          live_grep_word({ visual = true })
+          fff_utils.live_grep_word({ visual = true })
         end,
         desc = "Visual selection or word",
         mode = "x",
@@ -142,14 +91,14 @@ return {
       {
         "<leader>sW",
         function()
-          live_grep_word({ cwd = vim.fn.getcwd() })
+          fff_utils.live_grep_word({ cwd = vim.fn.getcwd() })
         end,
         desc = "Visual selection or word (cwd)",
       },
       {
         "<leader>sW",
         function()
-          live_grep_word({ cwd = vim.fn.getcwd(), visual = true })
+          fff_utils.live_grep_word({ cwd = vim.fn.getcwd(), visual = true })
         end,
         desc = "Visual selection or word (cwd)",
         mode = "x",
