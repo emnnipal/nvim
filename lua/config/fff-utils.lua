@@ -109,6 +109,27 @@ function M.move_results(count)
   end
 end
 
+function M.move_to_edge(edge)
+  local ok, picker = pcall(require, "fff.picker_ui.picker_ui")
+  if not ok or not picker.state or not picker.state.active then
+    return
+  end
+
+  local old_cursor = picker.state.cursor
+
+  if edge == "first" then
+    pcall(picker.wrap_to_first)
+  else
+    pcall(picker.wrap_to_last)
+  end
+
+  if not pcall(picker.render_after_cursor_move, old_cursor) then
+    pcall(picker.render_list)
+  end
+  pcall(picker.update_preview)
+  pcall(picker.update_status)
+end
+
 function M.setup_highlights()
   vim.api.nvim_set_hl(0, "FFFSearchMatch", {
     link = "Search",
@@ -139,6 +160,22 @@ function M.setup_autocmds()
         buffer = args.buf,
         silent = true,
         desc = "Move up 10 FFF results",
+      })
+
+      vim.keymap.set("n", "g", function()
+        M.move_to_edge("first")
+      end, {
+        buffer = args.buf,
+        silent = true,
+        desc = "Move to first FFF result",
+      })
+
+      vim.keymap.set("n", "G", function()
+        M.move_to_edge("last")
+      end, {
+        buffer = args.buf,
+        silent = true,
+        desc = "Move to last FFF result",
       })
 
       if vim.bo[args.buf].filetype == "fff_input" then
