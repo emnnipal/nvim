@@ -86,11 +86,25 @@ function M.toggle_preview()
 
   picker.relayout()
 
-  if config.preview.enabled then
-    picker.update_preview()
-  else
-    picker.clear_preview()
-  end
+  -- fff paginates grep/file results using the current list window height.
+  -- Toggling preview changes that height, so a plain relayout can leave grep
+  -- showing only the old, smaller page until the next query/cursor event.
+  vim.schedule(function()
+    if not picker.state or not picker.state.active then
+      return
+    end
+
+    local refreshed = pcall(picker.update_results_sync)
+    if not refreshed then
+      pcall(picker.render_list)
+    end
+
+    if config.preview.enabled then
+      pcall(picker.update_preview)
+    else
+      pcall(picker.clear_preview)
+    end
+  end)
 end
 
 function M.setup_highlights()
