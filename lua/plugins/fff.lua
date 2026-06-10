@@ -1,19 +1,5 @@
 local fff_utils = require("config.fff-utils")
 
----@type snacks.layout.Box
-local snacks_vertical_layout = {
-  backdrop = false,
-  width = 110,
-  height = 0.70,
-  box = "vertical",
-  border = "rounded",
-  title = "{source} {live}",
-  title_pos = "center",
-  { win = "preview", height = 0.6, border = "bottom" },
-  { win = "input", height = 1, border = "bottom" },
-  { win = "list" },
-}
-
 return {
   {
     "dmtrKovalenko/fff.nvim",
@@ -53,6 +39,11 @@ return {
       require("fff").setup(opts)
       fff_utils.setup_autocmds()
     end,
+    -- fff indexes with .gitignore/.ignore rules enabled. To search a specific
+    -- ignored/hidden file (for example .env), de-ignore it in the project's
+    -- .ignore file, then run :FFFScan:
+    --   !.env
+    --   !.env.*
     keys = {
       {
         "<leader>R",
@@ -118,30 +109,5 @@ return {
         mode = "x",
       },
     },
-  },
-
-  {
-    "folke/snacks.nvim",
-    -- stylua: ignore
-    keys = vim.g.picker_plugin == "fff" and {
-      {
-        "<leader>fF",
-        function()
-          fff_utils.open_snacks_picker(function()
-            Snacks.picker.files({ hidden = true, ignored = true, layout = { preview = false, layout = snacks_vertical_layout } })
-          end)
-        end,
-        desc = "Find Files (all)",
-      },
-      {
-        "<leader>sG",
-        function()
-          fff_utils.open_snacks_picker(function()
-            Snacks.picker.grep({ hidden = true, ignored = true, layout = { preview = true, layout = snacks_vertical_layout } })
-          end)
-        end,
-        desc = "Grep (all)",
-      },
-    } or {},
   },
 }

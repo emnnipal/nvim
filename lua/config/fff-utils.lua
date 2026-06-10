@@ -27,13 +27,8 @@ function M.open_picker(kind, opts)
   end
 end
 
-function M.open_snacks_picker(open)
-  last_picker = { kind = "snacks" }
-  open()
-end
-
 function M.capture_query()
-  if not last_picker or last_picker.kind == "snacks" then
+  if not last_picker then
     return
   end
 
@@ -52,11 +47,6 @@ end
 function M.resume_picker()
   if not last_picker then
     vim.notify("No FFF picker to resume", vim.log.levels.WARN)
-    return
-  end
-
-  if last_picker.kind == "snacks" then
-    Snacks.picker.resume()
     return
   end
 
