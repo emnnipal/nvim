@@ -55,12 +55,12 @@ return {
     opts = {
       prompt = "> ",
       layout = {
-        height = 0.70,
+        height = 0.74,
         width = function(cols)
           return math.min(110 / cols, 0.95)
         end,
         preview_position = "top",
-        preview_size = 0.6,
+        preview_size = 0.54,
         prompt_position = "top",
         anchor = "center",
         flex = nil,
