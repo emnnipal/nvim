@@ -51,8 +51,8 @@ return {
     keys = {
       { "<leader>R", function() Snacks.picker.resume() end, desc = "Use Recent Picker" },
 
-      { "<leader>sg",function() Snacks.picker.grep({ layout = { preview = true, layout = vertical_layout } }) end, desc = "Grep (cwd)" },
-      { "<leader>/", "<leader>sg", desc = "Grep (cwd)", remap = true },
+      -- { "<leader>sg",function() Snacks.picker.grep({ layout = { preview = true, layout = vertical_layout } }) end, desc = "Grep (cwd)" },
+      -- { "<leader>/", "<leader>sg", desc = "Grep (cwd)", remap = true },
 
       { "<leader>fb", function() Snacks.picker.buffers({ layout = { preview = false, layout = vertical_layout }}) end, desc = "Buffers" },
       { "<leader>fB", function() Snacks.picker.buffers({ hidden = true, nofile = true, layout = { preview = false, layout = vertical_layout } }) end, desc = "Buffers (all)" },
@@ -61,7 +61,7 @@ return {
       -- { "<leader>ff",function() Snacks.picker.files({ layout = { preview = false, layout = vertical_layout } }) end, desc = "Find Files (cwd)" },
 
       -- { "<leader><space>", "<leader>ff", desc = "Smart Find Files", remap = true },
-      { "<leader><space>", function() Snacks.picker.smart({ filter = { cwd = true }, layout = { preview = false, layout = vertical_layout } }) end, desc = "Smart Find Files" },
+      -- { "<leader><space>", function() Snacks.picker.smart({ filter = { cwd = true }, layout = { preview = false, layout = vertical_layout } }) end, desc = "Smart Find Files" },
 
       { "<leader>fr",function() Snacks.picker.recent({ filter = { cwd = true }, layout = { preview = false, layout = vertical_layout } }) end, desc = "Recent (cwd)" },
       { "<leader>fR",function() Snacks.picker.recent({ layout = { preview = false, layout = vertical_layout } }) end, desc = "Recent (all)" },
@@ -80,8 +80,8 @@ return {
       { "<leader>sb", function() Snacks.picker.lines({ layout = { preview = true, layout = vertical_layout } }) end, desc = "Buffer Lines" },
       { "<leader>sB", function() Snacks.picker.grep_buffers({ layout = { preview = true, layout = vertical_layout } }) end, desc = "Grep Open Buffers" },
       { "<leader>sp", function() Snacks.picker.lazy() end, desc = "Search for Plugin Spec" },
-      { "<leader>sw", function() Snacks.picker.grep_word({ layout = { preview = true , layout= vertical_layout } }) end, desc = "Visual selection or word", mode = { "n", "x" } },
-      { "<leader>sW", function() Snacks.picker.grep_word({ root = false,  layout = { preview = true , layout= vertical_layout } }) end, desc = "Visual selection or word", mode = { "n", "x" } },
+      -- { "<leader>sw", function() Snacks.picker.grep_word({ layout = { preview = true , layout= vertical_layout } }) end, desc = "Visual selection or word", mode = { "n", "x" } },
+      -- { "<leader>sW", function() Snacks.picker.grep_word({ root = false,  layout = { preview = true , layout= vertical_layout } }) end, desc = "Visual selection or word", mode = { "n", "x" } },
 
       -- search
       { '<leader>s"', function() Snacks.picker.registers() end, desc = "Registers" },
