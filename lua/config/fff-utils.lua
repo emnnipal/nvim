@@ -97,6 +97,18 @@ function M.toggle_preview()
   end)
 end
 
+function M.move_results(count)
+  local ok, picker = pcall(require, "fff.picker_ui.picker_ui")
+  if not ok or not picker.state or not picker.state.active then
+    return
+  end
+
+  local move = count > 0 and picker.move_down or picker.move_up
+  for _ = 1, math.abs(count) do
+    pcall(move)
+  end
+end
+
 function M.setup_highlights()
   vim.api.nvim_set_hl(0, "FFFSearchMatch", {
     link = "Search",
@@ -111,6 +123,22 @@ function M.setup_autocmds()
         buffer = args.buf,
         silent = true,
         desc = "Toggle FFF preview",
+      })
+
+      vim.keymap.set("n", "J", function()
+        M.move_results(10)
+      end, {
+        buffer = args.buf,
+        silent = true,
+        desc = "Move down 10 FFF results",
+      })
+
+      vim.keymap.set("n", "K", function()
+        M.move_results(-10)
+      end, {
+        buffer = args.buf,
+        silent = true,
+        desc = "Move up 10 FFF results",
       })
 
       if vim.bo[args.buf].filetype == "fff_input" then
