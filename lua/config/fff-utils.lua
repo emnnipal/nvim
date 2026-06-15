@@ -132,14 +132,23 @@ end
 
 function M.setup_highlights()
   local orange = vim.api.nvim_get_hl(0, { name = "Constant", link = false })
+  local incsearch = vim.api.nvim_get_hl(0, { name = "IncSearch", link = false })
+
+  -- vim.hl.on_yank() normally uses IncSearch. Preserve the colorscheme's
+  -- original IncSearch for yanks before changing IncSearch for fff previews.
+  if incsearch and incsearch.bg then
+    vim.g.yank_highlight_fg = incsearch.fg
+    vim.g.yank_highlight_bg = incsearch.bg
+    vim.api.nvim_set_hl(0, "YankHighlight", { fg = incsearch.fg, bg = incsearch.bg })
+  end
 
   -- Grep result list matches use this group. Keep the original Search-style
   -- blue background there.
   vim.api.nvim_set_hl(0, "FFFSearchMatch", { link = "Search" })
 
-  -- fff hardcodes IncSearch for grep matches in the preview window. Make only
-  -- those hardcoded preview matches obvious with the theme's orange-ish
-  -- Constant color.
+  -- fff hardcodes IncSearch for grep matches in the preview window. Keep it as
+  -- orange text only; yank highlighting uses a separate group so it can keep
+  -- the orange background + black text style.
   vim.api.nvim_set_hl(0, "IncSearch", {
     fg = orange.fg or "#ff9e64",
     bold = true,
