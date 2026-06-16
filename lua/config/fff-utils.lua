@@ -1,7 +1,5 @@
 local M = {}
 
-local last_picker
-
 local function get_visual_selection()
   local ok, lines = pcall(vim.fn.getregion, vim.fn.getpos("'<"), vim.fn.getpos("'>"), {
     type = vim.fn.visualmode(),
@@ -16,43 +14,6 @@ local function get_visual_selection()
   return text ~= "" and text or nil
 end
 
-function M.open_picker(kind, opts)
-  opts = vim.deepcopy(opts or {})
-  last_picker = { kind = kind, opts = opts }
-
-  if kind == "files" then
-    require("fff").find_files(vim.deepcopy(opts))
-  else
-    require("fff").live_grep(vim.deepcopy(opts))
-  end
-end
-
-function M.capture_query()
-  if not last_picker then
-    return
-  end
-
-  local ok, picker = pcall(require, "fff.picker_ui.picker_ui")
-  if not ok or not picker.state then
-    return
-  end
-
-  if picker.state.query and picker.state.query ~= "" then
-    last_picker.opts.query = picker.state.query
-  else
-    last_picker.opts.query = nil
-  end
-end
-
-function M.resume_picker()
-  if not last_picker then
-    vim.notify("No FFF picker to resume", vim.log.levels.WARN)
-    return
-  end
-
-  M.open_picker(last_picker.kind, last_picker.opts)
-end
-
 function M.live_grep_word(opts)
   opts = vim.deepcopy(opts or {})
 
@@ -61,7 +22,7 @@ function M.live_grep_word(opts)
   opts.query = query
   opts.title = opts.title or "Grep Word"
 
-  M.open_picker("grep", opts)
+  require("fff").live_grep(opts)
 end
 
 function M.toggle_preview()
@@ -203,20 +164,6 @@ function M.setup_autocmds()
         silent = true,
         desc = "Move to last FFF result",
       })
-
-      if vim.bo[args.buf].filetype == "fff_input" then
-        vim.api.nvim_create_autocmd({ "TextChanged", "TextChangedI", "InsertLeave" }, {
-          buffer = args.buf,
-          callback = function()
-            vim.schedule(M.capture_query)
-          end,
-        })
-
-        vim.api.nvim_create_autocmd({ "BufLeave", "BufWipeout" }, {
-          buffer = args.buf,
-          callback = M.capture_query,
-        })
-      end
     end,
   })
 end

@@ -47,34 +47,36 @@ return {
     keys = {
       {
         "<leader>R",
-        fff_utils.resume_picker,
+        function()
+          require("fff").resume()
+        end,
         desc = "Resume Picker",
       },
       {
         "<leader>ff",
         function()
-          fff_utils.open_picker("files", { preview = { enabled = false }, title = "Find Files" })
+          require("fff").find_files({ preview = { enabled = false }, title = "Find Files" })
         end,
         desc = "Open file picker",
       },
       {
         "<leader><space>",
         function()
-          fff_utils.open_picker("files", { preview = { enabled = false }, title = "Find Files" })
+          require("fff").find_files({ preview = { enabled = false }, title = "Find Files" })
         end,
         desc = "Find Files",
       },
       {
         "<leader>sg",
         function()
-          fff_utils.open_picker("grep", { title = "Grep" })
+          require("fff").live_grep({ title = "Grep" })
         end,
         desc = "Grep (cwd)",
       },
       {
         "<leader>/",
         function()
-          fff_utils.open_picker("grep", { title = "Grep" })
+          require("fff").live_grep({ title = "Grep" })
         end,
         desc = "Grep (cwd)",
       },
