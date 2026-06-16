@@ -86,14 +86,7 @@ return {
           fff_utils.live_grep_word()
         end,
         desc = "Visual selection or word",
-      },
-      {
-        "<leader>sw",
-        function()
-          fff_utils.live_grep_word({ visual = true })
-        end,
-        desc = "Visual selection or word",
-        mode = "x",
+        mode = { "n", "x" },
       },
       {
         "<leader>sW",
@@ -101,14 +94,7 @@ return {
           fff_utils.live_grep_word({ cwd = vim.fn.getcwd() })
         end,
         desc = "Visual selection or word (cwd)",
-      },
-      {
-        "<leader>sW",
-        function()
-          fff_utils.live_grep_word({ cwd = vim.fn.getcwd(), visual = true })
-        end,
-        desc = "Visual selection or word (cwd)",
-        mode = "x",
+        mode = { "n", "x" },
       },
     },
   },

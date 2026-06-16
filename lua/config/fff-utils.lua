@@ -14,10 +14,15 @@ local function get_visual_selection()
   return text ~= "" and text or nil
 end
 
+local function in_visual_mode()
+  local mode = vim.fn.mode()
+  return mode == "v" or mode == "V" or mode == "\022"
+end
+
 function M.live_grep_word(opts)
   opts = vim.deepcopy(opts or {})
 
-  local query = opts.visual and get_visual_selection() or vim.fn.expand("<cword>")
+  local query = (opts.visual or in_visual_mode()) and get_visual_selection() or vim.fn.expand("<cword>")
   opts.visual = nil
   opts.query = query
   opts.title = opts.title or "Grep Word"
