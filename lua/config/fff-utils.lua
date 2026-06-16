@@ -22,8 +22,7 @@ end
 function M.live_grep_word(opts)
   opts = vim.deepcopy(opts or {})
 
-  local query = (opts.visual or in_visual_mode()) and get_visual_selection() or vim.fn.expand("<cword>")
-  opts.visual = nil
+  local query = in_visual_mode() and get_visual_selection() or vim.fn.expand("<cword>")
   opts.query = query
   opts.title = opts.title or "Grep Word"
 
