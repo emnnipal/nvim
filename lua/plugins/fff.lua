@@ -32,6 +32,9 @@ return {
       hl = {
         matched = "FFFSearchMatch",
         grep_match = "FFFSearchMatch",
+        winhl = {
+          preview = "Normal:NormalFloat,FloatBorder:FloatBorder,FloatTitle:Title,IncSearch:FFFPreviewMatch",
+        },
       },
     },
     config = function(_, opts)
