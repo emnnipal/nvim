@@ -61,6 +61,29 @@ return {
   {
     "MagicDuck/grug-far.nvim",
     opts = { headerMaxWidth = 80 },
+    config = function(_, opts)
+      vim.api.nvim_create_autocmd("FileType", {
+        group = vim.api.nvim_create_augroup("grug_far_which_key", { clear = true }),
+        pattern = "grug-far",
+        callback = function(args)
+          vim.schedule(function()
+            if not vim.api.nvim_buf_is_valid(args.buf) then
+              return
+            end
+
+            vim.keymap.set("n", "\\", function()
+              require("which-key").show({ keys = "\\", mode = "n", buf = args.buf })
+            end, {
+              buffer = args.buf,
+              nowait = true,
+              desc = "which-key-trigger grug-far localleader",
+            })
+          end)
+        end,
+      })
+
+      require("grug-far").setup(opts)
+    end,
     cmd = "GrugFar",
     keys = {
       {
