@@ -3,9 +3,9 @@ return {
   lazy = false,
   keys = {
     {
-      "<leader>cM",
+      "<leader>um",
       "<CMD>Markview<CR>",
-      { desc = "Toggles `markview` previews globally." },
+      desc = "Toggles `markview` previews globally.",
     },
   },
 
