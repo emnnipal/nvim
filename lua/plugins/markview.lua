@@ -5,7 +5,13 @@ return {
     {
       "<leader>um",
       "<CMD>Markview<CR>",
-      desc = "Toggles `markview` previews globally.",
+      desc = "Toggle markdown preview",
+    },
+  },
+
+  opts = {
+    preview = {
+      enable = false,
     },
   },
 
