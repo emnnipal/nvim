@@ -95,6 +95,41 @@ function M.move_to_edge(edge)
   pcall(picker.update_status)
 end
 
+local function copy_selected_path(relative)
+  local ok, picker = pcall(require, "fff.picker_ui.picker_ui")
+  if not ok or not picker or type(picker.state) ~= "table" then
+    return
+  end
+
+  local state = picker.state
+  local items = state.filtered_items
+  local item = type(items) == "table" and items[state.cursor]
+  if type(item) ~= "table" or type(item.relative_path) ~= "string" then
+    return
+  end
+
+  local utils_ok, fff_utils = pcall(require, "fff.utils")
+  if not utils_ok or type(fff_utils) ~= "table" or type(fff_utils.canonicalize_fff_path) ~= "function" then
+    return
+  end
+
+  local path_ok, abs_path = pcall(fff_utils.canonicalize_fff_path, item.relative_path)
+  if not path_ok or type(abs_path) ~= "string" or abs_path == "" then
+    return
+  end
+
+  local path = abs_path
+  if relative then
+    local relative_ok
+    relative_ok, path = pcall(vim.fn.fnamemodify, abs_path, ":.")
+    if not relative_ok or type(path) ~= "string" or path == "" then
+      return
+    end
+  end
+
+  vim.fn.setreg("+", path, "c")
+end
+
 function M.setup_highlights()
   local orange = vim.api.nvim_get_hl(0, { name = "Constant", link = false })
 
@@ -159,6 +194,24 @@ function M.setup_autocmds()
         silent = true,
         desc = "Move to last FFF result",
       })
+
+      if args.match == "fff_input" or args.match == "fff_list" then
+        vim.keymap.set("n", "Y", function()
+          copy_selected_path(false)
+        end, {
+          buffer = args.buf,
+          silent = true,
+          desc = "Copy absolute FFF path to clipboard",
+        })
+
+        vim.keymap.set("n", "<C-o>", function()
+          copy_selected_path(true)
+        end, {
+          buffer = args.buf,
+          silent = true,
+          desc = "Copy relative FFF path to clipboard",
+        })
+      end
     end,
   })
 end
