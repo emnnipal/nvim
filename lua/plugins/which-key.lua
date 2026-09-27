@@ -6,14 +6,17 @@ return {
     "folke/which-key.nvim",
     event = "VimEnter",
     opts = {
-      -- delay between pressing a key and opening which-key (milliseconds)
-      -- this setting is independent of vim.o.timeoutlen
-      -- delay = 0,
       preset = "helix",
       icons = {
         -- set icon mappings to true if you have a Nerd Font
         mappings = false,
       },
+
+      -- Delay before showing the popup. Can be a number or a function that returns a number.
+      ---@type number | fun(ctx: { keys: string, mode: string, plugin?: string }):number
+      delay = function(ctx)
+        return ctx.plugin and 0 or 300
+      end,
 
       -- stylua: ignore
       spec = {
