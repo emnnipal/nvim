@@ -5,6 +5,13 @@ return {
       servers = {
         tailwindcss = {
           filetypes = { "javascriptreact", "typescriptreact", "vue", "svelte", "html", "css", "scss", "less" },
+          settings = {
+            tailwindCSS = {
+              lint = {
+                suggestCanonicalClasses = "ignore",
+              },
+            },
+          },
         },
       },
       -- setup = {
