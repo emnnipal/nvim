@@ -18,6 +18,9 @@ vim.g.snacks_animate = false
 
 vim.o.showcmd = false -- Hide key presses showing in command line
 
+-- Avoid hit-enter pauses while preserving message history and progress updates.
+vim.opt.messagesopt = "wait:0,history:500,progress:c"
+
 -- Fix for random alt key presses when pressing esc key if neovim is within tmux.
 vim.o.ttimeoutlen = 0
 -- vim.o.timeoutlen = 500 -- Adjust this if needed
