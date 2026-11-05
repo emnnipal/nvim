@@ -42,6 +42,9 @@ return {
     opts = {
       servers = {
         oxlint = {
+          -- nvim-lspconfig dropped this upstream (single-file mode), which makes oxlint
+          -- attach to every JS/TS buffer. Only attach when an oxlint root is found.
+          workspace_required = true,
           keys = {
             { "<leader>ce", "<Cmd>LspOxlintFixAll<CR>", desc = "Fix oxlint errors" },
           },
