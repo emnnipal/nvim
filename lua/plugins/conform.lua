@@ -1,20 +1,51 @@
+-- LSP servers that should do the formatting when attached to the buffer. When one is attached,
+-- conform formats with that server only (not the CLI formatters, not other LSPs).
+-- Filled from `opts.lsp_formatters`, which other plugin files can add to (e.g. oxc.lua adds "oxfmt").
+local lsp_formatters = {}
+
+-- Returns the first server from `lsp_formatters` that is attached to the buffer, or nil.
+local function preferred_lsp_formatter(bufnr)
+  for _, name in ipairs(lsp_formatters) do
+    if #vim.lsp.get_clients({ bufnr = bufnr, name = name }) > 0 then
+      return name
+    end
+  end
+end
+
 return {
   {
     "stevearc/conform.nvim",
     dependencies = { "mason.nvim" },
     event = { "BufWritePre" },
     cmd = "ConformInfo",
+    -- Merge `lsp_formatters` lists from all conform specs instead of replacing them.
+    opts_extend = { "lsp_formatters" },
+    config = function(_, opts)
+      lsp_formatters = opts.lsp_formatters or {}
+      -- Our own key, not a conform option: remove it before passing opts to conform.
+      opts.lsp_formatters = nil
+      require("conform").setup(opts)
+    end,
     keys = {
       {
         "<leader>cf",
         function()
-          require("conform").format({ async = true, lsp_format = "fallback" })
+          local bufnr = vim.api.nvim_get_current_buf()
+          -- e.g. "oxfmt" in an oxfmt project: format with that LSP only
+          local name = preferred_lsp_formatter(bufnr)
+          require("conform").format({
+            bufnr = bufnr,
+            async = true,
+            lsp_format = name and "prefer" or "fallback",
+            name = name,
+          })
         end,
         mode = "",
         desc = "Format buffer",
       },
     },
     opts = {
+      lsp_formatters = {},
       notify_on_error = true,
       format_on_save = function(bufnr)
         -- Disable "format_on_save lsp_fallback" for languages that don't
@@ -24,6 +55,11 @@ return {
         if disable_filetypes[vim.bo[bufnr].filetype] then
           return nil
         else
+          -- e.g. "oxfmt" in an oxfmt project: format with that LSP only
+          local name = preferred_lsp_formatter(bufnr)
+          if name then
+            return { timeout_ms = 500, lsp_format = "prefer", name = name }
+          end
           return {
             timeout_ms = 500,
             lsp_format = "fallback",

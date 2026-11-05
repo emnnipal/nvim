@@ -1,40 +1,28 @@
--- Set to true to run `oxlint --fix` via conform on save (before oxfmt).
-vim.g.oxlint_fix_on_save = false
+-- Auto-fix oxlint problems on save (only safe fixes, e.g. `let` -> `const`), before formatting.
+-- Only applies to files where the oxlint LSP is attached.
+vim.g.oxlint_fix_on_save = true
 
-local fix_on_save = vim.g.oxlint_fix_on_save == true
-
--- https://oxc.rs/docs/guide/usage/formatter
-local oxfmt_supported = {
-  "javascript",
-  "javascriptreact",
-  "typescript",
-  "typescriptreact",
-  "json",
-  "jsonc",
-  "json5",
-  "yaml",
-  "toml",
-  "html",
-  "vue",
-  "handlebars",
-  "css",
-  "scss",
-  "less",
-  "graphql",
-  "markdown",
-  "svelte",
-}
-
--- Filetypes where oxlint --fix applies
-local oxlint_supported = {
-  "javascript",
-  "javascriptreact",
-  "typescript",
-  "typescriptreact",
-  "vue",
-  "svelte",
-  "astro",
-}
+-- Asks the oxlint LSP to apply its fixes to the buffer, and waits until they are applied.
+---@param bufnr integer
+local function oxlint_fix_before_save(bufnr)
+  -- Not an oxlint project (no oxlint LSP on this file): nothing to do.
+  local client = vim.lsp.get_clients({ bufnr = bufnr, name = "oxlint" })[1]
+  if not client then
+    return
+  end
+  -- Make oxlint lint the latest text first. Otherwise the fix uses old results
+  -- and can miss what you just typed.
+  if client.server_capabilities.diagnosticProvider then
+    client:request_sync("textDocument/diagnostic", {
+      textDocument = { uri = vim.uri_from_bufnr(bufnr) },
+    }, 500, bufnr)
+  end
+  -- Apply the fixes. request_sync waits, so the fixes are in the buffer before the file is written.
+  client:request_sync("workspace/executeCommand", {
+    command = "oxc.fixAll",
+    arguments = { { uri = vim.uri_from_bufnr(bufnr) } },
+  }, 500, bufnr)
+end
 
 return {
   {
@@ -42,12 +30,28 @@ return {
     opts = {
       servers = {
         oxlint = {
-          -- nvim-lspconfig dropped this upstream (single-file mode), which makes oxlint
-          -- attach to every JS/TS buffer. Only attach when an oxlint root is found.
+          -- Only attach in projects with an oxlint config. nvim-lspconfig removed this,
+          -- which made oxlint attach to every JS/TS file.
           workspace_required = true,
+          -- Our on_attach replaces nvim-lspconfig's, so recreate its :LspOxlintFixAll command.
+          on_attach = function(client, bufnr)
+            vim.api.nvim_buf_create_user_command(bufnr, "LspOxlintFixAll", function()
+              client:exec_cmd({
+                title = "Apply Oxlint automatic fixes",
+                command = "oxc.fixAll",
+                arguments = { { uri = vim.uri_from_bufnr(bufnr) } },
+              })
+            end, { desc = "Apply Oxlint automatic fixes" })
+          end,
           keys = {
             { "<leader>ce", "<Cmd>LspOxlintFixAll<CR>", desc = "Fix oxlint errors" },
           },
+        },
+        -- oxfmt runs as an LSP so it stays running (no ~80 ms startup per save).
+        -- conform formats through it when it's attached (see the conform spec below).
+        oxfmt = {
+          -- Only attach in projects with an oxfmt config (same reason as oxlint).
+          workspace_required = true,
         },
       },
     },
@@ -57,31 +61,24 @@ return {
     optional = true,
     ---@param opts ConformOpts
     opts = function(_, opts)
-      opts.formatters_by_ft = opts.formatters_by_ft or {}
+      -- Format with the oxfmt LSP when it's attached (see lsp_formatters in conform.lua).
+      opts.lsp_formatters = opts.lsp_formatters or {}
+      table.insert(opts.lsp_formatters, "oxfmt")
 
-      -- oxlint goes first so lint fixes are applied before formatting
-      if fix_on_save then
-        for _, ft in ipairs(oxlint_supported) do
-          opts.formatters_by_ft[ft] = opts.formatters_by_ft[ft] or {}
-          table.insert(opts.formatters_by_ft[ft], "oxlint")
+      -- format_on_save runs on every save. Wrap the one from conform.lua so the oxlint fix
+      -- runs first, then the original format_on_save does the formatting.
+      local format_on_save = opts.format_on_save
+      opts.format_on_save = function(bufnr)
+        -- Step 1: lint fixes (only if enabled; does nothing without the oxlint LSP)
+        if vim.g.oxlint_fix_on_save == true then
+          oxlint_fix_before_save(bufnr)
         end
+        -- Step 2: formatting (always)
+        if type(format_on_save) == "function" then
+          return format_on_save(bufnr)
+        end
+        return format_on_save
       end
-
-      for _, ft in ipairs(oxfmt_supported) do
-        opts.formatters_by_ft[ft] = opts.formatters_by_ft[ft] or {}
-        table.insert(opts.formatters_by_ft[ft], "oxfmt")
-      end
-
-      opts.formatters = opts.formatters or {}
-      -- vite.config.* is intentionally excluded so plain Vite projects don't trigger oxfmt
-      opts.formatters.oxfmt = {
-        require_cwd = true,
-        cwd = require("conform.util").root_file({ ".oxfmtrc.json", ".oxfmtrc.jsonc", "oxfmt.config.ts" }),
-      }
-      opts.formatters.oxlint = {
-        require_cwd = true,
-        cwd = require("conform.util").root_file({ ".oxlintrc.json", ".oxlintrc.jsonc", "oxlint.config.ts" }),
-      }
     end,
   },
 }
