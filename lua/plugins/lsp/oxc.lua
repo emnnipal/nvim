@@ -33,6 +33,9 @@ return {
           -- Only attach in projects with an oxlint config. nvim-lspconfig removed this,
           -- which made oxlint attach to every JS/TS file.
           workspace_required = true,
+          -- When Neovim exits, wait up to 100 ms for the server to shut down, then kill it.
+          -- Without this, the server is occasionally left running after Neovim exits.
+          exit_timeout = 100,
           -- Our on_attach replaces nvim-lspconfig's, so recreate its :LspOxlintFixAll command.
           on_attach = function(client, bufnr)
             vim.api.nvim_buf_create_user_command(bufnr, "LspOxlintFixAll", function()
@@ -52,6 +55,8 @@ return {
         oxfmt = {
           -- Only attach in projects with an oxfmt config (same reason as oxlint).
           workspace_required = true,
+          -- Same as oxlint: don't leave the server running after Neovim exits.
+          exit_timeout = 100,
         },
       },
     },
